@@ -49,17 +49,13 @@ Update the node's poet-js dependency to allow the new version of `Work` claims.
 
 ### Adjust frost-api for both use cases
 
-~In order to accommodate the use case and avoid breaking the Frost API we need frost-api to handle both the `content` version and the `hash` and `archiveUrl` version of works.~
+In order to accommodate the use case and avoid breaking the Frost API we need frost-api to handle both the `content` version and the `hash` and `archiveUrl` version of works.
 
-* ~If the user wants us to store the file for them in IPFS:~
-  * ~He will use the `content` property, and~
-  * ~The frost-api will upload the value of the content property to the node and create a claim with the `hash` and `archiveUrl`.~
-* ~If the user wants to handle the storage of the file himself (whether in IPFS or some other file storage system):~
-  * ~He will just provide the `hash` and `archiveUrl` properties.~
-
-It was decided it's better to break the frost-api sooner rather than later.
-
-Details to come...
+* If the user wants us to store the file for them in IPFS:
+  * He will use the `content` property, and
+  * The frost-api will upload the value of the content property to the node and create a claim with the `hash` and `archiveUrl`.
+* If the user wants to handle the storage of the file himself (whether in IPFS or some other file storage system):
+  * He will just provide the `hash` and `archiveUrl` properties.
 
 
 ---- 
