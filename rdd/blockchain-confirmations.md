@@ -2,6 +2,12 @@
 
 The node needs to know if too much time has passed since a transaction has been created and it hasn't yet been seen in any block.
 
+## Cases
+
+- Transaction is in mempool for too long, never gets in a block
+- Transaction disappears from mempool and never gets in a block
+- Transaction gets into a block and that block disappears (reorg)
+
 ## Measuring Time in Blocks
 
 It makes sense to track at what block height the transaction was created and how many blocks have been mined/generated since, rather than time passed.
