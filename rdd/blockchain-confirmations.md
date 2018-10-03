@@ -23,8 +23,8 @@ Reattempting transactions means we can't guarantee claim order until they are co
 ## Changes
 
 ### BlockchainReader.ClaimController.scanBlock
-- - rename and modify PoetBlockAnchorsDownloaded(matchingAnchors) to BlockDownloaded(blockHeight, matchingAnchors) ,
-- - remove `if (matchingAnchors.length)` - publish BlockDownloaded for all blocks
+- rename and modify `PoetBlockAnchorsDownloaded(matchingAnchors)` to `BlockDownloaded(blockHeight, matchingAnchors)` ,
+- remove `if (matchingAnchors.length)` - publish BlockDownloaded for all blocks
 
 ### BlockchainWriter
 
