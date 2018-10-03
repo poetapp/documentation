@@ -41,7 +41,7 @@ consume(BlockDownloaded(blockHeight, matchingTransactionIds)) =>
 #### DAO
 
 ```js
-  findBlocklessTransactions = maximumBlockAge => maximumBlockAge => db.blockchainWriter.find({ 
+  findBlocklessTransactions = maximumBlockAge => currentBlockHeight => db.blockchainWriter.find({ 
     tx: { $not: null }, 
     creationBlockHeight: { $lt: currentBlockHeight - maximumBlockAge }, 
     blockHeight: null 
