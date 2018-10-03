@@ -28,6 +28,8 @@ Reattempting transactions means we can't guarantee claim order until they are co
 
 ### BlockchainWriter
 
+#### Router / Controller
+
 ```js
 consume(BlockDownloaded(blockHeight, matchingTransactionIds)) => 
   const setBlockHeight = dao.setBlockHeight(blockHeight) 
