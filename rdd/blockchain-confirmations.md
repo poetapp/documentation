@@ -65,3 +65,8 @@ consume(BlockDownloaded(blockHeight, matchingTransactionIds)) =>
   
   setBlockHeight = blockHeight => txid => db.blockchainWriter.update({ txid }, { $set: { blockHeight } })
 ```
+
+## References
+1. [Chain Reorganization](https://en.bitcoin.it/wiki/Chain_Reorganization)
+1. [Orphan / Stale Block](https://en.bitcoin.it/wiki/Orphan_Block)
+1. [How many confirmations do I need to ensure a transaction is successful?](https://bitcoin.stackexchange.com/questions/8360/how-many-confirmations-do-i-need-to-ensure-a-transaction-is-successful)
