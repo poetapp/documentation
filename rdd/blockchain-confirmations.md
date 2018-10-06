@@ -1,12 +1,22 @@
 # Blockchain Confirmations
 
-The node needs to know if too much time has passed since a transaction has been created and it hasn't yet been seen in any block.
+Bitcoin transactions can only be considered safe after they have a certain amount of confirmations. 
+
+The node needs to know how many confirmations transactions have and fail-safe in case one or more transactions aren't getting confirmed as expected.
+
+## Required Confirmation Count
+
+Due to how Proof of Work works, there isn't a defined line that separates a safe from an unsafe amount of confirmations. How few confirmations one is willing to accept, or how many require, is a decision that needs to be weighted for each use case. 
+
+It is generally considered that three confirmations is safe for transactions moving a low amount of funds, while for larger transactions one may want to wait for six.
+
+TODO: add references to this
 
 ## Cases
 
-- Transaction is in mempool for too long, never gets in a block
-- Transaction disappears from mempool and never gets in a block
-- Transaction gets into a block and that block disappears (reorg)
+- Transaction is in mempool for too long, never gets in a block (low fee)
+- Transaction disappears from mempool and never gets in a block (most likely discarded after too long in mempool)
+- Transaction gets into a block and sometime after that block becomes stale (reorg)
 
 ## Measuring Time in Blocks
 
@@ -22,7 +32,7 @@ Can use [getrawmempool](https://bitcoin.org/en/developer-reference#getrawmempool
 
 Can test by destroying the bitcoin-regtest container after the transaction has been created and before it has been included in a block
 
-## Wait For It
+## Don't Build Over Unconfirmed Data
 
 Reattempting transactions means we can't guarantee claim order until they are confirmed, which means you should only refer to claims that have been confirmed. This is pretty standard in the blockchain world - one should never rely on unconfirmed data.
 
