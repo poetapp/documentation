@@ -27,6 +27,8 @@ Each step will be its own pull request.
 
 In poet-js we need to adjust the `Work` claim type. We need to add adjust the Context to contain `archiveUrl` and `hash` instead of `text`.
 
+Completed: https://github.com/poetapp/poet-js/pull/150
+
 ----
 
 ### Add file upload endpoint to the node
