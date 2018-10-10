@@ -41,7 +41,11 @@ The endpoint needs to support all types of file formats: audio, video, image, an
 
 ### Update node's `/works` endpoint
 
-Update the node's poet-js dependency to allow the new version of `Work` claims.
+Update the node's poet-js dependency to allow the new version of signed verifiable `Work` and `Identity` claims.
+
+The endpoint should validate the signed verifiable claims.
+
+The node should reject signed verifiable Work claims where the Work Claims `archiveUrl` does not match `hash`.
 
 ---- 
 
@@ -49,11 +53,20 @@ Update the node's poet-js dependency to allow the new version of `Work` claims.
 
 In order to accommodate the use case and avoid breaking the Frost API we need frost-api to handle both the `content` version and the `hash` and `archiveUrl` version of works.
 
-* If the user wants us to store the file for them in IPFS:
-  * He will use the `content` property, and
+* content will be a reserved property of claims for backwards compatibility
+
+The content property will be uploaded to ipfs as a file, and then the resulting ipfs hash will be used to generate `archiveUrl` and `hash`. The `content` property will then be removed from the claim.
+
+A verifiable claim will then need to be created. A verifiable claim will require an Identity url. For now a default identity for the account will be used. Identity management features will be added later.
+
+
+At a later point the frost-api will also need to support uploading of files separate from the claim itself.
+
+At that time ff the user wants us to store the file for them in IPFS:
+  * They will use the `content` property, and
   * The frost-api will upload the value of the content property to the node and create a claim with the `hash` and `archiveUrl`.
 * If the user wants to handle the storage of the file himself (whether in IPFS or some other file storage system):
-  * He will just provide the `hash` and `archiveUrl` properties.
+  * They will just provide the `hash` and `archiveUrl` properties.
 
 
 ---- 
