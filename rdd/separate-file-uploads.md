@@ -5,10 +5,6 @@
 - https://github.com/poetapp/node/issues/260
 
 ## Possible Conflicts
-* https://github.com/poetapp/poet-js/pull/96/files  
-  This PR changes the `content` property of Works to `text`, which is not an issue at the moment.
-* https://github.com/poetapp/poet-js/pull/150
-  This PR I think simplifies the changes required because claims no longer have strict types or requirements.
 
 ## Goals
  * Add the ability for users to hash and create claims without storing the files on our IPFS nodes.
