@@ -10,7 +10,7 @@ Due to how Proof of Work works, there isn't a defined line that separates a safe
 
 It is generally considered that three confirmations is safe for transactions moving a low amount of funds, while for larger transactions one may want to wait for six.
 
-TODO: add references to this
+This will be configurable via `NUM_CONFIRMATION_BLOCKS`, defaulting to 3.
 
 ## Cases
 
@@ -23,10 +23,6 @@ TODO: add references to this
 It makes sense to track at what block height the transaction was created and how many blocks have been mined/generated since, rather than time passed.
 
 Measuring blocks instead of time is a blockchain specific solution (bitcoin generates blocks every ten minutes, ethereum every eight to twelve seconds), but that's perfectly fine.
-
-## Mempool
-
-Can use [getrawmempool](https://bitcoin.org/en/developer-reference#getrawmempool) to get a list of transaction ids that are in the mempool but haven't made it to any block
 
 ## Functional Testing
 
@@ -64,6 +60,12 @@ $ node second-part-of-test.js
 # etc
 ```
 
+Comment by Warren:
+
+> Shutting down a container from within another container is problematic. We would have to mount docker.socket inside the container running the tests. This is considered an insecure practice but may be ok for testing.
+
+
+
 ## Don't Build Over Unconfirmed Data
 
 Reattempting transactions means we can't guarantee claim order until they are confirmed, which means you should only refer to claims that have been confirmed. This is pretty standard in the blockchain world - one should never rely on unconfirmed data.
@@ -97,6 +99,12 @@ consume(BlockDownloaded(blockHeight, matchingTransactionIds)) =>
   
   setBlockHeight = blockHeight => txid => db.blockchainWriter.update({ txid }, { $set: { blockHeight } })
 ```
+
+## RPCs
+1. [getrawmempool](https://bitcoin.org/en/developer-reference#getrawmempool)
+1. [setnetworkactive](https://bitcoincore.org/en/doc/0.17.0/rpc/network/setnetworkactive/)
+1. [addnode](https://bitcoincore.org/en/doc/0.17.0/rpc/network/addnode/)
+1. [disconnectnode](https://bitcoincore.org/en/doc/0.17.0/rpc/network/disconnectnode/)
 
 ## References
 1. [Chain Reorganization](https://en.bitcoin.it/wiki/Chain_Reorganization)
