@@ -57,7 +57,7 @@ We need to setup frost-api to have its own Identity claim, and public/private ke
 
 ##### Questions:
 
-* I just realized that issuer being the private key means the private key is not so private, should the issuer be the public key? I need to relook at Eric's article and also sync with Kris on this.
+* issuer in poet-js is a private key, this means the private key is not so private, should the issuer be the public key? Need to clarify/revisit.
 
 #### Signed
 
