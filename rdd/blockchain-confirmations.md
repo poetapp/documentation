@@ -40,7 +40,7 @@ Clearing the mempool requires restarting the node with [-zapwallettxes](https://
 
 ### Reorg Simulation
 
-- Having two bitcoin-core instances communicating, sharing the shame blockchain, then cutting off communication, growing one of the chains one block and the other two (different) blocks and then enabling communication again. 
+- Having two bitcoin-core instances communicating, sharing the same blockchain, then cutting off communication, growing one of the chains one block and the other two (different) blocks and then enabling communication again. 
 - Using the hidden [invalidate and reconsider block](https://github.com/bitcoin/bitcoin/blob/b8edb9810a699015e997e2098dddb2a6cfacbed6/src/rpc/blockchain.cpp#L1486-L1559) calls. Maybe [preciousblock](https://bitcoincore.org/en/doc/0.17.0/rpc/blockchain/preciousblock/) can help, too.
 
 Connecting and disconnecting to/from the network seems to be possible with the RPC calls [setnetworkactive](https://bitcoincore.org/en/doc/0.17.0/rpc/network/setnetworkactive/), [addnode](https://bitcoincore.org/en/doc/0.17.0/rpc/network/addnode/) and [disconnectnode](https://bitcoincore.org/en/doc/0.17.0/rpc/network/disconnectnode/).
