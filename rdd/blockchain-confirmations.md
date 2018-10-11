@@ -9,9 +9,19 @@ The node needs to know how many confirmations transactions have and trigger a re
 
 ## Cases
 
-- Transaction disappears from mempool and never gets in a block (most likely discarded after too long in mempool)
-- Transaction is in mempool for too long, never gets in a block (low fee)
-- Transaction gets into a block and sometime after that block becomes stale (reorg)
+There are three different cases the node needs to be aware of and know how to respond to.
+
+### Transaction Lost
+
+Transaction disappears from mempool and never gets in a block. Most likely discarded after too long in mempool.
+
+### Transaction Stuck
+
+Transaction is in mempool for too long, never gets in a block. Probably due to low fee.
+
+### Reorg
+
+Transaction gets into a block and sometime after that block becomes stale.
 
 ## Changes
 
