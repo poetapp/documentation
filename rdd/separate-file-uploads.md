@@ -106,3 +106,12 @@ At that time if the user wants us to store the file for them in IPFS:
 ### Explorer Web
 
 Explorer web may need to be updated to show any properties a claim contains instead of fixed properties.
+
+
+## Default User Identity
+
+... details of default user identity generation for new and current users.
+
+## Frost Identity Claim
+
+... details of the frost identity claim
