@@ -83,14 +83,11 @@ In order to accommodate the use case and avoid breaking the Frost API we need fr
 The first step will be to adjust frost-api to take claims with a content property as it currently does. The content property will be uploaded to IPFS as a file, and then the resulting IPFS hash will be used to generate `archiveUrl` and `hash`. The `content` property will then be removed from the claim.
 
 
-
-
 A verifiable claim will then need to be created. A verifiable claim will require an Identity url. For now a default identity for the account will be used. Identity management features will be added later.
 
 ----
 
-### Second adjustment of frost-api
-
+### frost-api upload files separate from claims 
 
 At a later point the frost-api will also need to support uploading of files separate from the claim itself.
 
