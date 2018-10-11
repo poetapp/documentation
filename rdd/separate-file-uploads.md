@@ -13,7 +13,7 @@
 
 ## Steps
 
-Each step will be its own pull request.
+Each step can be 1 or more pull requests.
 
 ---- 
 
@@ -86,6 +86,10 @@ The first step will be to adjust frost-api to take claims with a content propert
 
 
 A verifiable claim will then need to be created. A verifiable claim will require an Identity url. For now a default identity for the account will be used. Identity management features will be added later.
+
+----
+
+### Second adjustment of frost-api
 
 
 At a later point the frost-api will also need to support uploading of files separate from the claim itself.
