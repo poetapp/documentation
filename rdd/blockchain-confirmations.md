@@ -13,7 +13,7 @@ There are three different cases the node needs to be aware of and know how to re
 
 ### Transaction Lost
 
-Transaction disappears from mempool and never gets in a block. 
+Transaction disappears from mempool and never gets into a block. 
 
 Most likely discarded after being stuck in the mempool for too long, though there is no way to know for sure.
 
@@ -23,7 +23,7 @@ This should seldom happen. If it does, the node should discard the lost broadcas
 
 ### Transaction Stuck
 
-Transaction is in mempool for too long, never gets in a block. 
+Transaction is in mempool for too long, never gets into a block. 
 
 Probably due to low fee, though there is no way to know for sure.
 
