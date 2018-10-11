@@ -13,15 +13,44 @@ There are three different cases the node needs to be aware of and know how to re
 
 ### Transaction Lost
 
-Transaction disappears from mempool and never gets in a block. Most likely discarded after too long in mempool.
+Transaction disappears from mempool and never gets in a block. 
+
+Most likely discarded after being stuck in the mempool for too long, though there is no way to know for sure.
+
+#### Solution
+
+This should seldom happen. If it does, the node should be able to update the blockchainWriter collection, emptying the `transactionId` field for the corresponding entries, which will trigger a new transaction creationg and broadcast.
 
 ### Transaction Stuck
 
-Transaction is in mempool for too long, never gets in a block. Probably due to low fee.
+Transaction is in mempool for too long, never gets in a block. 
+
+Probably due to low fee, though there is no way to know for sure.
+
+Could also be a sympton of Bitcoin scaling issues.
+
+#### Solution
+
+Though there's no guarantee of this working, the best attempt it to replace the transaction with one with higher fee, basically creating a double-spend. Miners should choose the transaction with higher fee, rendering the one with lower fee invalid.
+
+If the root cause is more related to Bitcoin scalability than Po.et, there is nothing to be done.
+
+We can use the [getrawmempool](https://bitcoin.org/en/developer-reference#getrawmempool) and [getmempoolentry](https://bitcoincore.org/en/doc/0.17.0/rpc/blockchain/getmempoolentry/) to know whether a transaction is in the mempool or not.
+
+Issues may arise due to the mempool not being decentralized: a tranasction existing in Node A's mempool may have been discarded from Node B's mempool.
 
 ### Reorg
 
 Transaction gets into a block and sometime after that block becomes stale.
+
+This is a completely normal even in Bitcoin, Ethereum and other blockchains. It is also the most complicated case to handle.
+
+#### Solution
+
+There are various approaches to this issue.
+
+- Keep track of the `previousBlockHash` of every block, re-validate last blocks on new block, signal reorg from BlockchainReader and let other modules adapt
+- Watching the info returned by [getchaintips](https://bitcoincore.org/en/doc/0.17.0/rpc/blockchain/getchaintips/).
 
 ## Changes
 
@@ -129,3 +158,4 @@ Reattempting transactions means we can't guarantee claim order until they are co
 1. [Using Docker-in-Docker for your CI or testing environment? Think twice.
 ](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/)
 1. [What is the longest blockchain fork that has been orphaned to date?](https://bitcoin.stackexchange.com/questions/3343/what-is-the-longest-blockchain-fork-that-has-been-orphaned-to-date/4638)
+1. [How does the mempool work? What happens to the mempool when there are two equal length chains on the network?](https://bitcoin.stackexchange.com/questions/69448/how-does-the-mempool-work-what-happens-to-the-mempool-when-there-are-two-equal?rq=1)
