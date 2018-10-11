@@ -28,9 +28,41 @@ Measuring blocks instead of time is a blockchain specific solution (bitcoin gene
 
 Can use [getrawmempool](https://bitcoin.org/en/developer-reference#getrawmempool) to get a list of transaction ids that are in the mempool but haven't made it to any block
 
-## Testing
+## Functional Testing
 
-Can test by destroying the bitcoin-regtest container after the transaction has been created and before it has been included in a block
+Testing the different scenarios can be a bit complicated and require some orchestration.
+
+I haven't decided or tried anything yet, but here's some information and ideas:
+
+### Never Confirmed
+
+This one is easy: just never `generate`.
+
+### Mempool Clearing
+
+Clearing the mempool requires restarting the node with [-zapwallettxes](https://github.com/bitcoin/bitcoin/blob/ae1cc010b88dd594d2a27b2717cfe14ef04ec852/src/wallet/wallet.cpp#L3882). I haven't found a way to do this without restarting. And I'm not 100% sure -zapwallettxes is enough.
+
+### Reorg Simulation
+
+- Having two bitcoin-core instances communicating, sharing the shame blockchain, then cutting off communication, growing one of the chains one block and the other two (different) blocks and then enabling communication again. 
+- Using the hidden [invalidate and reconsider block](https://github.com/bitcoin/bitcoin/blob/b8edb9810a699015e997e2098dddb2a6cfacbed6/src/rpc/blockchain.cpp#L1486-L1559) calls. Maybe [preciousblock](https://bitcoincore.org/en/doc/0.17.0/rpc/blockchain/preciousblock/) can help, too.
+
+Connecting and disconnecting to/from the network seems to be possible with the RPC calls [setnetworkactive](https://bitcoincore.org/en/doc/0.17.0/rpc/network/setnetworkactive/), [addnode](https://bitcoincore.org/en/doc/0.17.0/rpc/network/addnode/) and [disconnectnode](https://bitcoincore.org/en/doc/0.17.0/rpc/network/disconnectnode/).
+
+### Higher Level Orchestration
+
+Given that all testing scenarios require interacting with dependencies, restarting them, passing arguments to them, etc, I believe it makes sense to consider these tests to live in a higher layer, over the application itself.
+
+Maybe a good use case for docker-in-docker. 
+
+For example (not ideal, just an example):
+
+```
+$ node first-part-of-test.js
+$ ./disable-bitcoind-communication.sh
+$ node second-part-of-test.js
+# etc
+```
 
 ## Don't Build Over Unconfirmed Data
 
