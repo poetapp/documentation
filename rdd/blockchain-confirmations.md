@@ -103,6 +103,8 @@ consume(BlockDownloaded(blockHeight, matchingTransactionIds)) =>
 
 ## RPCs
 1. [getrawmempool](https://bitcoin.org/en/developer-reference#getrawmempool)
+1. [getmempoolentry](https://bitcoincore.org/en/doc/0.17.0/rpc/blockchain/getmempoolentry/)
+1. [getchaintips](https://bitcoincore.org/en/doc/0.17.0/rpc/blockchain/getchaintips/)
 1. [setnetworkactive](https://bitcoincore.org/en/doc/0.17.0/rpc/network/setnetworkactive/)
 1. [addnode](https://bitcoincore.org/en/doc/0.17.0/rpc/network/addnode/)
 1. [disconnectnode](https://bitcoincore.org/en/doc/0.17.0/rpc/network/disconnectnode/)
