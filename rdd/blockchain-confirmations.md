@@ -37,7 +37,7 @@ If the root cause is more related to Bitcoin scalability than Po.et, there is no
 
 We can use the [getrawmempool](https://bitcoin.org/en/developer-reference#getrawmempool) and [getmempoolentry](https://bitcoincore.org/en/doc/0.17.0/rpc/blockchain/getmempoolentry/) to know whether a transaction is in the mempool or not.
 
-Issues may arise due to the mempool not being decentralized: a tranasction existing in Node A's mempool may have been discarded from Node B's mempool.
+Issues may arise due to the mempool not being decentralized: a transaction existing in Node A's mempool may have been discarded from Node B's mempool.
 
 ##### New Fee
 
@@ -53,14 +53,16 @@ In a future iteration, we can
 
 Transaction gets into a block and sometime after that block becomes stale.
 
-This is a completely normal even in Bitcoin, Ethereum and other blockchains. It is also the most complicated case to handle.
+This is a completely normal event in Bitcoin, Ethereum and other blockchains. It is also the most complicated case to handle.
 
 #### Solution
 
 There are various approaches to this issue.
 
-- Keep track of the `previousBlockHash` of every block, re-validate last blocks on new block, signal reorg from BlockchainReader and let other modules adapt
+- Keep track of the `previousBlockHash` of every block, re-validate N last blocks on new block, signal reorg from BlockchainReader and let other modules adapt
 - Watching the info returned by [getchaintips](https://bitcoincore.org/en/doc/0.17.0/rpc/blockchain/getchaintips/).
+
+A reorg may mean that data that was valid no longer is. This does not affect our current system, as UPDATEs are not supported and Work is the only claim type in use, but the introduction of Entities, Identity Claims, Licences, etc, will require more attention.
 
 ## Implementation
 
