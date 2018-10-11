@@ -19,7 +19,7 @@ Most likely discarded after being stuck in the mempool for too long, though ther
 
 #### Solution
 
-This should seldom happen. If it does, the node should be able to update the blockchainWriter collection, emptying the `transactionId` field for the corresponding entries, which will trigger a new transaction creationg and broadcast.
+This should seldom happen. If it does, the node should discard the lost broadcasted transaction and create and broadcast a new one.
 
 ### Transaction Stuck
 
@@ -27,7 +27,7 @@ Transaction is in mempool for too long, never gets in a block.
 
 Probably due to low fee, though there is no way to know for sure.
 
-Could also be a sympton of Bitcoin scaling issues.
+Could also be a symptom of Bitcoin scaling issues.
 
 #### Solution
 
@@ -38,6 +38,16 @@ If the root cause is more related to Bitcoin scalability than Po.et, there is no
 We can use the [getrawmempool](https://bitcoin.org/en/developer-reference#getrawmempool) and [getmempoolentry](https://bitcoincore.org/en/doc/0.17.0/rpc/blockchain/getmempoolentry/) to know whether a transaction is in the mempool or not.
 
 Issues may arise due to the mempool not being decentralized: a tranasction existing in Node A's mempool may have been discarded from Node B's mempool.
+
+##### New Fee
+
+The fee is currently determined by Bitcoin Core. Initially, we wil want to let Bitcoin Core determine the new fee, too, and hope for it to be high enough. 
+
+In a future iteration, we can 
+- use [estimatesmartfee](https://bitcoincore.org/en/doc/0.17.0/rpc/util/estimatesmartfee/) to get the Bitcoin Core Wallet's recommended feeRate, 
+- manually increase it by a configurable amount,
+- pass it to [fundrawtransaction](https://bitcoincore.org/en/doc/0.17.0/rpc/rawtransactions/fundrawtransaction/)
+- and set the `replaceable` option of `fundrawtransaction` to `true`.
 
 ### Reorg
 
@@ -52,7 +62,7 @@ There are various approaches to this issue.
 - Keep track of the `previousBlockHash` of every block, re-validate last blocks on new block, signal reorg from BlockchainReader and let other modules adapt
 - Watching the info returned by [getchaintips](https://bitcoincore.org/en/doc/0.17.0/rpc/blockchain/getchaintips/).
 
-## Changes
+## Implementation
 
 ### BlockchainReader.ClaimController.scanBlock
 - rename and modify `PoetBlockAnchorsDownloaded(matchingAnchors)` to `BlockDownloaded(blockHeight, matchingAnchors)` ,
