@@ -53,11 +53,11 @@ Requirements of signed verifiable claims that need to be addressed by frost api:
 
 #### Issuer
 
-We need to setup frost-api to have its own Identity claim, and public/private keys that pertain to that identity. Frost will then create an issuer from its private key.
+Frost will need to provide an issuer. The issuer will be created from frost-api's privateKey that is related to [Frosts Identity Claim](#frost-identity-claim)
 
-#### Signed
+#### Signing
 
-The claim now needs to be signed by and Identity claims privateKey.
+The claim needs to be signed by with frost-api's privateKey that is related to [Frosts Identity Claim](#frost-identity-claim)
 
 #### Author
 
@@ -99,6 +99,11 @@ At that time if the user wants us to store the file for them in IPFS:
 
 Explorer web may need to be updated to show any properties a claim contains instead of fixed properties.
 
+----
+
+## Frost Public/Private Key
+
+## Frost Identity Claim
 
 ## Generating Default User Identity
 
@@ -109,6 +114,6 @@ Explorer web may need to be updated to show any properties a claim contains inst
 ### New Users
 
 
-## Frost Identity Claim
+
 
 ... details of the frost identity claim
