@@ -45,7 +45,7 @@ The node should reject signed verifiable Work claims where the Work claim's `arc
 
 ---- 
 
-### Adjust frost-api to hide changes to node
+### Adjust frost-api to hide changes of the node
 
 The node will now require signed verifiable claims. Signed verifiable claims have a few requirements that frost-api will need to be adjusted to handle. The goal is to leave the frost-api untouched, and automate the transition behind the scenes to these new signed verifiable claims.
 
