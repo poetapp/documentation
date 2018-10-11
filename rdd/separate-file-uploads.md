@@ -47,7 +47,7 @@ The node should reject signed verifiable Work claims where the Work claim's `arc
 
 ### Adjust frost-api for both use cases
 
-The node will now require signed verifiable claims. Signed verifiable claims have a few requirements that frost-api will need to be adjusted to handle. The goal is to leave the frost-api untouched, and automate the transition behind the scenese to these new signed verifiable claims.
+The node will now require signed verifiable claims. Signed verifiable claims have a few requirements that frost-api will need to be adjusted to handle. The goal is to leave the frost-api untouched, and automate the transition behind the scenes to these new signed verifiable claims.
 
 Requirements of signed verifiable claims that need to be addressed by frost api:
 
@@ -57,18 +57,30 @@ We need to setup frost-api to have its own Identity claim, and public/private ke
 
 ##### Questions:
 
-* I just realized that issuer being the private key means the private key is not so private, should the issuer be the public key?
+* I just realized that issuer being the private key means the private key is not so private, should the issuer be the public key? I need to relook at Eric's article and also sync with Kris on this.
 
 #### Signed
 
 The claim now needs to be signed by and Identity claims privateKey.
 
+#### Author
+
+https://github.com/poetapp/poet-js/blob/master/src/Interfaces.ts#L66
+
+The author now needs to be a url that resolves to an author. This means we need an Identity Claim for the user.
+
+In order to prevent breaking changes, we will need to provide users with a default Identity Claim. These default identity claims will contain no information except for their api token as a way to link their identity to their frost-api account.
+
+Because we already have users, we will need to generate default Identity claims for existing users and generate default Identity claims at user sign up. More research will need to be done into these things, because generating a default Identity claim is easy enough, but we need to post it the node 
+
+
+#### Content -> archiveUrl & hash
 
 In order to accommodate the use case and avoid breaking the Frost API we need frost-api to handle both the `content` version and the `hash` and `archiveUrl` version of Work claims.
 
-* content will be a reserved property of claims for backwards compatibility
+* content will be a reserved property of claims for frost-api to be backwards compatible. Content being a reserved property will not respected by the node, the node does not need to know anything about content being reserved for frost-api backwards compatibility.
 
-The first step will be to adjust frost-api to take claims with a content property as it currently does. The content property will be uploaded to ipfs as a file, and then the resulting ipfs hash will be used to generate `archiveUrl` and `hash`. The `content` property will then be removed from the claim.
+The first step will be to adjust frost-api to take claims with a content property as it currently does. The content property will be uploaded to IPFS as a file, and then the resulting IPFS hash will be used to generate `archiveUrl` and `hash`. The `content` property will then be removed from the claim.
 
 
 
