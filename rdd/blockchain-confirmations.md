@@ -62,7 +62,7 @@ There are various approaches to this issue.
 - Keep track of the `previousBlockHash` of every block, re-validate N last blocks on new block, signal reorg from BlockchainReader and let other modules adapt
 - Watching the info returned by [getchaintips](https://bitcoincore.org/en/doc/0.17.0/rpc/blockchain/getchaintips/).
 
-A reorg may mean that data that was valid no longer is. This does not affect our current system, as UPDATEs are not supported and Work is the only claim type in use, but the introduction of Entities, Identity Claims, Licences, etc, will require more attention.
+A reorg may mean that data that was valid no longer is. This does not affect our current system, as updates are not supported and Work is the only claim type in use, but the introduction of Entities, Identity Claims, Licences, etc, will require more attention.
 
 ## Implementation
 
