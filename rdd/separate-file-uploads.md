@@ -53,11 +53,11 @@ Requirements of signed verifiable claims that need to be addressed by frost api:
 
 #### Issuer
 
-Frost will need to provide an issuer. The issuer will be created from frost-api's privateKey that is related to [Frosts Identity Claim](#frost-identity-claim)
+Frost will need to provide an issuer. The issuer will be created from frost-api's privateKey that is related to [Frosts Identity Claim](#frost-identity-claim). poet-js provides the [createIssuerFromPrivateKey](https://github.com/poetapp/poet-js/blob/master/src/util/KeyHelper.ts#L106) function to create an issuer from a privateKey.
 
 #### Signing
 
-The claim needs to be signed by with frost-api's privateKey that is related to [Frosts Identity Claim](#frost-identity-claim)
+The claim needs to be signed by with frost-api's privateKey that is related to [Frosts Identity Claim](#frost-identity-claim).
 
 #### Author
 
