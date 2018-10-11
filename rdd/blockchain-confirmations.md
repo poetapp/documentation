@@ -2,15 +2,16 @@
 
 Bitcoin transactions can only be considered safe after they have a certain amount of confirmations. 
 
-The node needs to know how many confirmations transactions have and fail-safe in case one or more transactions aren't getting confirmed as expected.
+The node needs to know how many confirmations transactions have and trigger a retry mechanism in case one or more transactions aren't getting confirmed as expected.
+
+## Related Issues
+- https://github.com/poetapp/node/issues/46
 
 ## Required Confirmation Count
 
 Due to how Proof of Work works, there isn't a defined line that separates a safe from an unsafe amount of confirmations. How few confirmations one is willing to accept, or how many require, is a decision that needs to be weighted for each use case. 
 
 It is generally considered that three confirmations is safe for transactions moving a low amount of funds, while for larger transactions one may want to wait for six.
-
-This will be configurable via `NUM_CONFIRMATION_BLOCKS`, defaulting to 3.
 
 ## Cases
 
@@ -110,5 +111,7 @@ consume(BlockDownloaded(blockHeight, matchingTransactionIds)) =>
 1. [Chain Reorganization](https://en.bitcoin.it/wiki/Chain_Reorganization)
 1. [Orphan / Stale Block](https://en.bitcoin.it/wiki/Orphan_Block)
 1. [How many confirmations do I need to ensure a transaction is successful?](https://bitcoin.stackexchange.com/questions/8360/how-many-confirmations-do-i-need-to-ensure-a-transaction-is-successful)
+1. [Why is 6 the number of confirms that is considered secure?](https://bitcoin.stackexchange.com/questions/1170/why-is-6-the-number-of-confirms-that-is-considered-secure)
 1. [Using Docker-in-Docker for your CI or testing environment? Think twice.
 ](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/)
+1. [What is the longest blockchain fork that has been orphaned to date?](https://bitcoin.stackexchange.com/questions/3343/what-is-the-longest-blockchain-fork-that-has-been-orphaned-to-date/4638)
