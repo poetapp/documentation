@@ -53,7 +53,7 @@ Connecting and disconnecting to/from the network seems to be possible with the R
 
 Given that all testing scenarios require interacting with dependencies, restarting them, passing arguments to them, etc, I believe it makes sense to consider these tests to live in a higher layer, over the application itself.
 
-Maybe a good use case for docker-in-docker. 
+Maybe a good use case for [fake docker-in-docker](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/). 
 
 For example (not ideal, just an example):
 
@@ -102,3 +102,5 @@ consume(BlockDownloaded(blockHeight, matchingTransactionIds)) =>
 1. [Chain Reorganization](https://en.bitcoin.it/wiki/Chain_Reorganization)
 1. [Orphan / Stale Block](https://en.bitcoin.it/wiki/Orphan_Block)
 1. [How many confirmations do I need to ensure a transaction is successful?](https://bitcoin.stackexchange.com/questions/8360/how-many-confirmations-do-i-need-to-ensure-a-transaction-is-successful)
+1. [Using Docker-in-Docker for your CI or testing environment? Think twice.
+](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/)
