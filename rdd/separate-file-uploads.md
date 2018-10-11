@@ -53,11 +53,7 @@ Requirements of signed verifiable claims that need to be addressed by frost api:
 
 #### Issuer
 
-We need to setup frost-api to have its own Identity claim, and public/private keys that pertain to that identity. Frost will then use the private key in url format as the issuer of the verifiable claim.
-
-##### Questions:
-
-* issuer in poet-js is a private key, this means the private key is not so private, should the issuer be the public key? Need to clarify/revisit.
+We need to setup frost-api to have its own Identity claim, and public/private keys that pertain to that identity. Frost will then create an issuer from its private key.
 
 #### Signed
 
