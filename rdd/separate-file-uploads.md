@@ -53,17 +53,17 @@ Requirements of signed verifiable claims that need to be addressed by frost api:
 
 #### Issuer
 
-Frost will need to provide an issuer. The issuer will be created from frost-api's privateKey that is related to [Frosts Identity Claim](#frost-identity-claim). poet-js provides the [createIssuerFromPrivateKey](https://github.com/poetapp/poet-js/blob/master/src/util/KeyHelper.ts#L106) function to create an issuer from a privateKey.
+Frost will need to provide an `issuer` property. The issuer will be created from frost-api's privateKey that is related to [Frosts Identity Claim](#frost-identity-claim). poet-js provides the [createIssuerFromPrivateKey](https://github.com/poetapp/poet-js/blob/master/src/util/KeyHelper.ts#L106) function to create an issuer from a privateKey.
 
 #### Signing
 
-The claim needs to be signed by with frost-api's privateKey that is related to [Frosts Identity Claim](#frost-identity-claim).
+Frost will need to sign the verifiable claim it creates with its privateKey that is related to [Frosts Identity Claim](#frost-identity-claim). poet-js provides the [configureSignVerifiableClaim](https://github.com/poetapp/poet-js/blob/master/src/VerifiableClaimSigner.ts#L48) function to sign claims.
 
 #### Author
 
 https://github.com/poetapp/poet-js/blob/master/src/Interfaces.ts#L66
 
-The author now needs to be a url that resolves to an author. This means we need an Identity Claim for the user.
+Frost will need to provide an `author` property that resolves to an author. This means we need an Identity Claim for the user.
 
 In order to prevent breaking changes, we will need to provide users with a default Identity Claim. These default identity claims will contain no information except for their api token as a way to link their identity to their frost-api account.
 
