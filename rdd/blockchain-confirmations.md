@@ -172,3 +172,4 @@ Reattempting transactions means we can't guarantee claim order until they are co
 1. [What is the longest blockchain fork that has been orphaned to date?](https://bitcoin.stackexchange.com/questions/3343/what-is-the-longest-blockchain-fork-that-has-been-orphaned-to-date/4638)
 1. [How does the mempool work? What happens to the mempool when there are two equal length chains on the network?](https://bitcoin.stackexchange.com/questions/69448/how-does-the-mempool-work-what-happens-to-the-mempool-when-there-are-two-equal?rq=1)
 1. [Valid fork in regtest - Change blockchain via RPC?](https://bitcoin.stackexchange.com/questions/37340/valid-fork-in-regtest-change-blockchain-via-rpc)
+1. [How to detect reorganization from bitcoind via ZMQ?](https://bitcoin.stackexchange.com/questions/52891/how-to-detect-reorganization-from-bitcoind-via-zmq)
