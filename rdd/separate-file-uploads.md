@@ -100,7 +100,11 @@ Explorer web may need to be updated to show any properties a claim contains inst
 
 ## Frost Public/Private Key
 
+... details of the frost public and private key 
+
 ## Frost Identity Claim
+
+... details of the frost identity claim
 
 ## Generating Default User Identity
 
@@ -118,4 +122,4 @@ Because we already have users, we will need to generate default Identity claims 
 
 
 
-... details of the frost identity claim
+
