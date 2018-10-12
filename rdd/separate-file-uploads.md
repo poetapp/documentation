@@ -100,11 +100,16 @@ Explorer web may need to be updated to show any properties a claim contains inst
 
 ## Frost Public/Private Key
 
-... details of the frost public and private key 
+todo:
+
+* how/where do we store the public and privatekey so that we can horizontally scale frost-api
+* handling production, testing, staging, development, mainnet, tesnet
 
 ## Frost Identity Claim
 
-... details of the frost identity claim
+todo:
+
+* handling production, testing, staging, development, mainnet, tesnet
 
 ## Generating Default User Identity
 
