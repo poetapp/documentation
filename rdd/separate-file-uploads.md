@@ -17,7 +17,7 @@ Each step can be 1 or more pull requests.
 
 ---- 
 
-### Adjust `Work` claim
+### Adjust `Work` claim ( completed )
 
 In poet-js we need to add adjust the verifiable claims of type `Work` to contain `archiveUrl` and `hash` instead of `content`.
 
@@ -45,51 +45,43 @@ The node should reject signed verifiable Work claims where the Work claim's `arc
 
 ---- 
 
-### Adjust frost-api for both use cases
+### Adjust frost-api to hide changes of the node
 
 The node will now require signed verifiable claims. Signed verifiable claims have a few requirements that frost-api will need to be adjusted to handle. The goal is to leave the frost-api untouched, and automate the transition behind the scenes to these new signed verifiable claims.
 
-Requirements of signed verifiable claims that need to be addressed by frost api:
+#### Signed Verifiable Claim Requirements
 
-#### Issuer
+Once these requirements are met we can send the signed verifiable claim to the node.
 
-We need to setup frost-api to have its own Identity claim, and public/private keys that pertain to that identity. Frost will then use the private key in url format as the issuer of the verifiable claim.
+##### Issuer
 
-##### Questions:
+Frost will need to provide an `issuer` property. The issuer will be created from frost-api's privateKey that is related to [Frosts Identity Claim](#frost-identity-claim). poet-js provides the [createIssuerFromPrivateKey](https://github.com/poetapp/poet-js/blob/master/src/util/KeyHelper.ts#L106) function to create an issuer from a privateKey.
 
-* issuer in poet-js is a private key, this means the private key is not so private, should the issuer be the public key? Need to clarify/revisit.
-
-#### Signed
-
-The claim now needs to be signed by and Identity claims privateKey.
-
-#### Author
+##### Author
 
 https://github.com/poetapp/poet-js/blob/master/src/Interfaces.ts#L66
 
-The author now needs to be a url that resolves to an author. This means we need an Identity Claim for the user.
+Frost will need to provide an `author` property that now resolves to an author. This means we need to [generate default Identities claims](#generating-default-user-identity) for users to avoid breaking changes.
 
-In order to prevent breaking changes, we will need to provide users with a default Identity Claim. These default identity claims will contain no information except for their api token as a way to link their identity to their frost-api account.
+`author` will be a url to the users default Identity claim.
 
-Because we already have users, we will need to generate default Identity claims for existing users and generate default Identity claims at user sign up. More research will need to be done into these things, because generating a default Identity claim is easy enough, but we need to post it the node 
+##### archiveUrl & hash
 
+Replace `content` with `archiveUrl` & `hash` by uploading the value of content to ipfs and using the resulting hash from ipfs. `archiveUrl` for now will just be the ipfs url of the file: `ipfs.io/ipfs/{HASH}`
 
-#### Content -> archiveUrl & hash
+`content` will become a reserved property of claims for frost-api in order to maintain backwards compatible. Content being a reserved property will not respected by the node, the node does not need to know anything about content being reserved for frost-api backwards compatibility.
 
-In order to accommodate the use case and avoid breaking the Frost API we need frost-api to handle both the `content` version and the `hash` and `archiveUrl` version of Work claims.
+##### Signing
 
-* content will be a reserved property of claims for frost-api to be backwards compatible. Content being a reserved property will not respected by the node, the node does not need to know anything about content being reserved for frost-api backwards compatibility.
-
-The first step will be to adjust frost-api to take claims with a content property as it currently does. The content property will be uploaded to IPFS as a file, and then the resulting IPFS hash will be used to generate `archiveUrl` and `hash`. The `content` property will then be removed from the claim.
-
-
-A verifiable claim will then need to be created. A verifiable claim will require an Identity url. For now a default identity for the account will be used. Identity management features will be added later.
+Frost will need to sign the verifiable claim it creates with its privateKey that is related to [Frosts Identity Claim](#frost-identity-claim). poet-js provides the [configureSignVerifiableClaim](https://github.com/poetapp/poet-js/blob/master/src/VerifiableClaimSigner.ts#L48) function to sign claims.
 
 ----
 
-### frost-api upload files separate from claims 
+### adjust frost-api to allow separate file uploads ( future )
 
 At a later point the frost-api will also need to support uploading of files separate from the claim itself.
+
+In order to accommodate the use case and avoid breaking the Frost API we need frost-api to handle both the `content` version and the `hash` and `archiveUrl` version of Work claims.
 
 At that time if the user wants us to store the file for them in IPFS:
   * They will use the `content` property, and
@@ -104,11 +96,34 @@ At that time if the user wants us to store the file for them in IPFS:
 
 Explorer web may need to be updated to show any properties a claim contains instead of fixed properties.
 
+----
 
-## Default User Identity
+## Frost Public/Private Key
 
-... details of default user identity generation for new and current users.
+todo:
+
+* how/where do we store the public and privatekey so that we can horizontally scale frost-api
+* handling production, testing, staging, development, mainnet, tesnet
 
 ## Frost Identity Claim
 
-... details of the frost identity claim
+todo:
+
+* handling production, testing, staging, development, mainnet, tesnet
+
+## Generating Default User Identity
+
+In order to prevent breaking changes, we will need to provide users with a default Identity Claim. These default identity claims will contain no information except for their api token as a way to link their identity to their frost-api account.
+
+Because we already have users, we will need to generate default Identity claims for existing users and generate default Identity claims at user sign up. More research will need to be done into these things, because generating a default Identity claim is easy enough, but we need to post it the node 
+
+Todo:
+* a solution that works for mainnet, testnet, regtest
+* default user identity generation for new users
+* default user identity generation for current users
+
+
+
+
+
+
