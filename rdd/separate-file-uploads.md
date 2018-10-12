@@ -117,12 +117,11 @@ In order to prevent breaking changes, we will need to provide users with a defau
 
 Because we already have users, we will need to generate default Identity claims for existing users and generate default Identity claims at user sign up. More research will need to be done into these things, because generating a default Identity claim is easy enough, but we need to post it the node 
 
+Todo:
+* a solution that works for mainnet, testnet, regtest
+* default user identity generation for new users
+* default user identity generation for current users
 
-... details of default user identity generation for new and current users.
-
-### Current Users
-
-### New Users
 
 
 
