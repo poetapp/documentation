@@ -63,12 +63,9 @@ Frost will need to sign the verifiable claim it creates with its privateKey that
 
 https://github.com/poetapp/poet-js/blob/master/src/Interfaces.ts#L66
 
-Frost will need to provide an `author` property that resolves to an author. This means we need an Identity Claim for the user.
+Frost will need to provide an `author` property that resolves to an author. This means we need to [generate default Identities claims](#generating-default-user-identity) for users to avoid breaking changes.
 
-In order to prevent breaking changes, we will need to provide users with a default Identity Claim. These default identity claims will contain no information except for their api token as a way to link their identity to their frost-api account.
-
-Because we already have users, we will need to generate default Identity claims for existing users and generate default Identity claims at user sign up. More research will need to be done into these things, because generating a default Identity claim is easy enough, but we need to post it the node 
-
+`author` will be a url to the users default Identity claim.
 
 #### Content -> archiveUrl & hash
 
@@ -106,6 +103,11 @@ Explorer web may need to be updated to show any properties a claim contains inst
 ## Frost Identity Claim
 
 ## Generating Default User Identity
+
+In order to prevent breaking changes, we will need to provide users with a default Identity Claim. These default identity claims will contain no information except for their api token as a way to link their identity to their frost-api account.
+
+Because we already have users, we will need to generate default Identity claims for existing users and generate default Identity claims at user sign up. More research will need to be done into these things, because generating a default Identity claim is easy enough, but we need to post it the node 
+
 
 ... details of default user identity generation for new and current users.
 
