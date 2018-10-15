@@ -17,7 +17,7 @@ Each step can be 1 or more pull requests.
 
 ---- 
 
-### Adjust `Work` claim ( completed )
+### poet-js: Adjust `Work` claim ( completed )
 
 In poet-js we need to add adjust the verifiable claims of type `Work` to contain `archiveUrl` and `hash` instead of `content`.
 
@@ -27,7 +27,7 @@ Completed: https://github.com/poetapp/poet-js/pull/150
 
 ----
 
-### Add file upload endpoint to the node
+### node: Add file upload endpoint to the node
 
 Create an API endpoint that allows files to be uploaded directly to IPFS. This endpoint will return an IPFS hash. It may also return an `archiveUrl` if it make sense to do so. The node should store the IPFS hash in the database.
 
@@ -35,17 +35,21 @@ The endpoint needs to support all types of file formats: audio, video, image, an
 
 ---- 
 
-### Update node's `/works` endpoint
+### node: update to new poet-js
 
 Update the node's poet-js dependency to allow the new version of signed verifiable `Work` and `Identity` claims.
 
-The endpoint should validate the signed verifiable claims.
+The endpoint `/works` should validate the signed verifiable claims.
+
+----
+
+### node: add archiveUrl/hash validation
 
 The node should reject signed verifiable Work claims where the Work claim's `archiveUrl` does not match `hash`.
 
 ---- 
 
-### Adjust frost-api to hide changes of the node
+### frost-api: hide node changes
 
 The node will now require signed verifiable claims. Signed verifiable claims have a few requirements that frost-api will need to be adjusted to handle. The goal is to leave the frost-api untouched, and automate the transition behind the scenes to these new signed verifiable claims.
 
@@ -77,7 +81,7 @@ Frost will need to sign the verifiable claim it creates with its privateKey that
 
 ----
 
-### adjust frost-api to allow separate file uploads ( future )
+### frost-api: ( future ) add ability to upload files separately 
 
 At a later point the frost-api will also need to support uploading of files separate from the claim itself.
 
@@ -92,7 +96,7 @@ At that time if the user wants us to store the file for them in IPFS:
 
 ---- 
 
-### Explorer Web
+### explorer-web
 
 Explorer web may need to be updated to show any properties a claim contains instead of fixed properties.
 
