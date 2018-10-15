@@ -15,6 +15,7 @@
 ## Out of scope
 
 * Identity Claims
+* Identity Management
 
 ## Steps
 
@@ -93,7 +94,7 @@ At a later point the frost-api will also need to support uploading of files sepa
 In order to accommodate the use case and avoid breaking the Frost API we need frost-api to handle both the `content` version and the `hash` and `archiveUrl` version of Work claims.
 
 At that time if the user wants us to store the file for them in IPFS:
-  * They will use the `content` property, and
+* They will use the `content` property, and
   * The frost-api will upload the value of the content property to the node and create a claim with the `hash` and `archiveUrl`.
 * If the user wants to handle the storage of the file himself (whether in IPFS or some other file storage system):
   * They will just provide the `hash` and `archiveUrl` properties.
