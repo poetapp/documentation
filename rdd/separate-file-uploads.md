@@ -7,9 +7,17 @@
 ## Possible Conflicts
 
 ## Goals
- * Add the ability for users to hash and create claims without storing the files on our IPFS nodes.
- * Enable both node and frost-api to accommodate this use case.
- * Avoid breaking frost-api.
+
+* Add the ability for users to hash and create claims without storing the files on our IPFS nodes.
+* Enable both node and frost-api to accommodate this use case.
+* Avoid breaking frost-api.
+ 
+## Out of scope
+
+* Frost Identity Claim
+* User Identity Claims
+* User Identity Mangement
+* User Private/Public Key Management
 
 ## Steps
 
@@ -17,7 +25,7 @@ Each step can be 1 or more pull requests.
 
 ---- 
 
-### Adjust `Work` claim ( completed )
+### poet-js: adjust `Work` claim ( completed )
 
 In poet-js we need to add adjust the verifiable claims of type `Work` to contain `archiveUrl` and `hash` instead of `content`.
 
@@ -27,7 +35,7 @@ Completed: https://github.com/poetapp/poet-js/pull/150
 
 ----
 
-### Add file upload endpoint to the node
+### node: add file upload endpoint to the node
 
 Create an API endpoint that allows files to be uploaded directly to IPFS. This endpoint will return an IPFS hash. It may also return an `archiveUrl` if it make sense to do so. The node should store the IPFS hash in the database.
 
@@ -35,17 +43,21 @@ The endpoint needs to support all types of file formats: audio, video, image, an
 
 ---- 
 
-### Update node's `/works` endpoint
+### node: update to new poet-js
 
 Update the node's poet-js dependency to allow the new version of signed verifiable `Work` and `Identity` claims.
 
-The endpoint should validate the signed verifiable claims.
+The endpoint `/works` should validate the signed verifiable claims.
+
+----
+
+### node: add archiveUrl/hash validation
 
 The node should reject signed verifiable Work claims where the Work claim's `archiveUrl` does not match `hash`.
 
 ---- 
 
-### Adjust frost-api to hide changes of the node
+### frost-api: hide node changes
 
 The node will now require signed verifiable claims. Signed verifiable claims have a few requirements that frost-api will need to be adjusted to handle. The goal is to leave the frost-api untouched, and automate the transition behind the scenes to these new signed verifiable claims.
 
@@ -55,15 +67,17 @@ Once these requirements are met we can send the signed verifiable claim to the n
 
 ##### Issuer
 
-Frost will need to provide an `issuer` property. The issuer will be created from frost-api's privateKey that is related to [Frosts Identity Claim](#frost-identity-claim). poet-js provides the [createIssuerFromPrivateKey](https://github.com/poetapp/poet-js/blob/master/src/util/KeyHelper.ts#L106) function to create an issuer from a privateKey.
+Frost will need to provide an `issuer` property that is a uri which resolves to an issuer. `issuer` will be a data uri until we have Identity Claim functionality. The `issuer` data uri will be generated from frost-apis privateKey using poet-js's [createIssuerFromPrivateKey](https://github.com/poetapp/poet-js/blob/master/src/util/KeyHelper.ts#L106) function.
+
+In the future `issuer` will be a uri that resolves to an Identity Claim.
 
 ##### Author
 
 https://github.com/poetapp/poet-js/blob/master/src/Interfaces.ts#L66
 
-Frost will need to provide an `author` property that now resolves to an author. This means we need to [generate default Identities claims](#generating-default-user-identity) for users to avoid breaking changes.
+Frost will need to provide an `author` property that is a uri which resolves to an author. `author` will be a data uri until we have Identity Claim functionality. The `author` data uri will be generated from the users privateKey using poet-js's `createAuthorFromPrivateKey` ( yet to be created ).
 
-`author` will be a url to the users default Identity claim.
+In the future `author` will be a uri that resolves to a Identity Claim.
 
 ##### archiveUrl & hash
 
@@ -77,14 +91,14 @@ Frost will need to sign the verifiable claim it creates with its privateKey that
 
 ----
 
-### adjust frost-api to allow separate file uploads ( future )
+### frost-api: ( future ) add ability to upload files separately 
 
 At a later point the frost-api will also need to support uploading of files separate from the claim itself.
 
 In order to accommodate the use case and avoid breaking the Frost API we need frost-api to handle both the `content` version and the `hash` and `archiveUrl` version of Work claims.
 
 At that time if the user wants us to store the file for them in IPFS:
-  * They will use the `content` property, and
+* They will use the `content` property, and
   * The frost-api will upload the value of the content property to the node and create a claim with the `hash` and `archiveUrl`.
 * If the user wants to handle the storage of the file himself (whether in IPFS or some other file storage system):
   * They will just provide the `hash` and `archiveUrl` properties.
@@ -92,7 +106,7 @@ At that time if the user wants us to store the file for them in IPFS:
 
 ---- 
 
-### Explorer Web
+### explorer-web
 
 Explorer web may need to be updated to show any properties a claim contains instead of fixed properties.
 
@@ -105,25 +119,10 @@ todo:
 * how/where do we store the public and privatekey so that we can horizontally scale frost-api
 * handling production, testing, staging, development, mainnet, tesnet
 
-## Frost Identity Claim
+## Frost User Default Public/Private Key
 
 todo:
 
-* handling production, testing, staging, development, mainnet, tesnet
-
-## Generating Default User Identity
-
-In order to prevent breaking changes, we will need to provide users with a default Identity Claim. These default identity claims will contain no information except for their api token as a way to link their identity to their frost-api account.
-
-Because we already have users, we will need to generate default Identity claims for existing users and generate default Identity claims at user sign up. More research will need to be done into these things, because generating a default Identity claim is easy enough, but we need to post it the node 
-
-Todo:
-* a solution that works for mainnet, testnet, regtest
-* default user identity generation for new users
-* default user identity generation for current users
-
-
-
-
-
-
+* how/where do we store the public and private key
+* generating public and private key for new users
+* generating public and private key for current users
