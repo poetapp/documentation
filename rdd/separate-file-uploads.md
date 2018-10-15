@@ -136,9 +136,13 @@ We can generate the users key pair at new account creation time.
 ### Generating public and private key for current users
 There are multiple events we could use to generate the keypair if they do not have them yet.
 
+#### Automated
 - login
 - posting a claim
-- provide a ui button to generate / located near where we display their private key to them on request.
+
+#### Manual
+- if we plan on provide a way for users to retrieve their private key, we could also provide a ui button to generate the private and public key.
+- throw an error and tell them to login and generate a key using the ui button.
 
 Questions:
 * Is their any reason to have a separate key pair for testnet and mainnet?
