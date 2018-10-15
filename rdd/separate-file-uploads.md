@@ -122,6 +122,7 @@ Explorer web may need to be updated to show any properties a claim contains inst
 Private Key should be supplied via env variables. The public key will be derived from the public key.
 
 ### Questions/TBD:
+* on second thought, we could also store the key pair in the vault instead of providing via env variables.
 * Do we provide a default private key for development purposes? It might be better to force one to be provided and to throw an error/crash the app if one is not provided.
 * Is their any reason we may want to force different key pairs for testnet/mainnet or is it fine to use the same for both?
 
