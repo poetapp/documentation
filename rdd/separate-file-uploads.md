@@ -7,9 +7,14 @@
 ## Possible Conflicts
 
 ## Goals
- * Add the ability for users to hash and create claims without storing the files on our IPFS nodes.
- * Enable both node and frost-api to accommodate this use case.
- * Avoid breaking frost-api.
+
+* Add the ability for users to hash and create claims without storing the files on our IPFS nodes.
+* Enable both node and frost-api to accommodate this use case.
+* Avoid breaking frost-api.
+ 
+## Out of scope
+
+* Identity Claims
 
 ## Steps
 
@@ -17,7 +22,7 @@ Each step can be 1 or more pull requests.
 
 ---- 
 
-### poet-js: Adjust `Work` claim ( completed )
+### poet-js: adjust `Work` claim ( completed )
 
 In poet-js we need to add adjust the verifiable claims of type `Work` to contain `archiveUrl` and `hash` instead of `content`.
 
@@ -27,7 +32,7 @@ Completed: https://github.com/poetapp/poet-js/pull/150
 
 ----
 
-### node: Add file upload endpoint to the node
+### node: add file upload endpoint to the node
 
 Create an API endpoint that allows files to be uploaded directly to IPFS. This endpoint will return an IPFS hash. It may also return an `archiveUrl` if it make sense to do so. The node should store the IPFS hash in the database.
 
@@ -109,25 +114,10 @@ todo:
 * how/where do we store the public and privatekey so that we can horizontally scale frost-api
 * handling production, testing, staging, development, mainnet, tesnet
 
-## Frost Identity Claim
+## Frost User Default Public/Private Key
 
 todo:
 
-* handling production, testing, staging, development, mainnet, tesnet
-
-## Generating Default User Identity
-
-In order to prevent breaking changes, we will need to provide users with a default Identity Claim. These default identity claims will contain no information except for their api token as a way to link their identity to their frost-api account.
-
-Because we already have users, we will need to generate default Identity claims for existing users and generate default Identity claims at user sign up. More research will need to be done into these things, because generating a default Identity claim is easy enough, but we need to post it the node 
-
-Todo:
-* a solution that works for mainnet, testnet, regtest
-* default user identity generation for new users
-* default user identity generation for current users
-
-
-
-
-
-
+* how/where do we store the public and private key
+* generating public and private key for new users
+* generating public and private key for current users
