@@ -128,13 +128,13 @@ Questions:
 ## Frost User Default Public/Private Key
 
 ### how/where do we store the public and private key
-We will storege users key pairs in the vault.
+We will storage users key pairs in the vault.
 
 ### Generating public and private key for new users
 We can generate the users key pair at new account creation time.
 
 ### Generating public and private key for current users
-There are multiple events we could use to generate the keypair if they do not have them yet.
+There are multiple events we could use to generate the key pair if they do not have them yet.
 
 #### Automated
 - login
