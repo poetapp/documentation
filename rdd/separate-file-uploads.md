@@ -56,6 +56,8 @@ The endpoint `/works` should validate the signed verifiable claims.
 
 The node should reject signed verifiable Work claims where the Work claim's `archiveUrl` does not match `hash`.
 
+This should be probably be async as the file we need to download from archiveUrl may be large.
+
 ---- 
 
 ### frost-api: hide node changes
