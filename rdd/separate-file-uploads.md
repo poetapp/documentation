@@ -121,9 +121,9 @@ Explorer web may need to be updated to show any properties a claim contains inst
 
 Private Key should be supplied via env variables. The public key will be derived from the public key.
 
-Questions:
+### Questions/TBD:
 * Do we provide a default private key for development purposes? It might be better to force one to be provided and to throw an error/crash the app if one is not provided.
-* Is their any reason we may want to force different key pairs for testnet/mainnet?
+* Is their any reason we may want to force different key pairs for testnet/mainnet or is it fine to use the same for both?
 
 ## Frost User Default Public/Private Key
 
@@ -144,5 +144,5 @@ There are multiple events we could use to generate the key pair if they do not h
 - if we plan on provide a way for users to retrieve their private key, we could also provide a ui button to generate the private and public key.
 - throw an error and tell them to login and generate a key using the ui button.
 
-Questions:
-* Is their any reason we may want to force different key pairs for testnet/mainnet?
+### Questions/TBD:
+* Is their any reason we may want to force different key pairs for testnet/mainnet or is it fine to use the same for both?
