@@ -113,12 +113,15 @@ Explorer web may need to be updated to show any properties a claim contains inst
 
 ----
 
-## Frost Public/Private Key
+## Frost Identity Public/Private Key
 
 todo:
 
 * how/where do we store the public and privatekey so that we can horizontally scale frost-api
 * handling production, testing, staging, development, mainnet, tesnet
+
+Questions:
+* Since the frost-web/frost-api toggle between testnet, is their any reason to have a sepearate key pair for testnet and mainnet?
 
 ## Frost User Default Public/Private Key
 
@@ -127,3 +130,6 @@ todo:
 * how/where do we store the public and private key
 * generating public and private key for new users
 * generating public and private key for current users
+
+Questions:
+* Since the frost-web/frost-api toggle between testnet, is their any reason to have a sepearate key pair for testnet and mainnet?
