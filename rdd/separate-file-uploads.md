@@ -14,8 +14,10 @@
  
 ## Out of scope
 
-* Identity Claims
-* Identity Management
+* Frost Identity Claim
+* User Identity Claims
+* User Identity Mangement
+* User Private/Public Key Management
 
 ## Steps
 
@@ -65,15 +67,17 @@ Once these requirements are met we can send the signed verifiable claim to the n
 
 ##### Issuer
 
-Frost will need to provide an `issuer` property. The issuer will be created from frost-api's privateKey that is related to [Frosts Identity Claim](#frost-identity-claim). poet-js provides the [createIssuerFromPrivateKey](https://github.com/poetapp/poet-js/blob/master/src/util/KeyHelper.ts#L106) function to create an issuer from a privateKey.
+Frost will need to provide an `issuer` property that is a uri which resolves to an issuer. `issuer` will be a data uri until we have Identity Claim functionality. The `issuer` data uri will be generated from frost-apis privateKey using poet-js's [createIssuerFromPrivateKey](https://github.com/poetapp/poet-js/blob/master/src/util/KeyHelper.ts#L106) function.
+
+In the future `issuer` will be a uri that resolves to an Identity Claim.
 
 ##### Author
 
 https://github.com/poetapp/poet-js/blob/master/src/Interfaces.ts#L66
 
-Frost will need to provide an `author` property that now resolves to an author. This means we need to [generate default Identities claims](#generating-default-user-identity) for users to avoid breaking changes.
+Frost will need to provide an `author` property that is a uri which resolves to an author. `author` will be a data uri until we have Identity Claim functionality. The `author` data uri will be generated from the users privateKey using poet-js's `createAuthorFromPrivateKey` ( yet to be created ).
 
-`author` will be a url to the users default Identity claim.
+In the future `author` will be a uri that resolves to a Identity Claim.
 
 ##### archiveUrl & hash
 
