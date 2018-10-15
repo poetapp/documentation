@@ -80,7 +80,7 @@ Frost will need to provide an `author` property that is a uri which resolves to 
 
 In the future `author` will be a uri that resolves to a Identity Claim.
 
-Question: What do we do if a user provides an author as a string? Just overwrite it with the data uri? Or should we incoporate the provided author string into author data uri?
+Question: What do we do if a user provides an author as a string? Just overwrite it with the data uri and this info is lost?
 
 ##### archiveUrl & hash
 
