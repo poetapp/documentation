@@ -123,7 +123,7 @@ Private Key should be supplied via env variables. The public key will be derived
 
 Questions:
 * Do we provide a default private key for development purposes? It might be better to force one to be provided and to throw an error/crash the app if one is not provided.
-* Is their any reason to have a separate key pair for testnet and mainnet?
+* Is their any reason we may want to force different key pairs for testnet/mainnet?
 
 ## Frost User Default Public/Private Key
 
@@ -145,4 +145,4 @@ There are multiple events we could use to generate the keypair if they do not ha
 - throw an error and tell them to login and generate a key using the ui button.
 
 Questions:
-* Is their any reason to have a separate key pair for testnet and mainnet?
+* Is their any reason we may want to force different key pairs for testnet/mainnet?
