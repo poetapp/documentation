@@ -80,6 +80,8 @@ Frost will need to provide an `author` property that is a uri which resolves to 
 
 In the future `author` will be a uri that resolves to a Identity Claim.
 
+Question: What do we do if a user provides an author as a string? Just overwrite it with the data uri? Or should we incoporate the provided author string into author data uri?
+
 ##### archiveUrl & hash
 
 Replace `content` with `archiveUrl` & `hash` by uploading the value of content to ipfs and using the resulting hash from ipfs. `archiveUrl` for now will just be the ipfs url of the file: `ipfs.io/ipfs/{HASH}`
