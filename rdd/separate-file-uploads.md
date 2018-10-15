@@ -119,21 +119,30 @@ Explorer web may need to be updated to show any properties a claim contains inst
 
 ## Frost Identity Public/Private Key
 
-todo:
-
-* how/where do we store the public and privatekey so that we can horizontally scale frost-api
-* handling production, testing, staging, development, mainnet, tesnet
+Private Key should be supplied via env variables. The public key will be derived from the public key.
 
 Questions:
-* Since the frost-web/frost-api toggle between testnet, is their any reason to have a sepearate key pair for testnet and mainnet?
+* Do we provide a default private key for development purposes? It might be better to force one to be provided and to throw an error/crash the app if one is not provided.
+* Is their any reason we may want to force different key pairs for testnet/mainnet?
 
 ## Frost User Default Public/Private Key
 
-todo:
+### how/where do we store the public and private key
+We will storage users key pairs in the vault.
 
-* how/where do we store the public and private key
-* generating public and private key for new users
-* generating public and private key for current users
+### Generating public and private key for new users
+We can generate the users key pair at new account creation time.
+
+### Generating public and private key for current users
+There are multiple events we could use to generate the key pair if they do not have them yet.
+
+#### Automated
+- login
+- posting a claim
+
+#### Manual
+- if we plan on provide a way for users to retrieve their private key, we could also provide a ui button to generate the private and public key.
+- throw an error and tell them to login and generate a key using the ui button.
 
 Questions:
-* Since the frost-web/frost-api toggle between testnet, is their any reason to have a sepearate key pair for testnet and mainnet?
+* Is their any reason we may want to force different key pairs for testnet/mainnet?
