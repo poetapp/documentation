@@ -11,6 +11,7 @@
 * Add the ability for users to hash and create claims without storing the files on our IPFS nodes.
 * Enable both node and frost-api to accommodate this use case.
 * Avoid breaking frost-api.
+* Update to new signed verifiable claims
  
 ## Out of scope
 
