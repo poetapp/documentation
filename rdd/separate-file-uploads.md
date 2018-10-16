@@ -1,4 +1,4 @@
-# Separate File Uploads
+# Updating to signed verifable claims and separate file uploads
 
 ## Related Issues
 - https://github.com/poetapp/random/issues/98
