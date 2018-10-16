@@ -40,7 +40,11 @@ Completed: https://github.com/poetapp/poet-js/pull/150
 
 Create an API endpoint that allows files to be uploaded directly to IPFS. This endpoint will return an IPFS hash. It may also return an `archiveUrl` if it make sense to do so. The node should store the IPFS hash in the database.
 
+__Q:__ will the node do anything at all with this IPFS hash? will it be exposed through the API? will any other data related to it be stored in this step?
+
 The endpoint needs to support all types of file formats: audio, video, image, and text. More research will need to be done on this sepecifically for its own PR.
+
+
 
 ---- 
 
@@ -58,11 +62,15 @@ The node should reject signed verifiable Work claims where the Work claim's `arc
 
 This should be probably be async as the file we need to download from archiveUrl may be large.
 
+__Q:__ any thoughts on the processing and bandwidth cost incurred to node runners due to private hosting hash verification? maybe disabled by default? configurable threshold in size in bytes?
+
+also: what about exposting verification state through the API? I'd want `GET /works` to return `hashIsVerified: boolean` for each work
+
 ---- 
 
 ### frost-api: hide node changes
 
-The node will now require signed verifiable claims. Signed verifiable claims have a few requirements that frost-api will need to be adjusted to handle. The goal is to leave the frost-api untouched, and automate the transition behind the scenes to these new signed verifiable claims.
+The node will now require signed verifiable claims. Signed verifiable claims have a few requirements that frost-api will need to be adjusted to handle. The goal is to leave the API exposed by Frost untouched, and automate the transition behind the scenes to these new signed verifiable claims.
 
 #### Signed Verifiable Claim Requirements
 
@@ -71,6 +79,8 @@ Once these requirements are met we can send the signed verifiable claim to the n
 ##### Issuer
 
 Frost will need to provide an `issuer` property that is a uri which resolves to an issuer. `issuer` will be a data uri until we have Identity Claim functionality. The `issuer` data uri will be generated from frost-apis privateKey using poet-js's [createIssuerFromPrivateKey](https://github.com/poetapp/poet-js/blob/master/src/util/KeyHelper.ts#L106) function.
+
+> Note: despite the name of the function, no data about the actual private key is leaked in the data url. A public key is generated from it instead.
 
 In the future `issuer` will be a uri that resolves to an Identity Claim.
 
@@ -82,13 +92,19 @@ Frost will need to provide an `author` property that is a uri which resolves to 
 
 In the future `author` will be a uri that resolves to a Identity Claim.
 
-Question: What do we do if a user provides an author as a string? Just overwrite it with the data uri and this info is lost? We could make it part of the data uri if we make `createAuthorFromPrivateKey` take some extra properties. If author gets converted to a name property of the data uri thenclaims can still specificy an author name, sort of like an Identity would accomplish.
+Question: What do we do if a user provides an author as a string? Just overwrite it with the data uri and this info is lost? We could make it part of the data uri if we make `createAuthorFromPrivateKey` take some extra properties. If author gets converted to a name property of the data uri then claims can still specificy an author name, sort of like an Identity would accomplish.
+
+__A:__ as a user I'd expect the data I send in the `author` field to be saved for future use. Your suggestion makes sense to me — adding it to the data URI, the same way we'd add it to the Identity Claim.
 
 ##### archiveUrl & hash
 
 Replace `content` with `archiveUrl` & `hash` by uploading the value of content to ipfs and using the resulting hash from ipfs. `archiveUrl` for now will just be the ipfs url of the file: `ipfs.io/ipfs/{HASH}`
 
-`content` will become a reserved property of claims for frost-api in order to maintain backwards compatible. Content being a reserved property will not respected by the node, the node does not need to know anything about content being reserved for frost-api backwards compatibility.
+`content` will become a reserved property of claims for frost-api in order to maintain backwards compatibility. Content being a reserved property will not respected by the node, the node does not need to know anything about content being reserved for frost-api backwards compatibility.
+
+__Q:__ is the making of `content` a reserved property a breaking change? Does Frost API currently support `content` and will no longer do so? Or will it just take the `.content` and assume it is the file to be uploaded to IPFS with the Node's File API?
+
+When saying `reserved property of claims for frost-api`, is this sensente making reference to Frost API as an application or the exposed API of Frost API? 
 
 ##### Signing
 
@@ -105,7 +121,7 @@ In order to accommodate the use case and avoid breaking the Frost API we need fr
 At that time if the user wants us to store the file for them in IPFS:
 * They will use the `content` property, and
   * The frost-api will upload the value of the content property to the node and create a claim with the `hash` and `archiveUrl`.
-* If the user wants to handle the storage of the file himself (whether in IPFS or some other file storage system):
+* If the user wants to handle the storage of the file themselves (whether in IPFS or some other file storage system):
   * They will just provide the `hash` and `archiveUrl` properties.
 
 
@@ -119,23 +135,25 @@ Explorer web may need to be updated to show any properties a claim contains inst
 
 ## Frost Identity Public/Private Key
 
-Private Key should be supplied via env variables. The public key will be derived from the public key.
+Private Key should be supplied via env variables. The public key will be derived from the private key.
 
 ### Questions/TBD:
-* on second thought, we could also store the key pair in the vault instead of providing via env variables if we plan on using the same key pair for all instances, prod, staging, dev, etc.
-* Do we provide a default private key for development purposes? It might be better to force one to be provided and to throw an error/crash the app if one is not provided.
-* Is their any reason we may want to force different key pairs for testnet/mainnet or is it fine to use the same for both?
+* on second thought, we could also store the key pair in the vault instead of providing via env variables if we plan on using the same key pair for all instances, prod, staging, dev, etc. __-> YES. Vault was designed for this. Unless Wesley/Eric have a different opinion, let's default to storing sensitive data in Vault.__
+* Do we provide a default private key for development purposes? It might be better to force one to be provided and to throw an error/crash the app if one is not provided. __-> Do crash/throw. Don't provide default. __
 
 ## Frost User Default Public/Private Key
 
 ### how/where do we store the public and private key
-We will storage users key pairs in the vault.
+We will storage users key pairs in the vault. __-> is anything changing here?__
 
 ### Generating public and private key for new users
-We can generate the users key pair at new account creation time.
+We can generate the users key pair at new account creation time. __-> is anything changing here?__
 
 ### Generating public and private key for current users
 When a user posts a claim, we load their private key, if one does not exist we generate one and save it.
-
+ __-> why would a user not have a private key at this stage?__
+ 
 ### Questions/TBD:
 * Is their any reason we may want to force different key pairs for testnet/mainnet or is it fine to use the same for both?
+
+__-> Can't think of a reason that outweights the costs. The only scenario I can think of is: in the future we support key exporting, users assume testnet keys have no value, not realizing they are the same as used in mainnet. Not worth delaying mainnet for this use case IMO. __
