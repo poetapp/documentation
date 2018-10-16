@@ -82,7 +82,7 @@ Frost will need to provide an `author` property that is a uri which resolves to 
 
 In the future `author` will be a uri that resolves to a Identity Claim.
 
-Question: What do we do if a user provides an author as a string? Just overwrite it with the data uri and this info is lost?
+Question: What do we do if a user provides an author as a string? Just overwrite it with the data uri and this info is lost? We could make it part of the data uri if we make `createAuthorFromPrivateKey` take some extra properties. If author gets converted to a name property of the data uri thenclaims can still specificy an author name, sort of like an Identity would accomplish.
 
 ##### archiveUrl & hash
 
