@@ -62,7 +62,7 @@ This should be probably be async as the file we need to download from archiveUrl
 
 ### frost-api: hide node changes
 
-The node will now require signed verifiable claims. Signed verifiable claims have a few requirements that frost-api will need to be adjusted to handle. The goal is to leave the frost-api untouched, and automate the transition behind the scenes to these new signed verifiable claims.
+The node will now require signed verifiable claims. Signed verifiable claims have a few requirements that frost-api will need to be adjusted to handle. The goal is to leave the API exposed by Frost untouched, and automate the transition behind the scenes to these new signed verifiable claims.
 
 #### Signed Verifiable Claim Requirements
 
