@@ -121,7 +121,7 @@ Explorer web may need to be updated to show any properties a claim contains inst
 
 ## Frost Identity Public/Private Key
 
-Private Key should be supplied via env variables. The public key will be derived from the public key.
+Private Key should be supplied via env variables. The public key will be derived from the private key.
 
 ### Questions/TBD:
 * on second thought, we could also store the key pair in the vault instead of providing via env variables if we plan on using the same key pair for all instances, prod, staging, dev, etc.
