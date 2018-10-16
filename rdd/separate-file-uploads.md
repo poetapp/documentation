@@ -121,23 +121,15 @@ Explorer web may need to be updated to show any properties a claim contains inst
 
 ## Frost Identity Public/Private Key
 
-Private Key should be supplied via env variables. The public key will be derived from the private key.
-
-### Questions/TBD:
-* on second thought, we could also store the key pair in the vault instead of providing via env variables if we plan on using the same key pair for all instances, prod, staging, dev, etc.
-* Do we provide a default private key for development purposes? It might be better to force one to be provided and to throw an error/crash the app if one is not provided.
-* Is their any reason we may want to force different key pairs for testnet/mainnet or is it fine to use the same for both?
+The key pair will be stored in the vault. If the key pair is not loaded into the app correctly the app should throw/crash.
 
 ## Frost User Default Public/Private Key
 
 ### how/where do we store the public and private key
-We will storage users key pairs in the vault.
+We will store user key pairs in the vault.
 
 ### Generating public and private key for new users
 We can generate the users key pair at new account creation time.
 
 ### Generating public and private key for current users
 When a user posts a claim, we load their private key, if one does not exist we generate one and save it.
-
-### Questions/TBD:
-* Is their any reason we may want to force different key pairs for testnet/mainnet or is it fine to use the same for both?
