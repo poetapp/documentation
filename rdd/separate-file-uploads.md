@@ -72,6 +72,8 @@ Once these requirements are met we can send the signed verifiable claim to the n
 
 Frost will need to provide an `issuer` property that is a uri which resolves to an issuer. `issuer` will be a data uri until we have Identity Claim functionality. The `issuer` data uri will be generated from frost-apis privateKey using poet-js's [createIssuerFromPrivateKey](https://github.com/poetapp/poet-js/blob/master/src/util/KeyHelper.ts#L106) function.
 
+> Note: despite the name of the function, no data about the actual private key is leaked in the data url. A public key is generated from it instead.
+
 In the future `issuer` will be a uri that resolves to an Identity Claim.
 
 ##### Author
