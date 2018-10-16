@@ -135,15 +135,7 @@ We will storage users key pairs in the vault.
 We can generate the users key pair at new account creation time.
 
 ### Generating public and private key for current users
-There are multiple events we could use to generate the key pair if they do not have them yet.
-
-#### Automated
-- login
-- posting a claim
-
-#### Manual
-- if we plan on provide a way for users to retrieve their private key, we could also provide a ui button to generate the private and public key.
-- throw an error and tell them to login and generate a key using the ui button.
+When a user posts a claim, we load their private key, if one does not exist we generate one and save it.
 
 ### Questions/TBD:
 * Is their any reason we may want to force different key pairs for testnet/mainnet or is it fine to use the same for both?
