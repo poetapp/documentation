@@ -35,7 +35,7 @@ Though there's no guarantee of this working, the best attempt it to replace the 
 
 If the root cause is more related to Bitcoin scalability than Po.et, there is nothing to be done.
 
-We can use the [getrawmempool](https://bitcoin.org/en/developer-reference#getrawmempool) and [getmempoolentry](https://bitcoincore.org/en/doc/0.17.0/rpc/blockchain/getmempoolentry/) to know whether a transaction is in the mempool or not.
+We can use [getrawmempool](https://bitcoin.org/en/developer-reference#getrawmempool) and [getmempoolentry](https://bitcoincore.org/en/doc/0.17.0/rpc/blockchain/getmempoolentry/) to know whether a transaction is in the mempool or not.
 
 Issues may arise due to the mempool not being decentralized: a transaction existing in Node A's mempool may have been discarded from Node B's mempool.
 
@@ -44,8 +44,8 @@ Issues may arise due to the mempool not being decentralized: a transaction exist
 The fee is currently determined by Bitcoin Core. Initially, we wil want to let Bitcoin Core determine the new fee, too, and hope for it to be high enough. 
 
 In a future iteration, we can 
-- use [estimatesmartfee](https://bitcoincore.org/en/doc/0.17.0/rpc/util/estimatesmartfee/) to get the Bitcoin Core Wallet's recommended feeRate, 
-- manually increase it by a configurable amount,
+- use [estimatesmartfee](https://bitcoincore.org/en/doc/0.17.0/rpc/util/estimatesmartfee/) to get the Bitcoin Core Wallet's recommended `feeRate`, 
+- manually increase it by a configurable percentage,
 - pass it to [fundrawtransaction](https://bitcoincore.org/en/doc/0.17.0/rpc/rawtransactions/fundrawtransaction/)
 - and set the `replaceable` option of `fundrawtransaction` to `true`.
 
@@ -59,7 +59,7 @@ This is a completely normal event in Bitcoin, Ethereum and other blockchains. It
 
 There are various approaches to this issue.
 
-- Keep track of the `previousBlockHash` of every block, re-validate N last blocks on new block, signal reorg from BlockchainReader and let other modules adapt
+- Keeping track of the `previousBlockHash` of every block, re-validate N last blocks on new block, signal reorg from BlockchainReader and let other modules adapt
 - Watching the info returned by [getchaintips](https://bitcoincore.org/en/doc/0.17.0/rpc/blockchain/getchaintips/).
 
 A reorg may mean that data that was valid no longer is. This does not affect our current system, as updates are not supported and Work is the only claim type in use, but the introduction of Entities, Identity Claims, Licences, etc, will require more attention.
