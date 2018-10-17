@@ -97,7 +97,7 @@ consume(BlockDownloaded(lightBlock, matchingAnchors)) =>
   const transactionIds = matchingAnchors.map(_ => _.transactionId)
   await transactionIds.map(setBlockHeightAndHash)
   const oldBlocklessTransactions = await dao.findOldBlocklessTransactions({ currentBlockHeight: lightBlock.height, maximumBlockAge })
-  // logger.warning / messaging.publish / dao.reattempt
+  logger.warning({ maximumBlockAge, oldBlocklessTransactions }, 'Discarding unconfirmed transactions')
   await dao.clearTransactions(oldBlocklessTransactions)
 ```
 
