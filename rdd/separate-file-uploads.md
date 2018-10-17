@@ -107,7 +107,7 @@ In order to accommodate the use case and avoid breaking the Frost API we need fr
 At that time if the user wants us to store the file for them in IPFS:
 * They will use the `content` property, and
   * The frost-api will upload the value of the content property to the node and create a claim with the `hash` and `archiveUrl`.
-* If the user wants to handle the storage of the file themselves (whether in IPFS or some other file storage system):
+* If the user wants to handle the storage of the file oneself (whether in IPFS or some other file storage system):
   * They will just provide the `hash` and `archiveUrl` properties.
 
 
