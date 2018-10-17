@@ -42,6 +42,8 @@ Create an API endpoint that allows files to be uploaded directly to IPFS. This e
 
 The endpoint needs to support all types of file formats: audio, video, image, and text. More research will need to be done on this sepecifically for its own PR.
 
+For debugging purposes it would be good to store the resulting hash in the mongo db.
+
 ---- 
 
 ### node: update to new poet-js
