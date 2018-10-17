@@ -125,7 +125,7 @@ The key pair will be stored in the vault. If the key pair is not loaded into the
 
 ## Frost User Default Public/Private Key
 
-We will store user key pairs in the vault.
+User key pairs will be stored in the vault.
 
 ### Generating public and private key for new users
 We can generate the users key pair at new account creation time.
