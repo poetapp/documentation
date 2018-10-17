@@ -121,13 +121,19 @@ Given that all testing scenarios require interacting with dependencies, restarti
 
 Maybe a good use case for [fake docker-in-docker](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/). 
 
-For example (not ideal, just an example):
+A naive example of such orchestration:
 
 ```
-$ node first-part-of-test.js
-$ ./disable-bitcoind-communication.sh
-$ node second-part-of-test.js
-# etc
+$ alias dc=docker-compose
+$ dc up -d
+$ dc exec tests node create-10-claims.js node-a
+$ dc exec bitcoind1 bitcoin-cli setnetworkactive false
+$ dc exec tests bash node second-part-of-test.js
+$ dc exec bitcoind1 bitcoin-cli setnetworkactive true
+$ dc exec tests node third-part-of-test.js
+$ dc stop bitcoind1
+$ dc -f bitcoin-zap-wallet up -d bitcoind1
+$ dc exec tests node fourth-part-of-test.js
 ```
 
 Comment by Warren:
