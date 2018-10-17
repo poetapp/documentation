@@ -134,7 +134,7 @@ $ dc -f bitcoin-zap-wallet up -d bitcoind1
 $ dc exec tests node fourth-part-of-test.js
 ```
 
-We could achieve such control with [fake docker-in-docker](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/). 
+We could achieve such control with Docker [exposing the Docker socket to the test orchestration container](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/). 
 
 ## Notes For Clients
 
