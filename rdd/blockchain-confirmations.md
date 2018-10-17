@@ -84,7 +84,7 @@ A reorg may mean that data that was valid no longer is. This does not affect our
 - `interface LightBlock { hash: string, previousHash: string, height: number }`
 - rename and modify `PoetBlockAnchorsDownloaded(matchingAnchors)` to `BlockDownloaded(lightBlock, matchingAnchors)` ,
 - remove `if (matchingAnchors.length)` - publish BlockDownloaded for all blocks
-- `if (highestBlockInDB.hash !=== lightBlock.previousHash) logger.warn({ lightBlock, }, 'Reorg detected')
+- `if (highestBlockInDB.hash !=== lightBlock.previousHash) logger.warn({ lightBlock, }, 'Reorg detected')`
 - Detect reorgs but do nothing more than logging a warning for them for now.
 
 ### BlockchainWriter
