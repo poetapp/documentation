@@ -134,25 +134,21 @@ Comment by Warren:
 
 > Shutting down a container from within another container is problematic. We would have to mount docker.socket inside the container running the tests. This is considered an insecure practice but may be ok for testing.
 
-## Notes
+## Notes For Clients
 
-### Measuring Time in Blocks
+### Build Over Confirmed Data
 
-It makes sense to track at what block height the transaction was created and how many blocks have been mined/generated since, rather than time passed.
+_Reattempting transactions and reorgs mean claim order or validity cannot be guaranteed for claims with no or few confirmations._
 
-Measuring blocks instead of time is a blockchain specific solution (bitcoin generates blocks every ten minutes, ethereum every eight to twelve seconds), but that's perfectly fine.
-
-### Required Confirmation Count
+When creating new claims that depend on or refer to previous claims, clients should make sure the previous claims have _enough_ confirmations.
 
 Due to how Proof of Work works, there isn't a defined line that separates a safe from an unsafe amount of confirmations. How few confirmations one is willing to accept, or how many require, is a decision that needs to be weighted for each use case. 
 
 It is generally considered that three confirmations is safe for transactions moving a low to medium amount of funds, while for larger transactions one may want to wait for six.
 
-Five seems to be the required number to stay safe from reorgs, although that happened rarely and it's not guaranteed to be the maximum.
+To stay safe from reorgs to number could be as high as five, although less should usually suffice, while more may be required on ocassion in the future. 
 
-### Don't Build Over Unconfirmed Data
-
-Reattempting transactions means we can't guarantee claim order until they are confirmed, which means you should only refer to claims that have been confirmed. This is pretty standard in the blockchain world - one should never rely on unconfirmed data.
+Special attention should be given to claims that involve money, such as purchases or sales of licenses. 
 
 ## RPCs
 1. [getrawmempool](https://bitcoin.org/en/developer-reference#getrawmempool)
