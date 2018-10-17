@@ -63,13 +63,15 @@ In a future iteration, we can
 
 ### Chain Reorganization
 
-Transaction gets into a block and sometime after that block becomes stale.
+Transaction gets into a block and sometime after that block becomes stale, no longer being part of the active chain.
 
 This is a completely normal event in Bitcoin, Ethereum and other blockchains. It is also the most complicated case to handle.
 
 #### Solution
 
-There are various approaches to this issue.
+Miners will usually move the transactions from the staled/orphaned block back to the mempool, which should solve the issue.
+
+If this does not happen, there are various approaches to address it manually:
 
 - Keeping track of the `previousBlockHash` of every block, re-validate N last blocks on new block, signal reorg from BlockchainReader and let other modules adapt
 - Watching the info returned by [getchaintips](https://bitcoincore.org/en/doc/0.17.0/rpc/blockchain/getchaintips/).
@@ -79,19 +81,24 @@ A reorg may mean that data that was valid no longer is. This does not affect our
 ## Implementation
 
 ### BlockchainReader.ClaimController.scanBlock
-- rename and modify `PoetBlockAnchorsDownloaded(matchingAnchors)` to `BlockDownloaded(blockHeight, matchingAnchors)` ,
+- `interface LightBlock { hash: string, previousHash: string, height: number }`
+- rename and modify `PoetBlockAnchorsDownloaded(matchingAnchors)` to `BlockDownloaded(lightBlock, matchingAnchors)` ,
 - remove `if (matchingAnchors.length)` - publish BlockDownloaded for all blocks
+- `if (highestBlockInDB.hash !=== lightBlock.previousHash) logger.warn({ lightBlock, }, 'Reorg detected')
+- Detect reorgs but do nothing more than logging a warning for them for now.
 
 ### BlockchainWriter
 
 #### Router / Controller
 
 ```js
-consume(BlockDownloaded(blockHeight, matchingTransactionIds)) => 
-  const setBlockHeight = dao.setBlockHeight(blockHeight) 
-  await matchingTransactionIds.map(setBlockHeight)
-  const oldBlocklessTransactions = await dao.findOldBlocklessTransactions({ currentBlockHeight: blockMined.blockHeight, maximumBlockAge })
+consume(BlockDownloaded(lightBlock, matchingAnchors)) => 
+  const setBlockHeightAndHash = dao.setBlockHeightAndHash(lightBlock.height, lightBlock.hash) 
+  const transactionIds = matchingAnchors.map(_ => _.transactionId)
+  await transactionIds.map(setBlockHeightAndHash)
+  const oldBlocklessTransactions = await dao.findOldBlocklessTransactions({ currentBlockHeight: lightBlock.height, maximumBlockAge })
   // logger.warning / messaging.publish / dao.reattempt
+  await dao.clearTransactions(oldBlocklessTransactions)
 ```
 
 #### DAO
@@ -103,7 +110,7 @@ consume(BlockDownloaded(blockHeight, matchingTransactionIds)) =>
     blockHeight: null 
   })
   
-  setBlockHeight = blockHeight => txid => db.blockchainWriter.update({ txid }, { $set: { blockHeight } })
+  setBlockHeightAndHash = (blockHeight, blockHash) => txid => db.blockchainWriter.update({ txid }, { $set: { blockHeight, blockHash } })
 ```
 
 ## Functional Testing
