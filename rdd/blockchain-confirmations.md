@@ -119,8 +119,6 @@ Connecting and disconnecting to/from the network seems to be possible with the R
 
 Given that all testing scenarios require interacting with dependencies, restarting them, passing arguments to them, etc, I believe it makes sense to consider these tests to live in a higher layer, over the application itself.
 
-Maybe a good use case for [fake docker-in-docker](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/). 
-
 A naive example of such orchestration:
 
 ```
@@ -136,9 +134,7 @@ $ dc -f bitcoin-zap-wallet up -d bitcoind1
 $ dc exec tests node fourth-part-of-test.js
 ```
 
-Comment by Warren:
-
-> Shutting down a container from within another container is problematic. We would have to mount docker.socket inside the container running the tests. This is considered an insecure practice but may be ok for testing.
+We could achieve such control with [fake docker-in-docker](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/). 
 
 ## Notes For Clients
 
