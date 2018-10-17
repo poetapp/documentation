@@ -4,6 +4,18 @@ Bitcoin transactions can only be considered safe after they have a certain amoun
 
 The node needs to know how many confirmations transactions have and trigger a retry mechanism in case one or more transactions aren't getting confirmed as expected.
 
+## Index
+- [Related Issues](#related-issues)
+- [Cases](#cases)
+  - [Transaction Lost](#transaction-lost)
+  - [Transaction Stuck](#transaction-stuck)
+  - [Chain Reorganization](#chain-reorganization)
+- [Implementation](#implementation)
+- [Functional Testing](#functional-testing)
+- [Notes For Clients](#notes-for-clients)
+- [RPCs](#rpcs)
+- [References](#references)
+
 ## Related Issues
 - https://github.com/poetapp/node/issues/46
 
@@ -49,7 +61,7 @@ In a future iteration, we can
 - pass it to [fundrawtransaction](https://bitcoincore.org/en/doc/0.17.0/rpc/rawtransactions/fundrawtransaction/)
 - and set the `replaceable` option of `fundrawtransaction` to `true`.
 
-### Reorg
+### Chain Reorganization
 
 Transaction gets into a block and sometime after that block becomes stale.
 
