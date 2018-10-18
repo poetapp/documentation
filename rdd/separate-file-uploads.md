@@ -121,8 +121,8 @@ Explorer web may need to be updated to show any properties a claim contains inst
 
 ## Frost Identity Public/Private Key
 
-The key pair will be stored in the vault. If the key pair is not loaded into the app correctly the app should throw/crash.
+The key pair will be stored in mongo db and will be encrypted/decrypted by the vault. If the key pair is not loaded into the app correctly the app should throw/crash.
 
 ## Frost User Default Public/Private Key
 
-User key pairs are already being generated on account creation and being stored in the vault.
+User key pairs are already being generated on account creation and being stored in mongodb and are encrypted/decrypted by the vault.
