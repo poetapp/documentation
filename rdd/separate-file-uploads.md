@@ -42,6 +42,8 @@ Create an API endpoint that allows files to be uploaded directly to IPFS. This e
 
 The endpoint needs to support all types of file formats: audio, video, image, and text. More research will need to be done on this sepecifically for its own PR.
 
+For debugging purposes it would be good to store the resulting hash in the mongo db.
+
 ---- 
 
 ### node: update to new poet-js
@@ -82,9 +84,7 @@ https://github.com/poetapp/poet-js/blob/master/src/Interfaces.ts#L66
 
 Frost will need to provide an `author` property that is a uri which resolves to an author. `author` will be a data uri until we have Identity Claim functionality. The `author` data uri will be generated from the users privateKey using poet-js's `createAuthorFromPrivateKey` ( yet to be created ).
 
-In the future `author` will be a uri that resolves to a Identity Claim.
-
-Question: What do we do if a user provides an author as a string? Just overwrite it with the data uri and this info is lost? We could make it part of the data uri if we make `createAuthorFromPrivateKey` take some extra properties. If author gets converted to a name property of the data uri thenclaims can still specificy an author name, sort of like an Identity would accomplish.
+Previous claims took an `author` property which was the authors name, for backwards compatability we will take the provided `author` will become a `name` property of the generated data uri so that generated data uri acts like an Identity claim.
 
 ##### archiveUrl & hash
 
@@ -107,7 +107,7 @@ In order to accommodate the use case and avoid breaking the Frost API we need fr
 At that time if the user wants us to store the file for them in IPFS:
 * They will use the `content` property, and
   * The frost-api will upload the value of the content property to the node and create a claim with the `hash` and `archiveUrl`.
-* If the user wants to handle the storage of the file himself (whether in IPFS or some other file storage system):
+* If the user wants to handle the storage of the file oneself (whether in IPFS or some other file storage system):
   * They will just provide the `hash` and `archiveUrl` properties.
 
 
@@ -121,23 +121,8 @@ Explorer web may need to be updated to show any properties a claim contains inst
 
 ## Frost Identity Public/Private Key
 
-Private Key should be supplied via env variables. The public key will be derived from the public key.
-
-### Questions/TBD:
-* on second thought, we could also store the key pair in the vault instead of providing via env variables if we plan on using the same key pair for all instances, prod, staging, dev, etc.
-* Do we provide a default private key for development purposes? It might be better to force one to be provided and to throw an error/crash the app if one is not provided.
-* Is their any reason we may want to force different key pairs for testnet/mainnet or is it fine to use the same for both?
+The key pair will be stored in mongo db and will be encrypted/decrypted by the vault. If the key pair is not loaded into the app correctly the app should throw/crash.
 
 ## Frost User Default Public/Private Key
 
-### how/where do we store the public and private key
-We will storage users key pairs in the vault.
-
-### Generating public and private key for new users
-We can generate the users key pair at new account creation time.
-
-### Generating public and private key for current users
-When a user posts a claim, we load their private key, if one does not exist we generate one and save it.
-
-### Questions/TBD:
-* Is their any reason we may want to force different key pairs for testnet/mainnet or is it fine to use the same for both?
+User key pairs are already being generated on account creation and being stored in mongodb and are encrypted/decrypted by the vault.
