@@ -54,9 +54,11 @@ The endpoint `/works` should validate the signed verifiable claims.
 
 ### node: add archiveUrl/hash validation
 
-The node should reject signed verifiable Work claims where the Work claim's `archiveUrl` does not match `hash`.
+When `archiveUrl` points to an IPFS file, the validation can be skipped entirely since IPFS content is immutable.
 
-This should be probably be async as the file we need to download from archiveUrl may be large.
+For `archiveUrl`s pointing to mutable storage, clients of the node should verify that the hash of the contents dereferenced from `archiveUrl` does match `hash`.
+
+Frost will only support IPFS initially, so there is no need to address this more complex scenario for mainnet.
 
 ---- 
 
