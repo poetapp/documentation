@@ -123,6 +123,14 @@ I haven't decided or tried anything yet, but here's some information and ideas:
 
 Starting the node with `-blockmintxfee=<amt>` wih a high `amt` allows us to `generate` blocks that do not include our transaction.
 
+```
+dc up -d # with -blockmintxfee=1
+$ WORK_ID=$(npm run --silent create-claim  | jq .id)
+$ bitcoin-cli getrawmempool | jq # look for WORK_ID in returned array
+$ bitcoin-cli generate 1
+$ bitcoin-cli getrawmempool | jq # WORK_ID should still be there
+```
+
 ### Mempool Clearing
 
 Clearing the mempool requires restarting the node with [-zapwallettxes](https://github.com/bitcoin/bitcoin/blob/ae1cc010b88dd594d2a27b2717cfe14ef04ec852/src/wallet/wallet.cpp#L3882). I haven't found a way to do this without restarting. And I'm not 100% sure -zapwallettxes is enough.
