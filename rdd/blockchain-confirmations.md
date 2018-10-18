@@ -121,7 +121,7 @@ I haven't decided or tried anything yet, but here's some information and ideas:
 
 ### Never Confirmed
 
-This one is easy: just never `generate`.
+Starting the node with `-blockmintxfee=<amt>` wih a high `amt` allows us to `generate` blocks that do not include our transaction.
 
 ### Mempool Clearing
 
