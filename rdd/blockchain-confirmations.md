@@ -121,7 +121,7 @@ I haven't decided or tried anything yet, but here's some information and ideas:
 
 ### Never Confirmed
 
-Starting the node with `-blockmintxfee=<amt>` wih a high `amt` allows us to `generate` blocks that do not include our transaction.
+Starting bitcoind with `-blockmintxfee=<amt>` wih a high `amt` allows us to `generate` blocks that do not include our transaction.
 
 ```
 dc up -d # with -blockmintxfee=1
