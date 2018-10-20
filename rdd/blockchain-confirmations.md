@@ -121,7 +121,15 @@ I haven't decided or tried anything yet, but here's some information and ideas:
 
 ### Never Confirmed
 
-This one is easy: just never `generate`.
+Starting bitcoind with `-blockmintxfee=<amt>` wih a high `amt` allows us to `generate` blocks that do not include our transaction.
+
+```
+dc up -d # with -blockmintxfee=1
+$ WORK_ID=$(npm run --silent create-claim  | jq .id)
+$ bitcoin-cli getrawmempool | jq # look for WORK_ID in returned array
+$ bitcoin-cli generate 1
+$ bitcoin-cli getrawmempool | jq # WORK_ID should still be there
+```
 
 ### Mempool Clearing
 
