@@ -84,7 +84,7 @@ In the future `issuer` will be a uri that resolves to an Identity Claim.
 
 https://github.com/poetapp/poet-js/blob/master/src/Interfaces.ts#L66
 
-Frost will need to provide an `author` property that is a uri which resolves to an author. `author` will be a data uri until we have Identity Claim functionality. The `author` data uri will be generated from the users privateKey using poet-js's `createAuthorFromPrivateKey` ( yet to be created ).
+Frost will need to provide an `author` property that is a uri which resolves to an author. `author` will be a data uri until we have Identity Claim functionality. The `author` data uri will be generated from the [users privateKey](#frost-user-default-publicprivate-key) using poet-js's `createAuthorFromPrivateKey` ( yet to be created ).
 
 Previous claims took an `author` property which was the authors name, for backwards compatability we will take the provided `author` will become a `name` property of the generated data uri so that generated data uri acts like an Identity claim.
 
@@ -96,7 +96,7 @@ Replace `content` with `archiveUrl` & `hash` by uploading the value of content t
 
 ##### Signing
 
-Frost will need to sign the verifiable claim it creates with its privateKey that is related to [Frosts Identity Claim](#frost-identity-claim). poet-js provides the [configureSignVerifiableClaim](https://github.com/poetapp/poet-js/blob/master/src/VerifiableClaimSigner.ts#L48) function to sign claims.
+Frost will need to sign the verifiable claim it creates with its [privateKey](#frost-identity-publicprivate-key) that will be related to Frosts Identity Claim in the future. poet-js provides the [configureSignVerifiableClaim](https://github.com/poetapp/poet-js/blob/master/src/VerifiableClaimSigner.ts#L48) function to sign claims.
 
 ----
 
