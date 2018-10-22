@@ -127,4 +127,4 @@ The key pair will be stored in mongo db and will be encrypted/decrypted by the v
 
 ## Frost User Default Public/Private Key
 
-User key pairs are already being generated on account creation and being stored in mongodb and are encrypted/decrypted by the vault.
+User key pairs will be stored in mongo db and will be encrypted/decrtyped by the vault. key pairs should be generated on account creation. Some sort of solution will need implemented to create key pairs for accounts that are already created.
