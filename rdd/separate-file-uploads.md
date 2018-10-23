@@ -48,13 +48,15 @@ For debugging purposes it would be good to store the resulting hash in the mongo
 
 ---- 
 
-### node: Update to New poet-js
+### node: Update to New poet-js (Completed)
 
 https://github.com/poetapp/random/issues/197
 
 Update the node's poet-js dependency to allow the new version of signed verifiable `Work` and `Identity` claims.
 
 The endpoint `/works` should validate the signed verifiable claims.
+
+> Q: Should this validate only on POST or on retrieval as well?
 
 ---- 
 
@@ -73,6 +75,9 @@ Frost will need to provide an `issuer` property that is a uri which resolves to 
 > Note: despite the name of the function, no data about the actual private key is leaked in the data url. A public key is generated from it instead.
 
 In the future `issuer` will be a uri that resolves to an Identity Claim.
+
+> Q: we need a way to allow users of the api to include an additional context that will be used to extend the default context of a work.
+> This should not break the current API but still allow for extensibility. How would you like the POST to look?
 
 ##### Author
 
