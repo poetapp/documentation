@@ -1,4 +1,4 @@
-# Updating to signed verifable claims and separate file uploads
+# Updating to signed verifiable claims and separate file uploads
 
 ## Related Issues
 - https://github.com/poetapp/random/issues/98
@@ -10,9 +10,9 @@
 
 * Add the ability for users to hash and create claims without storing the files on our IPFS nodes.
 * Enable both node and frost-api to accommodate this use case.
-* Avoid breaking frost-api.
+* Avoid breaking frost-api public-facing API (breaking node's API is OK)
 * Update to new signed verifiable claims
- 
+
 ## Out of scope
 
 * Frost Identity Claim
@@ -26,17 +26,19 @@ Each step can be 1 or more pull requests.
 
 ---- 
 
-### poet-js: adjust `Work` claim ( completed )
+### poet-js: adjust `Work` claim (Completed)
+
+https://github.com/poetapp/poet-js/pull/150
 
 In poet-js we need to add adjust the verifiable claims of type `Work` to contain `archiveUrl` and `hash` instead of `content`.
 
 See: [Creative Work](https://github.com/poetapp/random/blob/master/claim-types/creative-work.md).
 
-Completed: https://github.com/poetapp/poet-js/pull/150
-
 ----
 
 ### node: add file upload endpoint to the node
+
+https://github.com/poetapp/node/issues/611
 
 Create an API endpoint that allows files to be uploaded directly to IPFS. This endpoint will return an IPFS hash. It may also return an `archiveUrl` if it make sense to do so. The node should store the IPFS hash in the database.
 
@@ -47,6 +49,8 @@ For debugging purposes it would be good to store the resulting hash in the mongo
 ---- 
 
 ### node: update to new poet-js
+
+https://github.com/poetapp/random/issues/197
 
 Update the node's poet-js dependency to allow the new version of signed verifiable `Work` and `Identity` claims.
 
