@@ -1,4 +1,4 @@
-# Updating to signed verifiable claims and separate file uploads
+# Updating to Signed Verifiable Claims and Separate File Uploads
 
 ## Related Issues
 - https://github.com/poetapp/random/issues/98
@@ -26,7 +26,7 @@ Each step can be 1 or more pull requests.
 
 ---- 
 
-### poet-js: adjust `Work` claim (Completed)
+### poet-js: Adjust `work` Claim (Completed)
 
 https://github.com/poetapp/poet-js/pull/150
 
@@ -36,7 +36,7 @@ See: [Creative Work](https://github.com/poetapp/random/blob/master/claim-types/c
 
 ----
 
-### node: add file upload endpoint to the node
+### node: Add File Upload Endpoint to the Node
 
 https://github.com/poetapp/node/issues/611
 
@@ -48,7 +48,7 @@ For debugging purposes it would be good to store the resulting hash in the mongo
 
 ---- 
 
-### node: update to new poet-js
+### node: Update to New poet-js
 
 https://github.com/poetapp/random/issues/197
 
@@ -56,19 +56,9 @@ Update the node's poet-js dependency to allow the new version of signed verifiab
 
 The endpoint `/works` should validate the signed verifiable claims.
 
-----
-
-### node: add archiveUrl/hash validation
-
-When `archiveUrl` points to an IPFS file, the validation can be skipped entirely since IPFS content is immutable.
-
-For `archiveUrl`s pointing to mutable storage, clients of the node should verify that the hash of the contents dereferenced from `archiveUrl` does match `hash`.
-
-Frost will only support IPFS initially, so there is no need to address this more complex scenario for mainnet.
-
 ---- 
 
-### frost-api: hide node changes
+### frost-api: Hide Node Changes
 
 The node will now require signed verifiable claims. Signed verifiable claims have a few requirements that frost-api will need to be adjusted to handle. The goal is to leave the API exposed by Frost untouched, and automate the transition behind the scenes to these new signed verifiable claims.
 
@@ -92,7 +82,7 @@ Frost will need to provide an `author` property that is a uri which resolves to 
 
 Previous claims took an `author` property which was the authors name, for backwards compatability we will take the provided `author` will become a `name` property of the generated data uri so that generated data uri acts like an Identity claim.
 
-##### archiveUrl & hash
+##### archiveUrl & Hash
 
 Replace `content` with `archiveUrl` & `hash` by uploading the value of content to ipfs and using the resulting hash from ipfs. `archiveUrl` for now will just be the ipfs url of the file: `ipfs.io/ipfs/{HASH}`
 
@@ -104,7 +94,23 @@ Frost will need to sign the verifiable claim it creates with its [privateKey](#f
 
 ----
 
-### frost-api: ( future ) add ability to upload files separately 
+### frost: Identity Public/Private Key
+
+The key pair will be stored in mongo db and will be encrypted/decrypted by the vault. If the key pair is not loaded into the app correctly the app should throw/crash.
+
+### frost: User Default Public/Private Key
+
+User key pairs will be stored in mongo db and will be encrypted/decrtyped by the vault. key pairs should be generated on account creation. Some sort of solution will need implemented to create key pairs for accounts that are already created.
+
+---- 
+
+### explorer-web
+
+Explorer web may need to be updated to show any properties a claim contains instead of fixed properties.
+
+----
+
+### frost-api: (future) Add Ability to Upload Files Separately 
 
 At a later point the frost-api will also need to support uploading of files separate from the claim itself.
 
@@ -116,19 +122,12 @@ At that time if the user wants us to store the file for them in IPFS:
 * If the user wants to handle the storage of the file oneself (whether in IPFS or some other file storage system):
   * They will just provide the `hash` and `archiveUrl` properties.
 
-
----- 
-
-### explorer-web
-
-Explorer web may need to be updated to show any properties a claim contains instead of fixed properties.
-
 ----
 
-## Frost Identity Public/Private Key
+### node: (future) Add archiveUrl/Hash Validation
 
-The key pair will be stored in mongo db and will be encrypted/decrypted by the vault. If the key pair is not loaded into the app correctly the app should throw/crash.
+When `archiveUrl` points to an IPFS file, the validation can be skipped entirely since IPFS content is immutable.
 
-## Frost User Default Public/Private Key
+For `archiveUrl`s pointing to mutable storage, clients of the node should verify that the hash of the contents dereferenced from `archiveUrl` does match `hash`.
 
-User key pairs will be stored in mongo db and will be encrypted/decrtyped by the vault. key pairs should be generated on account creation. Some sort of solution will need implemented to create key pairs for accounts that are already created.
+Frost will only support IPFS initially, so there is no need to address this more complex scenario for mainnet.
