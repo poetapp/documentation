@@ -41,7 +41,7 @@ https://github.com/poetapp/node/issues/611
 
 Create an API endpoint that allows files to be uploaded directly to IPFS. This endpoint will return an IPFS hash. It may also return an `archiveUrl` if it make sense to do so. The node should store the IPFS hash in the database.
 
-The endpoint needs to support all types of file formats: audio, video, image, and text. More research will need to be done on this sepecifically for its own PR.
+The endpoint needs to support all types of file formats: audio, video, image, and text. More research will need to be done on this specifically for its own PR.
 
 For debugging purposes it would be good to store the resulting hash in the mongo db.
 
