@@ -118,7 +118,7 @@ from IPFS. `archiveUrl` for now will just be the IPFS url of the file: `ipfs.io/
 
 `content` will become a reserved property of claims for frost-api in order to maintain backwards compatibility. 
 Content being a reserved property will not be respected by the node; it does not need to know anything about 
-`e` being reserved for frost-api backwards compatibility.
+`content` being reserved for frost-api backwards compatibility.
 
 ##### Signing
 
