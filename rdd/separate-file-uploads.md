@@ -113,7 +113,7 @@ modifying the `claim` portion of a SignedVerifiableClaim as much as possible.
 
 ##### `archiveUrl` & `hash`
 
-Replace `content` with `archiveUrl` & `hash` by uploading the value of content to ipfs and using the resulting hash 
+Replace `content` with `archiveUrl` & `hash` by uploading the value of content to IPFS and using the resulting hash 
 from IPFS. `archiveUrl` for now will just be the IPFS url of the file: `ipfs.io/ipfs/{HASH}`
 
 `content` will become a reserved property of claims for frost-api in order to maintain backwards compatibility. 
