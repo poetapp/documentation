@@ -70,22 +70,33 @@ Once these requirements are met we can send the signed verifiable claim to the n
 
 ##### Issuer
 
-Frost will need to provide an `issuer` property that is a uri which resolves to an issuer. `issuer` will be a data uri until we have Identity Claim functionality. The `issuer` data uri will be generated from [frost-apis privateKey](#frost-identity-publicprivate-key) using poet-js's [createIssuerFromPrivateKey](https://github.com/poetapp/poet-js/blob/master/src/util/KeyHelper.ts#L106) function.
+Frost will need to provide an `issuer` property that is a uri which resolves to an issuer.  The `issuer` of a Work claim 
+is the account/profile that submits the claim. `issuer` will be a data uri until we have Identity Claim functionality. 
+Currently since we are signing with ED25519, we will need to generate an ED25519 publicKey/privateKey pair for each account.
 
-> Note: despite the name of the function, no data about the actual private key is leaked in the data url. A public key is generated from it instead.
+The `issuer` data uri will be generated from the submitter's privateKey using poet-js's [createIssuerFromPrivateKey](https://github.com/poetapp/poet-js/blob/master/src/util/KeyHelper.ts#L106) function.
+
+> Note: despite the name of the function, no data about the actual private key is leaked in the data url. 
+A public key is generated from it instead, and that is stored in the data url, along with the information required to 
+resolve the verification.
 
 In the future `issuer` will be a uri that resolves to an Identity Claim.
-
-> Q: we need a way to allow users of the api to include an additional context that will be used to extend the default context of a work.
-> This should not break the current API but still allow for extensibility. How would you like the POST to look?
 
 ##### Author
 
 https://github.com/poetapp/poet-js/blob/master/src/Interfaces.ts#L66
 
-Frost will need to provide an `author` property that is a uri which resolves to an author. `author` will be a data uri until we have Identity Claim functionality. The `author` data uri will be generated from the [users privateKey](#frost-user-default-publicprivate-key) using poet-js's `createAuthorFromPrivateKey` ( yet to be created ).
+https://schema.org/author
 
-Previous claims took an `author` property which was the authors name, for backwards compatability we will take the provided `author` will become a `name` property of the generated data uri so that generated data uri acts like an Identity claim.
+Frost will need to provide an `author` property that is a uri which resolves to an author. If the submitted work claim 
+does not designate a url for `author`, frost will generate a data uri based on the string value of `author`.
+
+> I do not think author should ever resolve to an identity claim unless the issuer submits the value. We should minimize 
+modifying the `claim` portion of a SignedVerifiableClaim as much as possible.
+
+Previous claims took an `author` property which was the authors name, for backwards compatability we will take the provided
+ `author` will become a `name` property of the generated data uri so that generated data uri acts like a `schema.org/author`.
+
 
 ##### archiveUrl & Hash
 
@@ -95,17 +106,21 @@ Replace `content` with `archiveUrl` & `hash` by uploading the value of content t
 
 ##### Signing
 
-Frost will need to sign the verifiable claim it creates with its [privateKey](#frost-identity-publicprivate-key) that will be related to Frosts Identity Claim in the future. poet-js provides the [configureSignVerifiableClaim](https://github.com/poetapp/poet-js/blob/master/src/VerifiableClaimSigner.ts#L48) function to sign claims.
+Frost will need to sign any verifiable claim it creates with the issuer's private key that will be eventually be related 
+to the issuer's Identity Claim in the future. poet-js provides the [configureSignVerifiableClaim](https://github.com/poetapp/poet-js/blob/master/src/VerifiableClaimSigner.ts#L48) function to sign claims.
 
 ----
 
 ### frost: Identity Public/Private Key
 
+The key pair for Frost should be generated using [@poet/poetjs:generateED25519Base58Keys](https://github.com/poetapp/poet-js/blob/master/src/util/KeyHelper.ts#L141).
 The key pair will be stored in mongo db and will be encrypted/decrypted by the vault. If the key pair is not loaded into the app correctly the app should throw/crash.
 
 ### frost: User Default Public/Private Key
 
-User key pairs will be stored in mongo db and will be encrypted/decrtyped by the vault. key pairs should be generated on account creation. Some sort of solution will need implemented to create key pairs for accounts that are already created.
+User key pairs will be stored in mongo db and will be encrypted/decrtyped by the vault. The key pairs should be generated on
+account creation using [@poet/poetjs:generateED25519Base58Keys](https://github.com/poetapp/poet-js/blob/master/src/util/KeyHelper.ts#L141). 
+Some sort of solution will need implemented to create key pairs for accounts that are already created.
 
 ---- 
 
