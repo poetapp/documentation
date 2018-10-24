@@ -88,6 +88,8 @@ https://github.com/poetapp/poet-js/blob/master/src/Interfaces.ts#L66
 
 https://schema.org/author
 
+https://github.com/poetapp/poet-js/issues/197
+
 Frost will need to provide an `author` property that is a uri which resolves to an author. If the submitted work claim 
 does not designate a url for `author`, frost will generate a data uri based on the string value of `author`.
 
@@ -97,8 +99,7 @@ modifying the `claim` portion of a SignedVerifiableClaim as much as possible.
 Previous claims took an `author` property which was the authors name, for backwards compatability we will take the provided
  `author` will become a `name` property of the generated data uri so that generated data uri acts like a `schema.org/author`.
 
-
-##### archiveUrl & Hash
+##### `archiveUrl` & `hash`
 
 Replace `content` with `archiveUrl` & `hash` by uploading the value of content to ipfs and using the resulting hash from ipfs. `archiveUrl` for now will just be the ipfs url of the file: `ipfs.io/ipfs/{HASH}`
 
@@ -113,10 +114,14 @@ to the issuer's Identity Claim in the future. poet-js provides the [configureSig
 
 ### frost: Identity Public/Private Key
 
+https://github.com/poetapp/frost-api/issues/527
+
 The key pair for Frost should be generated using [@poet/poetjs:generateED25519Base58Keys](https://github.com/poetapp/poet-js/blob/master/src/util/KeyHelper.ts#L141).
+
 The key pair will be stored in mongo db and will be encrypted/decrypted by the vault. If the key pair is not loaded into the app correctly the app should throw/crash.
 
 ### frost: User Default Public/Private Key
+https://github.com/poetapp/frost-api/issues/528
 
 User key pairs will be stored in mongo db and will be encrypted/decrtyped by the vault. The key pairs should be generated on
 account creation using [@poet/poetjs:generateED25519Base58Keys](https://github.com/poetapp/poet-js/blob/master/src/util/KeyHelper.ts#L141). 
