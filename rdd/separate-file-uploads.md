@@ -1,7 +1,6 @@
 # Updating to Signed Verifiable Claims and Separate File Uploads
 
 ## Related Issues
-- https://github.com/poetapp/random/issues/98
 - https://github.com/poetapp/node/issues/260
 
 ## Possible Conflicts
@@ -17,12 +16,12 @@
 
 * Frost Identity Claim
 * User Identity Claims
-* User Identity Mangement
+* User Identity Management
 * User Private/Public Key Management
 
 ## Steps
 
-Each step can be 1 or more pull requests.
+Each step can be one or more pull requests.
 
 ---- 
 
@@ -42,7 +41,7 @@ https://github.com/poetapp/node/issues/611
 
 Create an API endpoint that allows files to be uploaded directly to IPFS. This endpoint will return an IPFS hash. It may also return an `archiveUrl` if it make sense to do so. The node should store the IPFS hash in the database.
 
-The endpoint needs to support all types of file formats: audio, video, image, and text. More research will need to be done on this sepecifically for its own PR.
+The endpoint needs to support all types of file formats: audio, video, image, and text. More research will need to be done on this specifically for its own PR.
 
 For debugging purposes it would be good to store the resulting hash in the mongo db.
 
@@ -62,11 +61,13 @@ The endpoint `/works` should validate the signed verifiable claims.
 
 ### frost-api: Hide Node Changes
 
-The node will now require signed verifiable claims. Signed verifiable claims have a few requirements that frost-api will need to be adjusted to handle. The goal is to leave the API exposed by Frost untouched, and automate the transition behind the scenes to these new signed verifiable claims.
+https://github.com/poetapp/frost-api/issues/521
+
+The node will now require signed verifiable claims. Signed verifiable claims have a few requirements that frost-api will need to be adjusted to handle. The goal is to remain compatible with the existing Frost API exposed to users, and automate the transition behind the scenes to these new signed verifiable claims.
 
 #### Signed Verifiable Claim Requirements
 
-Once these requirements are met we can send the signed verifiable claim to the node.
+Once these requirements are met we can send the signed verifiable claims to the node.
 
 ##### Issuer
 
@@ -80,13 +81,15 @@ The `issuer` data uri will be generated from the submitter's privateKey using po
 A public key is generated from it instead, and that is stored in the data url, along with the information required to 
 resolve the verification.
 
-In the future `issuer` will be a uri that resolves to an Identity Claim.
+In the future `issuer` will be a URI that resolves to an Identity Claim.
 
 ##### Author
 
 https://github.com/poetapp/poet-js/blob/master/src/Interfaces.ts#L66
 
 https://schema.org/author
+
+https://github.com/poetapp/poet-js/issues/197
 
 Frost will need to provide an `author` property that is a uri which resolves to an author. If the submitted work claim 
 does not designate a url for `author`, frost will generate a data uri based on the string value of `author`.
@@ -97,12 +100,11 @@ modifying the `claim` portion of a SignedVerifiableClaim as much as possible.
 Previous claims took an `author` property which was the authors name, for backwards compatability we will take the provided
  `author` will become a `name` property of the generated data uri so that generated data uri acts like a `schema.org/author`.
 
+##### `archiveUrl` & `hash`
 
-##### archiveUrl & Hash
+Replace `content` with `archiveUrl` & `hash` by uploading the value of content to IPFS and using the resulting hash from IPFS. `archiveUrl` for now will just be the IPFS url of the file: `ipfs.io/ipfs/{HASH}`
 
-Replace `content` with `archiveUrl` & `hash` by uploading the value of content to ipfs and using the resulting hash from ipfs. `archiveUrl` for now will just be the ipfs url of the file: `ipfs.io/ipfs/{HASH}`
-
-`content` will become a reserved property of claims for frost-api in order to maintain backwards compatible. Content being a reserved property will not respected by the node, the node does not need to know anything about content being reserved for frost-api backwards compatibility.
+`content` will become a reserved property of claims for frost-api in order to maintain backwards compatibility. Content being a reserved property will not be respected by the node; it does not need to know anything about `content` being reserved for frost-api backwards compatibility.
 
 ##### Signing
 
@@ -113,10 +115,16 @@ to the issuer's Identity Claim in the future. poet-js provides the [configureSig
 
 ### frost: Identity Public/Private Key
 
+https://github.com/poetapp/frost-api/issues/527
+
 The key pair for Frost should be generated using [@poet/poetjs:generateED25519Base58Keys](https://github.com/poetapp/poet-js/blob/master/src/util/KeyHelper.ts#L141).
+
 The key pair will be stored in mongo db and will be encrypted/decrypted by the vault. If the key pair is not loaded into the app correctly the app should throw/crash.
 
+----
+
 ### frost: User Default Public/Private Key
+https://github.com/poetapp/frost-api/issues/528
 
 User key pairs will be stored in mongo db and will be encrypted/decrtyped by the vault. The key pairs should be generated on
 account creation using [@poet/poetjs:generateED25519Base58Keys](https://github.com/poetapp/poet-js/blob/master/src/util/KeyHelper.ts#L141). 
@@ -124,9 +132,11 @@ Some sort of solution will need implemented to create key pairs for accounts tha
 
 ---- 
 
-### explorer-web
+### explorer-web: Handle Claim Properties Dynamically
 
-Explorer web may need to be updated to show any properties a claim contains instead of fixed properties.
+https://github.com/poetapp/explorer-web/issues/365
+
+Explorer Web may need to be updated to show any properties a claim contains instead of fixed properties.
 
 ----
 
@@ -134,20 +144,21 @@ Explorer web may need to be updated to show any properties a claim contains inst
 
 At a later point the frost-api will also need to support uploading of files separate from the claim itself.
 
-In order to accommodate the use case and avoid breaking the Frost API we need frost-api to handle both the `content` version and the `hash` and `archiveUrl` version of Work claims.
+In order to accommodate the use case and avoid breaking the Frost API we need frost-api to handle both the `content` version and the `archiveUrl`/`hash` version of Work claims.
 
-At that time if the user wants us to store the file for them in IPFS:
+If the user wants us to store the file for them in IPFS:
 * They will use the `content` property, and
-  * The frost-api will upload the value of the content property to the node and create a claim with the `hash` and `archiveUrl`.
-* If the user wants to handle the storage of the file oneself (whether in IPFS or some other file storage system):
-  * They will just provide the `hash` and `archiveUrl` properties.
+* The frost-api will upload the value of the content property to the node and create a claim with the `archiveUrl` and `hash`.
+
+If the user wants to handle the storage of the file oneself (whether in IPFS or some other file storage system):
+  * They will just provide the `archiveUrl` and `hash` properties.
 
 ----
 
 ### node: (future) Add archiveUrl/Hash Validation
 
-When `archiveUrl` points to an IPFS file, the validation can be skipped entirely since IPFS content is immutable.
+When the `archiveUrl` points to an IPFS file, the validation can be skipped entirely since IPFS content is immutable.
 
 For `archiveUrl`s pointing to mutable storage, clients of the node should verify that the hash of the contents dereferenced from `archiveUrl` does match `hash`.
 
-Frost will only support IPFS initially, so there is no need to address this more complex scenario for mainnet.
+Frost API will only support IPFS initially, so there is no need to address this more complex scenario for the initial mainnet release.
