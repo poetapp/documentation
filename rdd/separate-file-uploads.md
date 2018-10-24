@@ -59,6 +59,8 @@ The endpoint `/works` should validate the signed verifiable claims.
 
 ### frost-api: Hide Node Changes
 
+https://github.com/poetapp/frost-api/issues/521
+
 The node will now require signed verifiable claims. Signed verifiable claims have a few requirements that frost-api will need to be adjusted to handle. The goal is to leave the API exposed to users by Frost untouched, and automate the transition behind the scenes to these new signed verifiable claims.
 
 #### Signed Verifiable Claim Requirements
@@ -89,21 +91,29 @@ Replace `content` with `archiveUrl` & `hash` by uploading the value of content t
 
 ##### Signing
 
-Frost will need to sign the verifiable claim it creates with its [private key](#frost-identity-publicprivate-key) that will be related to Frost's Identity Claim in the future. poet-js provides the [configureSignVerifiableClaim](https://github.com/poetapp/poet-js/blob/master/src/VerifiableClaimSigner.ts#L48) function to sign claims.
+Frost will need to sign the verifiable claim it creates with its [private key](#frost-identity-publicprivate-key), which will be related to Frost's Identity Claim in the future. poet-js provides the [configureSignVerifiableClaim](https://github.com/poetapp/poet-js/blob/master/src/VerifiableClaimSigner.ts#L48) function to sign claims.
 
 ----
 
 ### frost: Identity Public/Private Key
 
+https://github.com/poetapp/frost-api/issues/527
+
 The key pair will be stored in mongo db and will be encrypted/decrypted by the vault. If the key pair is not loaded into the app correctly the app should throw/crash.
 
+----
+
 ### frost: User Default Public/Private Key
+
+https://github.com/poetapp/frost-api/issues/528
 
 User key pairs will be stored in mongo db and will be encrypted/decrtyped by the vault. Key pairs should be generated on account creation. A solution will need to be implemented to create key pairs for existing accounts.
 
 ---- 
 
-### explorer-web
+### explorer-web: Handle Claim Properties Dynamically
+
+https://github.com/poetapp/explorer-web/issues/365
 
 Explorer Web may need to be updated to show any properties a claim contains instead of fixed properties.
 
