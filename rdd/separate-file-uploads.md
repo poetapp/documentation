@@ -54,9 +54,7 @@ https://github.com/poetapp/random/issues/197
 
 Update the node's poet-js dependency to allow the new version of signed verifiable `Work` and `Identity` claims.
 
-The endpoint `/works` should validate the signed verifiable claims.
-
-> Q: Should this validate only on POST or on retrieval as well?
+The endpoint `POST /works` should validate the signed verifiable claims.
 
 ---- 
 
