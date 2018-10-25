@@ -67,6 +67,10 @@ Transaction gets into a block and sometime after that block becomes stale, no lo
 
 This is a completely normal event in Bitcoin, Ethereum and other blockchains. It is also the most complicated case to handle.
 
+We can expect an average of at least 47 one-block forks per year, according to [this data](https://bitcoin.stackexchange.com/questions/3343/what-is-the-longest-blockchain-fork-that-has-been-orphaned-to-date/4638#4638).
+
+Bitcoin nodes will usually replay transactions into new blocks, so in general this shouldn't affect the Po.et node other than it having a wrong `blockHeight` and `blockHash` for a given claim.
+
 #### Solution
 
 Miners will usually move the transactions from the staled/orphaned block back to the mempool, which should solve the issue.
