@@ -51,6 +51,8 @@ The endpoint needs to support all types of file formats: audio, video, image and
 
 https://github.com/poetapp/random/issues/197
 
+https://github.com/poetapp/node/pull/614
+
 Update the **node**'s **poet-js** dependency to allow the new version of signed verifiable `Work` and `Identity` claims.
 
 The endpoint `POST /works` should validate the signed verifiable claims.
@@ -73,9 +75,7 @@ Frost will need to provide an `issuer` property that is a URI which resolves to 
 
 The `issuer` data URI will be generated from the submitter's private key using **poet-js**'s [createIssuerFromPrivateKey](https://github.com/poetapp/poet-js/blob/master/src/util/KeyHelper.ts#L106) function.
 
-> Note: despite the name of the function, no data about the actual private key is leaked in the data URL. 
-A public key is generated from it instead, and that is stored in the data URL, along with other information required to 
-verify the signature.
+> Note: despite the name of the function, no data about the actual private key is leaked in the data URL. A public key is generated from it instead, and that is stored in the data URL, along with other information required to verify the signature.
 
 In the future `issuer` will be a URI that resolves to an identity claim.
 
@@ -85,10 +85,7 @@ https://github.com/poetapp/poet-js/blob/master/src/Interfaces.ts#L66
 
 https://schema.org/author
 
-Frost will need to provide an `author` property that is a URI which resolves to an author. Previous claims took 
-an `author` property which was the author's name. For backwards compatibility, if the submitted Work claim does 
-not designate a URI for `author`, Frost will generate a `data:` URI using the string value of `author` as a 
-`name` property.
+Frost will need to provide an `author` property that is a URI which resolves to an author. Previous claims took an `author` property which was the author's name. For backwards compatibility, if the submitted Work claim does not designate a URI for `author`, Frost will generate a `data:` URI using the string value of `author` as a `name` property.
 
 > Actually instead of creating a data URL, we might just include the object for `author` in the claim:
 
@@ -96,7 +93,7 @@ not designate a URI for `author`, Frost will generate a `data:` URI using the st
 {
   claim: {
     author: {
-      type: 'schema:Person',
+      '@type': 'schema:Person',
       name: 'Sir Author Conan Doyle'
     },
   }
@@ -150,8 +147,7 @@ Explorer Web may need to be updated to show any properties a claim contains inst
 
 At a later point **frost-api** will also need to support uploading of files separate from the claim itself.
 
-In order to accommodate the use case and avoid breaking the user-facing API we need **frost-api** to handle both the 
-`content` version and the `archiveUrl`/`hash` version of Work claims.
+In order to accommodate the use case and avoid breaking the user-facing API we need **frost-api** to handle both the `content` version and the `archiveUrl`/`hash` version of Work claims.
 
 If the user wants us to store the file for them in IPFS:
   * They will use the `content` property, and
