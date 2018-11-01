@@ -102,17 +102,21 @@ Frost will need to provide an `author` property that is a URI which resolves to 
 
 > `author` should never resolve to an identity claim unless the issuer submits the value. We should minimize modifying the `claim` portion of a signed verifiable claim as much as possible.
 
-##### `archiveUrl` & `hash`
+##### Signing
+
+**frost-api** will need to sign any verifiable claim it creates with the issuer's private key that will be eventually be related to the issuer's identity claim in the future. **poet-js** provides the [configureSignVerifiableClaim](https://github.com/poetapp/poet-js/blob/master/src/VerifiableClaimSigner.ts#L48) function to sign claims.
+
+----
+
+### **frost-api**: Replace `content` with `archiveUrl` & `hash`
+
+https://github.com/poetapp/frost-api/issues/603
 
 Replace `content` with `archiveUrl` & `hash` by uploading the value of the `content` object to IPFS and using the resulting hash from IPFS (`hash`). `archiveUrl` for now will just be the IPFS url of the file: `ipfs.io/ipfs/{hash}`
 
 `content` will become a reserved property of claims for **frost-api** in order to maintain backwards compatibility. 
 `content` being a reserved property will not be respected by the **node**; it does not need to know anything about 
 `content` being reserved for **frost-api** backwards compatibility.
-
-##### Signing
-
-**frost-api** will need to sign any verifiable claim it creates with the issuer's private key that will be eventually be related to the issuer's identity claim in the future. **poet-js** provides the [configureSignVerifiableClaim](https://github.com/poetapp/poet-js/blob/master/src/VerifiableClaimSigner.ts#L48) function to sign claims.
 
 ---- 
 
