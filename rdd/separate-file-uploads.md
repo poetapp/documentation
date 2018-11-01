@@ -114,9 +114,17 @@ Replace `content` with `archiveUrl` & `hash` by uploading the value of the `cont
 
 **frost-api** will need to sign any verifiable claim it creates with the issuer's private key that will be eventually be related to the issuer's identity claim in the future. **poet-js** provides the [configureSignVerifiableClaim](https://github.com/poetapp/poet-js/blob/master/src/VerifiableClaimSigner.ts#L48) function to sign claims.
 
+---- 
+
+### **explorer-web**: Handle Claim Properties Dynamically
+
+https://github.com/poetapp/explorer-web/issues/365
+
+Explorer Web may need to be updated to show any properties a claim contains instead of fixed properties.
+
 ----
 
-### **frost-api**: Identity Public/Private Key
+### **frost-api**: (future) Identity Public/Private Key
 
 https://github.com/poetapp/frost-api/issues/527
 
@@ -126,20 +134,12 @@ The key pair will be stored in mongo db and will be encrypted/decrypted by the v
 
 ----
 
-### **frost-api**: User Default Public/Private Key
+### **frost-api**: (future) User Default Public/Private Key
 https://github.com/poetapp/frost-api/issues/528
 
 User key pairs will be stored in mongo db and will be encrypted/decrypted by the vault. The key pairs should be generated on account creation using [@poet/poetjs:generateED25519Base58Keys](https://github.com/poetapp/poet-js/blob/master/src/util/KeyHelper.ts#L141). 
 
 A solution will need to be implemented to create key pairs for existing accounts.
-
----- 
-
-### **explorer-web**: Handle Claim Properties Dynamically
-
-https://github.com/poetapp/explorer-web/issues/365
-
-Explorer Web may need to be updated to show any properties a claim contains instead of fixed properties.
 
 ----
 
