@@ -68,3 +68,5 @@ In order to easily view claims and content on the Po.et Network, [Explorer Web](
 Po.et is still in its infancy, yet there are already the basic building blocks in place of its first layer, which is focused on enabling content creators to record and prove ownership of their works. This base layer is being improved upon with features that will make it more robust and scalable so that the Po.et Network can ultimately be the open platform for the world’s creative content: the verifiable web.
 
 Once the base layer is completed, further innovations will be built on top of it so that content owners and consumers small and large can tap into the immense offering that a global network of content creators will unlock.
+
+[Learn about our file API](poet-file-api.md)
