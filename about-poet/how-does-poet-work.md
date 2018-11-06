@@ -49,13 +49,13 @@ By operating a node, the Po.et Network becomes more decentralized and node opera
 
 #### Frost
 
-Frost is an easy to use interface that allows publishers to record their works on the Po.et Network. It is designed to manage the technical details while abstracting away the specialized knowledge necessary for implementing a public key infrastructure.
+[Frost](https://frost.poetnetwork.net) is an easy to use interface that allows publishers to record their works on the Po.et Network. It is designed to manage the technical details while abstracting away the specialized knowledge necessary for implementing a public key infrastructure.
 
 Frost is composed of two parts:
 - An API that enables developers to interact with the Po.et Network programmatically
 - A web front-end for creating user accounts and managing the private/public keys and API tokens linked to each account
 
-The web front-end (a.k.a., [Frost Web](https://frost.po.et/)) uses the Frost API to provide a familiar account and API token management system to developers and end users, for example, WordPress bloggers.
+The web front-end ([Frost Web](https://github.com/poetapp/frost-web)) uses the Frost API to provide a familiar account and API token management system to developers and end users, for example, WordPress bloggers.
 
 #### WordPress Plugin
 
