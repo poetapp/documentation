@@ -19,7 +19,7 @@ Claims can have any information at all, but must include:
 * `issuer` - A URI referencing the identity (person or orginazition) making the claim
 * `issuanceDate` - The date the claim was made (can be compared to current atomic time and potentially rejected if it is too far in the past), recorded as an [ISO 8601 string](https://en.wikipedia.org/wiki/ISO_8601) in UTC time
 * `claim` - An object containing properties for the claim being made
-* `proof` - A [Linked Data Signature](https://w3c-dvcg.github.io/ld-signatures/#linked-data-signature-overview) object
+* `sec:proof` - A [Linked Data Signature](https://w3c-dvcg.github.io/ld-signatures/#linked-data-signature-overview) object
   - `type` - A URI that identifies the digital signature suite that was used to create the signature. Often, just the signature suite name (e.g. RsaSignature2018) is required from developers to initiate the creation of a signature. 
   - `creator` - A URI that identifies the public/private key pair associated with the signature.The URI SHOULD be a URL that can be 
   dereferenced to obtain a linked data document that contains a link identifying the entity that owns the key pair. 
@@ -35,27 +35,60 @@ For example, a claim could look like this:
 
 ```json
 {
-  "id": "po.et://claims/15867401b92567b4f7ea83e39a646ab9eb581b560bc78488b7a0c1b586c70215",
-  "type": ["po.et://schemas/claim-types/creative-work"],
-  "issuer": "po.et://identities/123",
-  "issuanceDate": "2018-05-22T22:05:53.391Z",
-  "claim": {
-    "name": "The Murders in the Rue Morgue",
-    "author": "Edgar Allan Poe",
-    "tags": ["short story", "detective story", "detective"],
-    "dateCreated": "1841-01-01T00:00:00.000Z",
-    "datePublished": "1841-01-01T00:00:00.000Z",
-    "archiveUrl": "po.et://creative-works/ipfs/<ipfs hash>",
-    "canonicalUrl": "http://xroads.virginia.edu/~hyper/poe/murders.html",
-    "hash": "<file hash>"
+  '@context': {
+    cred: 'https://w3id.org/credentials#',
+    dc: 'http://purl.org/dc/terms/',
+    schema: 'http://schema.org/',
+    sec: 'https://w3id.org/security#',
+    id: 'sec:digestValue',
+    issuer: 'cred:issuer',
+    issuanceDate: 'cred:issued',
+    type: 'schema:additionalType',
+    claim: 'schema:CreativeWork',
+    archiveUrl: 'schema:url',
+    author: 'schema:author',
+    canonicalUrl: 'schema:url',
+    contributors: {
+      '@id': 'schema:ItemList',
+      '@container': '@list',
+      '@type': 'schema:contributor',
+    },
+    copyrightHolder: 'schema:copyrightHolder',
+    dateCreated: 'schema:dateCreated',
+    datePublished: 'schema:datePublished',
+    license: 'schema:license',
+    name: 'schema:name',
+    tags: 'schema:keywords',
+    hash: 'sec:digestValue',
   },
-  "proof": {
-    "type": "EcdsaKoblitzSignature2016",
-    "creator": "https://example.com/i/pat/keys/5",
-    "created": "2017-09-23T20:21:34Z",
-    "nonce": "2bbgh3dgjg2302d-d2b3gi423d42",
-    "proofValue": "304402201824b78d3703162eb7f240341968ebfecad1f002f988dbc9ec80c1317e49d6290220470124c7425a5d8024778991863f0a25931a7e45fb72223bea81728a08e30b50",
-  }
+  id: 'f4b3e6cd7e516211d1b718b84860d26f59e3933c03c25c29d4e9ce9cc34ff26b',
+  type: ClaimType.Work,
+  issuer:
+    'data:;base64,eyJhbGdvcml0aG0iOiJFZDI1NTE5U2lnbmF0dXJlMjAxOCIsInB1YmxpY0tleSI6IkdhRWZ2QURLQUw1ZXVWQjZxZ2p1djlnMkxoOVBhM2FuWkxLZjRnUlFvWVM0In0=',
+  issuanceDate: '2018-10-12T01:54:11.559Z',
+  claim: {
+    name: 'A Study in Scarlet',
+    author: 'Arthur Conan Doyle',
+    tags: 'detective novel, detective',
+    dateCreated: '1886-01-01T00:00:00.000Z',
+    datePublished: '1887-01-01T00:00:00.000Z',
+  },
+  'sec:proof': {
+    '@graph': {
+      '@type': 'sec:Ed25519Signature2018',
+      'dc:created': {
+        '@type': 'http://www.w3.org/2001/XMLSchema#dateTime',
+        '@value': '2018-10-12T01:54:11Z',
+      },
+      'dc:creator': {
+        '@id':
+          'data:;base64,eyJhbGdvcml0aG0iOiJFZDI1NTE5U2lnbmF0dXJlMjAxOCIsInB1YmxpY0tleSI6IkdhRWZ2QURLQUw1ZXVWQjZxZ2p1djlnMkxoOVBhM2FuWkxLZjRnUlFvWVM0In0=',
+      },
+      'sec:jws':
+        'eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19.._qJsUa-caH8BLds4rVLV9GuMEqxUlw6VRyfXN23Z0KHgtnJIiTnXoSzuwFF_rnIicza94Ggh5xkGAT4hZcrwBQ',
+      'sec:nonce': 'cjn5czg1u0000mnc93s13ihuz',
+    },
+  },
 }
 ```
 
