@@ -33,7 +33,7 @@ Claims can have any information at all, but must include:
 For example, a claim could look like this:
 
 
-```json
+```js
 {
   '@context': {
     cred: 'https://w3id.org/credentials#',
