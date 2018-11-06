@@ -7,7 +7,7 @@ When requested to review a PR, there are 3 possible options you can choose after
     - understand how those changes will affect the existing code base, and
     - are either sure that CI test suites cover everything or you have manually tested.
 - If you do not select `approve` you should still complete the checklist below.
-- If you skipped an item (maybe you didn't have time), but the item applies please indicate in the comments.
+- If you skipped an item (maybe you didn't have time) but the item applies, please indicate in the comments.
 
 ## PR Review Checklist
 
