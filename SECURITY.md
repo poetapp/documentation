@@ -1,6 +1,6 @@
-# Reporting Security Issues and Bugs
+# Reporting Security Issues
 
-We at Po.et believe that responsible disclosure of security vulnerabilities and bugs in open source packages helps to ensure the security and privacy of their users. We value the security community, and we aim to work with responsible security researchers to make Po.et's open source protocol and apps reliable and secure for all Po.et users.
+We at Po.et believe that responsible disclosure of security vulnerabilities in open source packages helps to ensure the security and privacy of their users. We value the security community, and we aim to work with responsible security researchers to make Po.et's open source protocol and apps reliable and secure for all Po.et users.
 
 If you believe you have found a security vulnerability in one of Po.et's apps or protocol, we strongly encourage you to let us know right away. We will investigate all legitimate reports and do our best to resolve the problem quickly.
 
