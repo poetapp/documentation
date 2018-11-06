@@ -1,6 +1,6 @@
 # WordPress Plugin
 
-### Get an API Token
+## Get an API Token
 
 1. Go to https://frost.po.et.
 2. Click on **Login / Sign Up**.
@@ -9,7 +9,7 @@
 5. Click on the pre-created API Token to copy it to your clipboard.
 6. Save the API Token in a secure place (don't share it with anyone).
 
-### Add Plugin
+## Add Plugin
 
 This tutorial assumes your are running WordPress version 4.9.8, but it should work with other versions too.
 
@@ -26,7 +26,7 @@ This tutorial assumes your are running WordPress version 4.9.8, but it should wo
 8. Make sure "Post articles automatically on insert or update?" is checked.
 9. Click on **Save Changes**.
 
-### Create a Post
+## Create a Post
 
 1. Go to **Posts**, then click on **Add New**.
 2. Write your post.
