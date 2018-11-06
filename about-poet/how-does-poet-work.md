@@ -2,7 +2,7 @@
 
 Po.et is building the verifiable web: the decentralized protocol suite for content attribution, discovery, monetization and reputation.
 
-Using digital signatures and blockchain technology, Po.et empowers content creators to sign, permanently record, and timestamp [claims](glossary.md#claims) about their content. Those claims, taken together, form something like a nutritional label for media content, which helps consumers and publishers discover and reward the content that best fits their needs.
+Using digital signatures and blockchain technology, Po.et empowers content creators to sign, permanently record, and timestamp [claims](../reference/glossary.md#claim-verifiable-claim) about their content. Those claims, taken together, form something like a nutritional label for media content, which helps consumers and publishers discover and reward the content that best fits their needs.
 
 To deliver the verifiable web to content creators and consumers, Po.et leverages four important technologies:
 - Content hashing
@@ -18,7 +18,7 @@ Cryptographic hashing functions provide the means to irrefutably identify conten
 
 #### Digital Signatures
 
-Digital signatures enable content creators to prove ownership of a piece of content (a Po.et [Creative Work Claim](glossary.md#creative-work-claim)), or another party's right to license it (a License Claim), or any number of other possible claims. Signatures provide cryptographic proof of who issued a claim. Every claim in Po.et is signed by its issuer, which means a random user can't publish claims on behalf of another user. Claims include the hash of the claim's subject along with other information provided by the claim creator. Combined with content hashing, digital signatures provide cryptographic proof of who said what, and the subject the claim is about.
+Digital signatures enable content creators to prove ownership of a piece of content (a Po.et [Creative Work Claim](../reference/glossary.md#creative-work-claim-type)), or another party's right to license it (a License Claim), or any number of other possible claims. Signatures provide cryptographic proof of who issued a claim. Every claim in Po.et is signed by its issuer, which means a random user can't publish claims on behalf of another user. Claims include the hash of the claim's subject along with other information provided by the claim creator. Combined with content hashing, digital signatures provide cryptographic proof of who said what, and the subject the claim is about.
 
 
 #### Decentralized Storage
