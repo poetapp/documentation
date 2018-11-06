@@ -30,7 +30,7 @@ This tutorial assumes your are running WordPress version 4.9.8, but it should wo
 
 1. Go to **Posts**, then click on **Add New**.
 2. Write your post.
-3. If you want to display a "Verified on Po.et" badge with your post, add the shortcode `[poet-badge]` in your post where you want the badge to appear.
+3. If you want to display a "Verified on Po.et" badge with your post, add the shortcode `[poet-badge]` in your post where you want the badge to appear.  
 ![Po.et Badge](poet-badge.png)
 4. Click on **Publish**.
 
