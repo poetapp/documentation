@@ -1,6 +1,6 @@
 # Create Your First Claim
 
-### Get an API Token
+## Get an API Token
 
 1. Go to https://frost.po.et.
 2. Click on **Login / Sign Up**.
@@ -9,7 +9,7 @@
 5. Click on the pre-created API Token to copy it to your clipboard.
 6. Save the API Token in a secure place (don't share it with anyone).
 
-### Register Your Claim
+## Register Your Claim
 
 1. Open your command line terminal.
 2. Enter these two commands (replace `MY_FROST_TOKEN` with the API Token you copied above).
@@ -33,7 +33,7 @@ $ curl -H "Content-Type: application/json" -H "token: $FROST_TOKEN" -X POST -d \
 
 4. The API will return a `workId` (save it for the next section).
 
-### Retrieve Your Claim
+## Retrieve Your Claim
 
 1. Retrieve your work (replace `YOUR_WORKID` with the `workId` you received above).
 ```bash
