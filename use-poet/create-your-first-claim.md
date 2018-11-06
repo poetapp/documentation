@@ -2,7 +2,7 @@
 
 ## Get an API Token
 
-1. Go to https://frost.po.et.
+1. Go to https://frost.poetnetwork.net.
 2. Click on **Login / Sign Up**.
 3. Under **Sign Up**, enter your email address and set a password.
 4. Click on **Get API Token**.
@@ -14,7 +14,7 @@
 1. Open your command line terminal.
 2. Enter these two commands (replace `MY_FROST_TOKEN` with the API Token you copied above).
 ```bash
-$ export FROST_URL="https://api.frost.po.et"
+$ export FROST_URL="https://frost-api.poetnetwork.net"
 $ export FROST_TOKEN="MY_FROST_TOKEN"
 ```
 
@@ -23,7 +23,7 @@ $ export FROST_TOKEN="MY_FROST_TOKEN"
 $ curl -H "Content-Type: application/json" -H "token: $FROST_TOKEN" -X POST -d \
   '{
     "name":"Bitcoin: A Peer-to-Peer Electronic Cash System",
-    "datePublished":"2018-09-20T12:12:12.000Z",
+    "datePublished":"2018-10-31T12:12:12.000Z",
     "dateCreated": "2008-10-31T00:00:00.001Z",
     "author": "Satoshi Nakamoto",
     "tags": "Bitcoin",
