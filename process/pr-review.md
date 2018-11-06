@@ -5,7 +5,7 @@ When requested to review a PR, there are 3 possible options you can choose after
 - **ONLY** select `approve` if you:
     - have thoroughly reviewed all of the changes to the code, 
     - understand how those changes will affect the existing code base, and
-    - are either sure that Travis covers everything or you have manually tested.
+    - are either sure that CI test suites cover everything or you have manually tested.
 - If you do not select `approve` you should still complete the checklist below.
 - If you skipped an item (maybe you didn't have time), but the item applies please indicate in the comments.
 
@@ -49,16 +49,14 @@ PRs differ in size and scope, so not all PRs will require all of the checklist t
 
 ## PR Process
 
-2 PR reviewers are required for all PRs, except for automated PRs such as npm package updates (e.g., Greenkeeper), in which case only one approval is required.
-
-1. New PR is created by PR creator and at least 2 PR reviewers are selected, including one from QE team if required (see below).
+1. New PR is created by PR creator and at least 1 PR reviewer is selected, including one from QE team if required (see below).
 1. PR creator self-assigns the PR, enabling everyone to scan down the list of open PRs and easily see who is responsible.
-1. PR reviewers reference the PR checklist above to determine which items are relevant to the PR.
-1. PR reviewers review the code changes.
-1. PR reviewers decide whether to `approve`, `request changes` or `comment`.
-1. PR reviewers copy the PR checklist and paste it into their "Review summary" comment.
-1. PR reviewers complete each item in the checklist to confirm the PR satisfies all requirements.
-1. PR creator only merges PR if (a) at least two PR reviewers `accept` AND (b) all items from the checklist have been filled-in and completed.
+1. PR reviewer references the PR checklist above to determine which items are relevant to the PR.
+1. PR reviewer reviews the code changes.
+1. PR reviewer decides whether to `approve`, `request changes` or `comment`.
+1. PR reviewer copies the PR checklist and paste it into his/her "Review summary" comment.
+1. PR reviewer completes each item in the checklist to confirm the PR satisfies all requirements.
+1. PR creator only merges PR if (a) at least one PR reviewer `approve`s AND (b) all relevant items from the checklist have been filled-in and completed.
 
 ### QE Review Requirement
 
