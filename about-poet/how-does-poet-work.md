@@ -71,4 +71,4 @@ Po.et is still in its infancy, yet there are already the basic building blocks i
 
 Once the base layer is completed, further innovations will be built on top of it so that content owners and consumers small and large can tap into the immense offering that a global network of content creators will unlock.
 
-[Learn about our file API](poet-file-api.md)
+[Learn about the Po.et file API](poet-file-api.md)
