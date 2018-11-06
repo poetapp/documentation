@@ -37,6 +37,8 @@ When a Po.et Node downloads blocks from the blockchain, it records for each clai
 
 ### The Parts of the Po.et Engine
 
+![Po.et Network Overview](poet-network-overview.png)
+
 There are several pieces of software developed by Po.et that make up the engine that drives the Po.et Network, enabling the four technologies above to bring the verifiable web to life.
 
 #### Node
