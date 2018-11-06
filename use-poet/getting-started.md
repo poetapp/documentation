@@ -6,6 +6,6 @@ Frost is Po.et's official key-custody agent. It makes it easier for you to work 
 
 ### Ready to Try It Out?
 
-Follow our step-by-step instructions to [create your first claim](create-your-first-claim.html) on the Po.et Network in just a few minutes.
+Follow our step-by-step instructions to [create your first claim](create-your-first-claim.md) on the Po.et Network in just a few minutes.
 
-If you're a WordPress user, try [installing our plugin](wordpress-plugin.html).
+If you're a WordPress user, try [installing our plugin](wordpress-plugin.md).
