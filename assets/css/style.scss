@@ -11,3 +11,29 @@ a {
   width:100%;
   max-width:200px;
 }
+
+section {
+  width:70%;
+  float:right;
+  clear:left;
+  padding-bottom:50px;
+}
+
+header {
+  width:20%;
+  float:left;
+  -webkit-font-smoothing:subpixel-antialiased;
+}
+
+
+footer {
+  width:20%;
+  float:left;
+  bottom:50px;
+  -webkit-font-smoothing:subpixel-antialiased;
+}
+
+.wrapper {
+  width:100%;
+  margin:0 auto;
+}
