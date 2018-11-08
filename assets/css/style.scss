@@ -15,6 +15,7 @@ section {
 
 header {
   width:20%;
+  max-width:250px;
   float:left;
   position:fixed;
   -webkit-font-smoothing:subpixel-antialiased;
@@ -26,6 +27,6 @@ header {
 }
 
 .logo {
-    width:100%;
-    max-width:200px;
+  width:100%;
+  max-width:200px;
 }
