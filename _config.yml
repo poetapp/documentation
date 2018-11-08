@@ -2,3 +2,5 @@ theme: jekyll-theme-minimal
 title: Po.et Documentation
 description: Technical documentation for the Po.et Network
 logo: poet-logo.jpeg
+github.owner_url: https://github.com/poetapp
+github.owner_name: Po.et
