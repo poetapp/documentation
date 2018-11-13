@@ -7,7 +7,7 @@ Timestamp Receipts are used to verify that a given file existed at a point in ti
 - https://github.com/poetapp/node/issues/112
 - https://github.com/poetapp/node/issues/293
 
-## Receipts Generation
+## Receipt Generation
 
 Receipts are actual files a user requests, downloads and stores. These receipts contain all the data necessary to cryptographically prove that a file existed at a point in time.
 
