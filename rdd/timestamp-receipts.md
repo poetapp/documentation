@@ -28,7 +28,7 @@ The verification algorithm will need to follow these steps:
 - Download the timestamp from the blockchain, given the blockHash provided in the receipt
 - Compare the downloaded timestamp against the Merkle Root
 
-Creating the Merkle Tree out of the Verifiable Claim Ids deterministically will either require storing the position of the Verifiable Claim Id we are generating the receipt for in the receipt itself or sorting the ids deterministically.
+Creating the Merkle Tree out of the Verifiable Claim Ids deterministically will require storing the position of the Verifiable Claim Id we are generating the receipt for in the receipt itself and sorting the ids deterministically.
 
 ## Merkle Trees
 
