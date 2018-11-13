@@ -2,7 +2,7 @@
 
 ### [Claim Batching](claim-batching.md)
 
-### [Blockchain Confirmation](blockchain-confirmation.md)
+### [Blockchain Confirmations](blockchain-confirmations.md)
 
 ### [Separate File Uploads](separate-file-uploads.md)
 

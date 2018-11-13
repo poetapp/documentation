@@ -4,4 +4,4 @@
 
 ### [Claims](claims.md)
 
-##### [Creative Work Claim Type](claim-types/creative-work.md)
+##### [Creative Work Claim Type](claim-type/creative-work.md)
