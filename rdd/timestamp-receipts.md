@@ -1,6 +1,6 @@
 # Timestamp Receipts
 
-Timestamp Receipts are used to verify that a given set of data existed at a point in time by checking the hash of the set of data against a blockchain block.
+Timestamp Receipts are used to verify that a given file existed at a point in time by checking the hash of the file against a blockchain block.
 
 ## Related Issues 
 - https://github.com/poetapp/node/issues/178
