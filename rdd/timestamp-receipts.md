@@ -2,8 +2,6 @@
 
 Timestamp Receipts are used to verify that a given set of data existed at a point in time by checking the hash of the set of data against a blockchain block.
 
-For reference, see OTT's How OpenTimestamps Works — [Notaries and Time Attestations](https://petertodd.org/2016/opentimestamps-announcement#notaries-and-time-attestations) and [Scalability Through Aggregation](https://petertodd.org/2016/opentimestamps-announcement#scalability-through-aggregation). ChainPoint's [whitepaper](https://github.com/chainpoint/whitepaper/blob/master/chainpoint_white_paper.pdf) also contains a section on Timestamp Receipts.
-
 ## Related Issues 
 - https://github.com/poetapp/node/issues/178
 - https://github.com/poetapp/node/issues/112
@@ -88,3 +86,6 @@ For a first deliverable, going with Solution 2 is the best option. Solution 1 is
 - [OpenTimeStamps](https://opentimestamps.org/)
 - [multihash](https://github.com/multiformats/multihash)
 - [Trie, Merkle, Patricia: A Blockchain Story](https://hackernoon.com/trie-merkle-patricia-a-blockchain-story-d8f20efc98d4)
+- [How OpenTimestamps Works — Notaries and Time Attestations](https://petertodd.org/2016/opentimestamps-announcement#notaries-and-time-attestations)
+- [How OpenTimestamps Works — Scalability Through Aggregation](https://petertodd.org/2016/opentimestamps-announcement#scalability-through-aggregation)
+- [ChainPoint's whitepaper](https://github.com/chainpoint/whitepaper/blob/master/chainpoint_white_paper.pdf)
