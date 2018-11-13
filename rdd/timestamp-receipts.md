@@ -80,12 +80,12 @@ At [5 satoshis per byte](https://bitcoinfees.earn.com/), the extra 32 bytes to s
 For a first deliverable, going with Solution 2 is the best option. Solution 1 is an optimization we should keep in mind.
 
 ## References
+- [Trusted Timestamping](https://en.wikipedia.org/wiki/Trusted_timestamping)
 - [Merkle Tree](https://en.wikipedia.org/wiki/Merkle_tree)
 - [Patricia Tree](https://github.com/ethereum/wiki/wiki/Patricia-Tree)
-- [Trusted Timestamping](https://en.wikipedia.org/wiki/Trusted_timestamping)
-- [OpenTimeStamps](https://opentimestamps.org/)
-- [multihash](https://github.com/multiformats/multihash)
 - [Trie, Merkle, Patricia: A Blockchain Story](https://hackernoon.com/trie-merkle-patricia-a-blockchain-story-d8f20efc98d4)
+- [OpenTimeStamps](https://opentimestamps.org/)
 - [How OpenTimestamps Works — Notaries and Time Attestations](https://petertodd.org/2016/opentimestamps-announcement#notaries-and-time-attestations)
 - [How OpenTimestamps Works — Scalability Through Aggregation](https://petertodd.org/2016/opentimestamps-announcement#scalability-through-aggregation)
 - [ChainPoint's whitepaper](https://github.com/chainpoint/whitepaper/blob/master/chainpoint_white_paper.pdf)
+- [multihash](https://github.com/multiformats/multihash)
