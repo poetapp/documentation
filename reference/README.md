@@ -5,3 +5,5 @@
 ### [Claims](claims.md)
 
 ##### [Creative Work Claim Type](claim-type/creative-work.md)
+
+### [Glossary](glossary.md)
