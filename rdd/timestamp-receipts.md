@@ -56,7 +56,8 @@ See [IPFS Hash Tests](https://github.com/poetapp/ipfs-hash-tests).
 
 ### Cons
 - Requires further experimentation and research.
-- IPFS does not provide enough or good documentation about this.
+- Requires low level understanding of IPFS internals.
+- Documentation on the subject is lacking at best.
 
 ### Approach 2 — Add Timestamp to Anchor
 
