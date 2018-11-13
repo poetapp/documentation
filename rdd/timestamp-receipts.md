@@ -9,26 +9,57 @@ For reference, see OTT's How OpenTimestamps Works — [Notaries and Time Attesta
 - https://github.com/poetapp/node/issues/112
 - https://github.com/poetapp/node/issues/293
 
-## Solution 1 — IPFS Hash as Receipt
+## Receipts Generation
 
-We'd need to store the [different variables that IPFS uses to calculate the hash](https://discuss.ipfs.io/t/how-to-calculate-file-directory-hash/777) in the timestamp receipt to be able to validate the timestamp. 
+Receipts are actual files a user requests, downloads and stores. These receipts contain all the data necessary to cryptographically prove that a file existed at a point in time.
+
+This is achieved by storing all the data necessary to regenerate the hash that was stored in the blockchain: the file that we want to validate and the hashes of other necessary files of the same batch.
+
+In practice, the verification algorithm requires: 
+- the hash of the block at which the timestamp was stored,
+- the verifiable claim that we want to validate, 
+- the work addressed by the verifiable claim,
+- and the hashes of other necessary files of the same verifiable claim batch.
+
+## Receipt Verification
+
+The verification algorithm will need to follow these steps:
+- Ensure the Verifiable Claim's id is correct, using Po.et-JS
+- Calculate the hash of the work and ensure it matches the one provided in the Verifiable Claim
+- Create a Merkle Tree with the id of the Verifiable Claim provided, along with the ids of the verifiable claims provided in the receipt
+- Download the timestamp from the blockchain, given the blockHash provided in the receipt
+- Compare the downloaded timestamp against the Merkle Root
+
+## Merkle Trees
+
+Using a Merkle Tree provide a deterministic way to reduce a set of hashes to a single hash and also allows us to reduce the amount of hashes that need to be stored and calculated. The latter is an optimization rather than a requirement, but it is a standard in the industry.
+
+## Implementation
+
+### Approach 1 — IPFS Hash as Receipt
+
+We should be able to deterministically generate the same multihash IPFS generates for a given file.
+
+We would need to store the [different variables that IPFS uses to calculate the hash](https://discuss.ipfs.io/t/how-to-calculate-file-directory-hash/777) in the timestamp receipt to be able to validate the timestamp. 
 
 With Claim Batching this would include understanding how the hash of a directory is affected by its content.
 
 See https://github.com/poetapp/node/issues/112 for related issues with generating IPFS hashes without the IPFS binary.
 
-### Pros
+#### Pros
 - No modification to our timestamping process
-- Would need to learn more about IPFS.
 - No extra cost in fees.
+- Would need to learn more about IPFS.
 
 ### Cons
 - Would require plenty of research.
-- Unknown factor. Can't estimate effort due to research requirement.
+- IPFS does not provide enough or good documentation about this.
+- Requires further experimentation and research.
+- Would need to learn more about IPFS.
 
-## Solution 2 — MERKLE_ROOT(RIPEMD160(SHA256(verifiableClaimId)))
+### Approach 2 — Add Timestamp to Anchor
 
-Alternatively we can store the Merkle Root of the verifiable claims included in the verifiable claim batch right along the IPFS Directory Hash in the OP_RETURN data for the receipt to be storage-protocol-independent. 
+We can store the Merkle/Patricia Root of the Verifiable Claims included in the Verifiable Claim Batch after the IPFS Directory Hash in the OP_RETURN data for the receipt to be storage-protocol independent. 
 
 OP_RETURN seems to support [up to 83 bytes](https://bitcoin.org/en/developer-guide#null-data) of data (was 40 for a while). sha256 uses 32 bytes. We could RIMEMD160 it to reduce it to 20 bytes, as OTT does.
 
@@ -49,6 +80,7 @@ At [5 satoshis per byte](https://bitcoinfees.earn.com/), the extra 32 bytes to s
 For a first deliverable, going with Solution 2 is the best option. Solution 1 is an optimization we should keep in mind.
 
 ## References
+- [Merkle Tree](https://en.wikipedia.org/wiki/Merkle_tree)
 - [Patricia Tree](https://github.com/ethereum/wiki/wiki/Patricia-Tree)
 - [Trusted Timestamping](https://en.wikipedia.org/wiki/Trusted_timestamping)
 - [OpenTimeStamps](https://opentimestamps.org/)
