@@ -47,15 +47,15 @@ The Po.et Node (a.k.a., node) is responsible for receiving new claims, storing t
 
 By operating a node, the Po.et Network becomes more decentralized and node operators can have more control over how their content is published to the network. For example, a large content publisher may want to ensure that their content is published consistently and will not want to rely on a third party to maintain a working node. Therefore, they can simply deploy their own node and host it according to whatever standards and availability target they chose.
 
-#### Frost
+#### API
 
-[Frost](https://frost.poetnetwork.net) is an easy to use interface that allows publishers to record their works on the Po.et Network. It is designed to manage the technical details while abstracting away the specialized knowledge necessary for implementing a public key infrastructure.
+The Po.et API is an easy to use REST interface that allows publishers to record their works on the Po.et Network. It is designed to manage the technical details while abstracting away the specialized knowledge necessary for implementing a public key infrastructure.
 
 Frost is composed of two parts:
 - An API that enables developers to interact with the Po.et Network programmatically
-- A web front-end for creating user accounts and managing the private/public keys and API tokens linked to each account
+- A web front-end for creating user accounts and managing the private/public key pair and API access tokens linked to each account
 
-The web front-end ([Frost Web](https://github.com/poetapp/frost-web)) uses the Frost API to provide a familiar account and API token management system to developers and end users, for example, WordPress bloggers.
+The web front-end ([Frost Web](https://frost.poetnetwork.net)) uses the Po.et API to provide a familiar account and API token management system to developers and end users, for example, WordPress bloggers.
 
 #### WordPress Plugin
 
@@ -64,6 +64,8 @@ The [Po.et WordPress Plugin](https://github.com/poetapp/wordpress-plugin) makes 
 #### Explorer Web
 
 In order to easily view claims and content on the Po.et Network, [Explorer Web](https://github.com/poetapp/explorer-web) is a web front-end linked to a node that can retrieve and display those claims and works.
+
+Frost Web and Explorer Web will soon be merged into a single integrated web application that will also enable non-technical users to register claims on the Po.et Network.
 
 ### The Future of Po.et
 
