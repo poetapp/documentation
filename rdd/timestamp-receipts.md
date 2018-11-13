@@ -38,24 +38,19 @@ Using a Merkle Tree provide a deterministic way to reduce a set of hashes to a s
 
 ### Approach 1 — IPFS Hash as Receipt
 
-We should be able to deterministically generate the same multihash IPFS generates for a given file.
+We should be able to deterministically generate the same multihash IPFS generates for a given file or directory.
 
-We would need to store the [different variables that IPFS uses to calculate the hash](https://discuss.ipfs.io/t/how-to-calculate-file-directory-hash/777) in the timestamp receipt to be able to validate the timestamp. 
+To calculate the hash of a file we would need to store the [different variables that IPFS uses to calculate the hash](https://discuss.ipfs.io/t/how-to-calculate-file-directory-hash/777) in the timestamp receipt to be able to validate the timestamp. 
 
-With Claim Batching this would include understanding how the hash of a directory is affected by its content.
-
-See https://github.com/poetapp/node/issues/112 for related issues with generating IPFS hashes without the IPFS binary.
+Calculating the hash of a directory requires further research. 
 
 #### Pros
 - No modification to our timestamping process
 - No extra cost in fees.
-- Would need to learn more about IPFS.
 
 ### Cons
-- Would require plenty of research.
-- IPFS does not provide enough or good documentation about this.
 - Requires further experimentation and research.
-- Would need to learn more about IPFS.
+- IPFS does not provide enough or good documentation about this.
 
 ### Approach 2 — Add Timestamp to Anchor
 
@@ -74,10 +69,6 @@ At [5 satoshis per byte](https://bitcoinfees.earn.com/), the extra 32 bytes to s
 - Modification to our timestamping process
 - Extra cost in fees.
 - More space taken in OP_RETURN. If it gets cut back to 40 bytes our transactions would get rejected.
-
-## Conclusion
-
-For a first deliverable, going with Solution 2 is the best option. Solution 1 is an optimization we should keep in mind.
 
 ## References
 - [Trusted Timestamping](https://en.wikipedia.org/wiki/Trusted_timestamping)
