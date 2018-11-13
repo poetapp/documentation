@@ -47,3 +47,10 @@ At [5 satoshis per byte](https://bitcoinfees.earn.com/), the extra 32 bytes to s
 ## Conclusion
 
 For a first deliverable, going with Solution 2 is the best option. Solution 1 is an optimization we should keep in mind.
+
+## References
+- [Patricia Tree](https://github.com/ethereum/wiki/wiki/Patricia-Tree)
+- [Trusted Timestamping](https://en.wikipedia.org/wiki/Trusted_timestamping)
+- [OpenTimeStamps](https://opentimestamps.org/)
+- [multihash](https://github.com/multiformats/multihash)
+- [Trie, Merkle, Patricia: A Blockchain Story](https://hackernoon.com/trie-merkle-patricia-a-blockchain-story-d8f20efc98d4)
