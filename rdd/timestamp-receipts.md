@@ -42,7 +42,13 @@ We should be able to deterministically generate the same multihash IPFS generate
 
 To calculate the hash of a file we would need to store the [different variables that IPFS uses to calculate the hash](https://discuss.ipfs.io/t/how-to-calculate-file-directory-hash/777) in the timestamp receipt to be able to validate the timestamp. 
 
+We can use [js-ipld-dag-pb](https://github.com/ipld/js-ipld-dag-pb) to manually create a DAGNode and [js-ipfs](https://github.com/ipfs/js-ipfs) to create an IPFS object. This is equivalent to the operation `ipfs object put`.
+
+IPFS files are merkledags of IPFS objects.
+
 Calculating the hash of a directory requires further research. 
+
+See [IPFS Hash Tests](https://github.com/poetapp/ipfs-hash-tests).
 
 #### Pros
 - No modification to our timestamping process
