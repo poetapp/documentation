@@ -15,11 +15,11 @@ A Claim Type describing a Creative Work. It must contain a hash of the work, an 
 ### Entity
 The subject of a Po.et Claim. Claims are made about a particular individual or thing (e.g., a license claim). The subject refers to the Entity that the Claim describes. For example, a Creative Work Claim describes a Creative Work Entity. An Identity Claim describes a Person or Organization, and so on. An Entity is the canonical sum of all claims made about it.
 
-### Frost API
-The **Frost API** is Po.et's official key-custody agent and Identity Provider. It makes it easier to work with Po.et by hiding the complex details of key and identity management from Po.et application developers. In the future, other custody agents and Identity Providers may provide similar services to Po.et Network users.
+### Po.et API
+The **Po.et API** is Po.et's official key-custody agent and Identity Provider. It makes it easier to work with Po.et by hiding the complex details of key and identity management from Po.et application developers. In the future, other custody agents and Identity Providers may provide similar services to Po.et Network users.
 
 ### Identity
-An **Identity** is a Po.et Entity representing a [Person](https://schema.org/Person) or [Organization](https://schema.org/Organization). An Identity must have a public key to verify its Claim signatures. These are provided automatically by the Frost API.
+An **Identity** is a Po.et Entity representing a [Person](https://schema.org/Person) or [Organization](https://schema.org/Organization). An Identity must have a public key to verify its Claim signatures. These are provided automatically by the Po.et API.
 
 ### Identity Claim Type
 A Claim Type describing a Person or Organization. Identity claims do not contain personally identifiable information about Identities. Instead, they refer to an optional profile in the user's control. A profile may be modified, updated, or deleted at any time. For legal compliance and respect of privacy, if a Po.et application discovers that the user's Identity Profile has been updated, it should update all local copies to match, including the deletion of previously supplied profile information.
