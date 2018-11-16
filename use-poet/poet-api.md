@@ -1,7 +1,7 @@
 # Po.et API
 
 We are using the [OpenAPI specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md) to document the Frost API:
-- https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/
+[https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/](https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/)
 
 The purpose of the API is to:
 - Facilitate the creation and maintenance of Frost accounts
@@ -17,101 +17,70 @@ There are two other tokens sent by email:
 - Verify Account token - used when verifying an email address (see [Verify account](#verify-account) below)
 - Forgot Password token - used when resetting a password (see [Password change token](#password-change-token) below)
 
-### Health check
-
-- https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/healthCheck
+### [Health check](https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/healthCheck)
 
 ### Accounts
 
-#### Create account
-
-- https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/createAccount
+#### [Create account](https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/createAccount)
 
 Returns a Login token.
 
-#### Verify account
+#### [Verify account](https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/verifyAccount)
 
-When the user creates a new account the system automatically sends an email for the purpose of verifying the email address. This email contains a link with an embedded token, which the user only needs to click in order to verify the email address. Alternatively, the token can be passed programatically to the server:
-- https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/verifyAccount
+When the user creates a new account the system automatically sends an email for the purpose of verifying the email address. This email contains a link with an embedded token, which the user only needs to click in order to verify the email address. Alternatively, the token can be passed programatically to the server.
 
-#### Resend verification email
+#### [Resend verification email](https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/resendVerifyEmail)
 
 Requires a Login token.
 
-- https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/resendVerifyEmail
-
-#### Login to account
+#### [Login to account](https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/loginAccount)
 
 Authenticate with email address and password.
 
-- https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/loginAccount
-
 Returns a Login token.
 
-#### Get account profile
+#### [Get account profile](https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/getProfile)
 
 Requires a Login token.
 
-- https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/getProfile
+#### [Password reset](https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/passwordReset)
 
-#### Password reset
+When the user forgets or loses the account password, a new one can be requested programatically. An email is sent that contains a link with an embedded token, which the user can click in order to open the Frost website and set a new password.
 
-When the user forgets or loses the account password, a new one can be requested programatically.
-
-- https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/passwordReset
-
-An email is sent that contains a link with an embedded token, which the user can click in order to open the Frost website and set a new password.
-
-#### Password change
+#### [Password change](https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/passwordChange)
 
 Requires a Login token.
 
-- https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/passwordChange
-
-#### Password change token
+#### [Password change token](https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/passwordChangeToken)
 
 Requires a Forgot Password token.
 
-- https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/passwordChangeToken
-
 ### Tokens
 
-#### Create token
+#### [Create token](https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/createToken)
 
 Requires a Login token.
-
-- https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/createToken
 
 Returns a "test" or "live" API token.
 
-#### Get tokens
+#### [Get tokens](https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/getTokens)
 
 Requires a Login token.
 
-- https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/getTokens
-
-#### Delete token
+#### [Delete token](https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/deleteToken)
 
 Requires a Login token.
-
-- https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/deleteToken
 
 ### Works
 
-#### Create work
+#### [Create work](https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/createWork)
 
 Requires an API token.
 
-- https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/createWork
-
-#### Get all works
+#### [Get all works](https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/getAllWorks)
 
 Requires an API token.
 
-- https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/getAllWorks
-
-#### Get work
+#### [Get work](https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/getWork)
 
 Requires an API token.
-
-- https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/default/getWork
