@@ -6,6 +6,6 @@
 
 ### [Bug Reporting](bug-reporting.md)
 
-### [Security](../SECURITY.md)
-
 ### [Contributing](../CONTRIBUTING.md)
+
+### [Security](../SECURITY.md)
