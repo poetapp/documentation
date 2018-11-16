@@ -20,6 +20,7 @@ Commit with whatever commit message you want. Even "wip" and "typo" are acceptab
 1. When you click `merge` GitHub will allow you to set the commit's title and description. Both will be pre-filled for you, using the PR's title for the commit title and the list of commit messages for the description. Delete the description completely, leaving it blank. Make sure the commit title matches the PR title, ending in (#\<pr-number>) so the commit links back to the PR.
 
 ## Example
+
 See [this commit](https://github.com/poetapp/node/commit/d63ea002c91bbda59faedd47acc7ac15569fcad7). The commit message is `Fix Randomly Failing Integration Tests (#64)`. No extended description. You can click on the #64 and it'll take you to [the corresponding PR](https://github.com/poetapp/node/pull/64). 
 
 That PR has a more detailed description, the results of the code review, and links to the [Integration Test getWork200 Fails Randomly](https://github.com/poetapp/node/issues/61) issue.
