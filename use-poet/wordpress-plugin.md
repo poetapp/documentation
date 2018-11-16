@@ -21,7 +21,7 @@ This tutorial assumes your are running WordPress version 4.9.8, but it should wo
 6. Under the Po.et plugin, click on **Activate**.
 7. Then click on **Settings** and set the following:
     - Author Name: Fill in whatever name you want recorded in Po.et. It doesn’t have to match your WordPress blog.
-    - API URL - Use https://frost-api.poetnetwork.net/works. This is already filled in by default.
+    - API URL - Use https://api.poetnetwork.net/works. This is already filled in by default.
     - API Token - Enter the token you received above.
 8. Make sure "Post articles automatically on insert or update?" is checked.
 9. Click on **Save Changes**.

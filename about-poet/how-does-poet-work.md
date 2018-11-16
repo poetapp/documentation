@@ -49,17 +49,13 @@ By operating a node, the Po.et Network becomes more decentralized and node opera
 
 #### API
 
-The Po.et API is an easy to use REST interface that allows publishers to record their works on the Po.et Network. It is designed to manage the technical details while abstracting away the specialized knowledge necessary for implementing a public key infrastructure.
+The Po.et API is an easy to use REST interface that allows publishers to programmatically record their works on the Po.et Network. It is designed to manage the technical details while abstracting away the specialized knowledge necessary for implementing a public key infrastructure.
 
-Frost is composed of two parts:
-- An API that enables developers to interact with the Po.et Network programmatically
-- A web front-end for creating user accounts and managing the private/public key pair and API access tokens linked to each account
-
-The web front-end ([Frost Web](https://frost.poetnetwork.net)) uses the Po.et API to provide a familiar account and API token management system to developers and end users, for example, WordPress bloggers.
+There is also a web front-end for creating user accounts and managing the private/public key pair and API access tokens linked to each account. [Frost Web](https://frost.poetnetwork.net) uses the Po.et API to provide a familiar account and API token management system to developers and end users, for example, WordPress bloggers.
 
 #### WordPress Plugin
 
-The [Po.et WordPress Plugin](https://github.com/poetapp/wordpress-plugin) makes it simple for WordPress users to record every blog post they create to the Po.et Network. Once they have created an API token in Frost Web, they simply install the plugin and add their API key, and their blogs are ready to record posts. The plugin interacts with the Frost API hosted by Po.et, so there is no need to host a node or run any other Po.et software.
+The [Po.et WordPress Plugin](https://github.com/poetapp/wordpress-plugin) makes it simple for WordPress users to record every blog post they create to the Po.et Network. Once they have created an API token in Frost Web, they simply install the plugin and add their API key, and their blogs are ready to record posts. The plugin interacts with the Po.et API hosted by Po.et, so there is no need to host a node or run any other Po.et software.
 
 #### Explorer Web
 

@@ -29,7 +29,7 @@ Identifying the signature suite used provides the libraries with the means to ve
 ## The Signature Block
 The signature block (or proof) is a Linked Data Signature object that includes the following fields:
   - `type` - A URI that identifies the digital signature suite that was used to create the signature. Often, just the 
-  signature suite name (e.g., Ed25519Signature2018) is required from developers to initiate the creation of a signature. Frost
+  signature suite name (e.g., Ed25519Signature2018) is required from developers to initiate the creation of a signature. Po.et
   will use the Ed25519Signature2018 signature suite.
   - `creator` - A URI that identifies the public key of the public/private key pair associated with the signature. In the 
   Po.et Network, the creator is a `po.et://entities/<identity claim id>` link for the public/private key pair. The 

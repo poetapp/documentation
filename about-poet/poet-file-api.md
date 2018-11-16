@@ -20,7 +20,7 @@ Data privacy is an important issue for content creators, publishers, and users o
 
 Initially, Po.et only supports immutable, permanent, public claim storage on IPFS. Such immutable, permanent storage solutions should not be used to store personally identifying information.
 
-For privacy reasons, identity claims on the Po.et Network do not contain any personally identifiable information, such as names, addresses, birth dates, etc. Claims about such data can be made and verified, but the data itself is stored outside public, immutable storage by decentralized Identity Providers (IDPs) such as the Frost API. Personally identifying profile data is optional and user-controlled. It can be modified or deleted directly by the user at any time.
+For privacy reasons, identity claims on the Po.et Network do not contain any personally identifiable information, such as names, addresses, birth dates, etc. Claims about such data can be made and verified, but the data itself is stored outside public, immutable storage by decentralized Identity Providers (IDPs) such as the Po.et API. Personally identifying profile data is optional and user-controlled. It can be modified or deleted directly by the user at any time.
 
 In the future, Po.et may support more private claim data types via similar mechanisms. Such claim data will be verifiable because data will still be cryptographically hashed, signed, and anchored to the blockchain.
 

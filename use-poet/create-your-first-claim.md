@@ -12,15 +12,15 @@
 ## Register Your Claim
 
 1. Open your command line terminal.
-2. Enter these two commands (replace `MY_FROST_TOKEN` with the API Token you copied above).
+2. Enter these two commands (replace `MY_API_TOKEN` with the API Token you copied above).
 ```bash
-$ export FROST_URL="https://frost-api.poetnetwork.net"
-$ export FROST_TOKEN="MY_FROST_TOKEN"
+$ export API_URL="https://api.poetnetwork.net"
+$ export API="MY_API_TOKEN"
 ```
 
 3. Register your work (replace the sample content with your own).
 ```bash
-$ curl -H "Content-Type: application/json" -H "token: $FROST_TOKEN" -X POST -d \
+$ curl -H "Content-Type: application/json" -H "token: $API_TOKEN" -X POST -d \
   '{
     "name":"Bitcoin: A Peer-to-Peer Electronic Cash System",
     "datePublished":"2018-10-31T12:12:12.000Z",
@@ -28,7 +28,7 @@ $ curl -H "Content-Type: application/json" -H "token: $FROST_TOKEN" -X POST -d \
     "author": "Satoshi Nakamoto",
     "tags": "Bitcoin",
     "content": "Abstract. A purely peer-to-peer version of electronic cash would allow..."
-   }' $FROST_URL/works
+   }' $API_URL/works
 ```
 
 4. The API will return a `workId` (save it for the next section).
@@ -37,12 +37,12 @@ $ curl -H "Content-Type: application/json" -H "token: $FROST_TOKEN" -X POST -d \
 
 1. Retrieve your work (replace `YOUR_WORKID` with the `workId` you received above).
 ```bash
-curl -H "Content-Type: application/json" -H "token: $FROST_TOKEN" -X GET $FROST_URL/works/YOUR_WORKID
+curl -H "Content-Type: application/json" -H "token: $API_TOKEN" -X GET $API_URL/works/YOUR_WORKID
 ```
 
 2. When you have more than one work, you can retrieve them all by leaving out the `workId`.
 ```bash
-curl -H "Content-Type: application/json" -H "token: $FROST_TOKEN" -X GET $FROST_URL/works
+curl -H "Content-Type: application/json" -H "token: $API_TOKEN" -X GET $API_URL/works
 ```
 
 Congratulations! You have successfully registered and retrieved your first claim on the Po.et Network!
