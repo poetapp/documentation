@@ -6,6 +6,6 @@
 
 ##### [Po.et's WordPress Plugin](wordpress-plugin.md)
 
-### [Po.et API](https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0)
+### [Po.et API](poet-api.md)
 
 ##### [API Client](https://github.com/poetapp/frost-client)
