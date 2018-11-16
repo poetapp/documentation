@@ -2,7 +2,7 @@
 
 ## Get an API Token
 
-1. Go to https://frost.poetnetwork.net.
+1. Go to [https://frost.poetnetwork.net](https://frost.poetnetwork.net).
 2. Click on **Login / Sign Up**.
 3. Under **Sign Up**, enter your email address and set a password.
 4. Click on **Get API Token**.
