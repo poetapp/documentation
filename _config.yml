@@ -1,4 +1,5 @@
 theme: jekyll-theme-minimal
+include: contributing.md
 title: Po.et Documentation
 description: Technical documentation for the Po.et Network
 logo: poet-logo.jpeg
