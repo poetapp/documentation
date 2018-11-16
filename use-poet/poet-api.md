@@ -1,7 +1,7 @@
 # Po.et API
 
-We are using the [OpenAPI specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md) to document the Po.et API:
-[https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/](https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0#/)
+We are using the [OpenAPI specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md) to document the Po.et API:  
+[https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0/](https://app.swaggerhub.com/apis-docs/po.et/poet-api/0.1.0/)
 
 The purpose of the API is to:
 - Facilitate the creation and maintenance of API accounts
