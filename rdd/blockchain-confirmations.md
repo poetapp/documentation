@@ -203,3 +203,4 @@ Special attention should be given to claims that involve money, such as purchase
 1. [Valid fork in regtest - Change blockchain via RPC?](https://bitcoin.stackexchange.com/questions/37340/valid-fork-in-regtest-change-blockchain-via-rpc)
 1. [How to detect reorganization from bitcoind via ZMQ?](https://bitcoin.stackexchange.com/questions/52891/how-to-detect-reorganization-from-bitcoind-via-zmq)
 1. [How to detect a fork with bitcoin-cli?](https://bitcoin.stackexchange.com/questions/44437/how-to-detect-a-fork-with-bitcoin-cli?rq=1)
+1. [How can an earlier block have a later timestamp?](https://bitcoin.stackexchange.com/questions/3743/how-can-an-earlier-block-have-a-later-timestamp)
