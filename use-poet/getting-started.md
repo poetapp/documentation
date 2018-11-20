@@ -1,8 +1,8 @@
 # Getting Started with Po.et
 
-Po.et has created [Frost](https://frost.poetnetwork.net), an open API layer for publishers, so you can get started quickly registering your works on the Po.et Network.
+Po.et has created an [open API layer](poet-api.md) for publishers, so you can get started quickly recording your works on the Po.et Network.
 
-Frost is Po.et's official key-custody agent. It makes it easier for you to work with Po.et by hiding the complex details of public key management.
+The **[Po.et API web app](https://explorer.poetnetwork.net)** is Po.et's official key-custody agent. It makes it easier for you to work with Po.et by hiding the complex details of public key management.
 
 ## Ready to Try It Out?
 

@@ -2,9 +2,9 @@
 
 ## Get an API Token
 
-1. Go to [https://frost.poetnetwork.net](https://frost.poetnetwork.net).
+1. Go to [https://explorer.poetnetwork.net](https://explorer.poetnetwork.net).
 2. Click on **Login / Sign Up**.
-3. Under **Sign Up**, enter your email address and set a password.
+3. Under **Sign Up**, enter your email address and set a password, then confirm the verification email sent to you.
 4. Click on **Get API Token**.
 5. Click on the pre-created API Token to copy it to your clipboard.
 6. Save the API Token in a secure place (don't share it with anyone).
@@ -23,8 +23,8 @@ $ export API="MY_API_TOKEN"
 $ curl -H "Content-Type: application/json" -H "token: $API_TOKEN" -X POST -d \
   '{
     "name":"Bitcoin: A Peer-to-Peer Electronic Cash System",
-    "datePublished":"2018-10-31T12:12:12.000Z",
     "dateCreated": "2008-10-31T00:00:00.001Z",
+    "datePublished":"2018-10-31T12:12:12.000Z",
     "author": "Satoshi Nakamoto",
     "tags": "Bitcoin",
     "content": "Abstract. A purely peer-to-peer version of electronic cash would allow..."
