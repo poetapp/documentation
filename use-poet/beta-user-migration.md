@@ -4,12 +4,10 @@ Now you can record your creative works on the Bitcoin Mainnet blockchain, while 
 
 ## Migrating to Mainnet
 
-So what has changed with the new release of Po.et's protocol that will affect how your app interacts with our API? Two things:
+To get started:
 
-1. We are using a new domain: poetnetwork.net
-2. API Tokens need to be created to access the new API
-
-As a result, you will need to create a new account and obtain a new API Token for your app (see instructions below), and you will need to update your app with the new API URL ([https://api.poetnetwork.net](https://api.poetnetwork.net)).
+1. Create a new account and obtain a new API Token for your app (see instructions below)
+2. Update your app with the new API Token and the new API URL: **[https://api.poetnetwork.net](https://api.poetnetwork.net)**
 
 ## Create Account and Get an API Token
 
@@ -28,4 +26,4 @@ We will be releasing a version 2.0 of the Po.et WordPress Plugin soon. Stay tune
 
 ## Legacy Po.et
 
-The legacy Po.et API (https://api.frost.po.et) will continue to function as usual until January 15, 2019, at which time we will close it down.
+The legacy Po.et API ([https://api.frost.po.et](https://api.frost.po.et)) will continue to function until January 15, 2019, when we will close it down.
