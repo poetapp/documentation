@@ -3,7 +3,7 @@
 
 @import "{{ site.theme }}";
 
-a {
+a, a:hover, a:active, a:visited {
   color: #03bf6d;
 }
 
