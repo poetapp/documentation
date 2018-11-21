@@ -54,7 +54,7 @@ See [this article](https://medium.com/tech-tajawal/page-object-model-pom-design-
 
 ### Definitions
 
-It's important that we have a shared understanding when we use terms like "functional test", since they might have different meanings for each of us based on our past experience. This is a condensed version of [Eric's article](https://www.sitepoint.com/javascript-testing-unit-functional-integration/) just for our reference (please read the whole article), and to put us all on the same page when we talk about tests.
+It's important that we have a shared understanding when we use terms like "functional test", since they might have different meanings for each of us based on our past experience. This is a condensed version of [Eric Elliott's article](https://www.sitepoint.com/javascript-testing-unit-functional-integration/) just for our reference (please read the whole article), and to put us all on the same page when we talk about tests.
 
 >Unit tests, integration tests, and functional tests are all types of automated tests which form essential cornerstones of continuous delivery. Each type of test has a unique role to play. Use all of them, and make sure you can run each type of test suite in isolation from the others.
 >

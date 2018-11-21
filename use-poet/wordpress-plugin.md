@@ -6,8 +6,10 @@
 2. Click on **Login / Sign Up**.
 3. Under **Sign Up**, enter your email address and set a password, then confirm the verification email sent to you.
 4. Click on **Get API Token**.
-5. Click on the pre-created API Token to copy it to your clipboard.
-6. Save the API Token in a secure place (don't share it with anyone).
+5. Switch the toggle from Testnet to Mainnet (unless you want to use Testnet first for testing purposes).
+6. Click on **Create API Token for Live** to generate a new API Token.
+7. Click on the created API Token to copy it to your clipboard.
+8. Save the API Token in a secure place (don't share it with anyone).
 
 ## Add Plugin
 
