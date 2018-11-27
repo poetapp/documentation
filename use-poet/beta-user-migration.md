@@ -26,7 +26,7 @@ We will be releasing a version 2.0 of the Po.et WordPress Plugin soon. Stay tune
 
 ## Legacy Po.et
 
-The legacy Po.et API ([https://api.frost.po.et](https://api.frost.po.et)) will continue to function until January 15, 2019, when we will close it down.
+The legacy Po.et API ([https://frost.po.et](https://frost.po.et) & [https://api.frost.po.et](https://api.frost.po.et)) will continue to function until January 15, 2019, when we will close it down.
 
 ## Questions?
 
