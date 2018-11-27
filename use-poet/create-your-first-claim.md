@@ -39,12 +39,12 @@ $ curl -H "Content-Type: application/json" -H "token: $API_TOKEN" -X POST -d \
 
 1. Retrieve your work (replace `YOUR_WORKID` with the `workId` you received above).
 ```bash
-curl -H "Content-Type: application/json" -H "token: $API_TOKEN" -X GET $API_URL/works/YOUR_WORKID
+curl -H "Content-Type: application/json" -H "token: $MY_API_TOKEN" -X GET $API_URL/works/YOUR_WORKID
 ```
 
 2. When you have more than one work, you can retrieve them all by leaving out the `workId`.
 ```bash
-curl -H "Content-Type: application/json" -H "token: $API_TOKEN" -X GET $API_URL/works
+curl -H "Content-Type: application/json" -H "token: $MY_API_TOKEN" -X GET $API_URL/works
 ```
 
 Congratulations! You have successfully registered and retrieved your first claim on the Po.et Network!
