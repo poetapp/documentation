@@ -22,6 +22,18 @@ A full blown microservice refactor would mean each module becoming its own, inde
 
 In order to avoid the extra maintenance and development cost this would incurr, we are choosing a middle ground, in which all modules still live in the same code base, but live in different, isolated processes at run time.
 
+## Scalability 
+
+With the current half-microservices half-monolith approach, scaling the node is actually more complicated than if it was just a monolith.
+
+Completing the move towards microservices, on the other hand, would allow improved scaling over both models.
+
+For example, to improve throughput of the Po.et Node's API, we could have the API in an auto-scaling group behind an ELB, each instance reading from one read-replica of the database. This would allow production to run 10 instances of the API module if desired, all reading from a different database than the one used by the View module, thus not impacting the performance of other modules at all.
+
+We would also be able to have as many API modules we want running in parallel but keep BlockchainReader as only one instance, since it's basically a cron that is sleeping 99% of its life time.
+
+Or distribute upload of files to IPFS between different instances of the StorageWriter, even to different instances of IPFS.
+
 ## Plan
 
 1. Add `/src/${moduleName}/index.ts` to each module
