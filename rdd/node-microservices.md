@@ -47,7 +47,13 @@ We'll want to add several entries to the `bin` section, one for each module, map
 
 ### 3. Update `docker-compose.yml`
 
-We will need to remove the current `poet-node` entry from `docker-compose.yml` 
+We will need to remove the current `poet-node` entry from `docker-compose.yml` and in its place add one entry for each module.
+
+The `command` of the docker-compose service for each module would be almost the same as the one we have for `poet-node`, the only difference being `npm start` being replaced by `poet-node-{module}`.
+
+All docker-compose module services will need to be linked to `rabbit`, but not to other module services.
+
+The `dockerfile` will need to `npm i -g` to make the `poet-node-{module}` commands available..
 
 ### 4. Helpers
 
