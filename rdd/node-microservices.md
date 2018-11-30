@@ -10,7 +10,7 @@ At that time we had also decided not to use docker in production.
 
 Maintaining the node as a single application made sense in that context, and the need to fully support microservices never arose.
 
-Now that we have finally deployed a new infrastructure, running on Docker, this hybrid approach in which the Po.et Node behaves like a single application but requires RMQ for modules to communicate with each other is actually hindering it scalability. 
+Now that we have finally deployed a new infrastructure, running on Docker, this hybrid approach in which the Po.et Node behaves like a single application but requires RMQ for modules to communicate with each other is actually hindering  scalability. 
 
 Completing the transtion towards proper microservices will allow improved scaling of the Po.et Node. 
 
@@ -20,27 +20,24 @@ Since it is already split in modules which mostly behave as separate application
 
 A full blown microservice refactor would mean each module becoming its own, independent application, each with its own `package.json`.
 
-We are choosing a middleground here, in which all modules still live in the same code base, but live in different, isolated processes at run time.
+In order to avoid the extra maintenance and development cost this would incurr, we are choosing a middle ground, in which all modules still live in the same code base, but live in different, isolated processes at run time.
 
 ## Plan
 
-1. Add `/src/${moduleName}/index.ts` for each module
+1. Add `/src/${moduleName}/index.ts` to each module
 1. Update package.json
 1. Update docker-compose.yml
+1. Helpers
 
-### Step 1:  add `index.ts` for each module
+### 1. add `index.ts` to each module
 
 Each module's `index.ts` will be similar to our current `index.ts`, except that it'll only instantiate that particular module instead of all of them.
 
 This file will also be responsible for loading configuration, unlike our current approach in which `app` takes care of this. 
 
-As the current `index.ts`, each `index.ts` will need to import side-effecting files (those under `Extensions`).
+As the current `index.ts`, each `index.ts` will need to import side-effecting files (those under `Extensions`, for example).
 
-Everything under `Helpers` will go into its own library, `@po.et/helpers`, for two reasons:
-- they will not be directly available to the modules any more once we actually separate them into their own projects with their own `package.json`'s,
-- most (if not all) of the functions there are not specific to the Po.et Node and have already been copy-pasted to Frost API.
-
-### Step 2: update `package.json`
+### 2. Update `package.json`
 
 The Node's `package.json` currently has a `bin` section that maps `poet-node` to `dist/babel/src/index.js`.
 
@@ -48,9 +45,17 @@ This is used by NPM at installation time, when running `npm i -g @po.et/node` or
 
 We'll want to add several entries to the `bin` section, one for each module, mapping module names to the newly created `module/index.ts` files. For example: `"poet-node-blockchain-writer": "dist/babel/src/BlockchainWriter/index.js"`
 
-### Step 3: update `docker-compose.yml`
+### 3. Update `docker-compose.yml`
 
 We will need to remove the current `poet-node` entry from `docker-compose.yml` 
+
+### 4. Helpers
+
+Everything under `Helpers` will go into its own library, `@po.et/helpers`, for two reasons:
+- they would not be directly available to the modules any more if we actually separated them into their own projects with their own `package.json`'s, 
+- most (if not all) of the functions there are not specific to the Po.et Node and many have already been copy-pasted to Frost API.
+
+Other helper functions that may exist in other projects but not in the Node could also be migrated to this new package.
 
 ## Tests
 
