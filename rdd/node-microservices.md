@@ -4,7 +4,7 @@ It's time to finally break this guy down into proper microservices.
 
 ## Background
 
-The current version of Po.et Node was built from the ground up with microservices in mind, but due to the business requirements at the time it was concieved, it was decided for it to be runnable as a single application, for greater ease of use.
+The current version of Po.et Node was built from the ground up with microservices in mind, but due to the business requirements at the time it was conceived, it was decided for it to be runnable as a single application, for greater ease of use.
 
 At that time we had also decided not to use docker in production.
 
@@ -12,7 +12,7 @@ Maintaining the node as a single application made sense in that context, and the
 
 Now that we have finally deployed a new infrastructure, running on Docker, this hybrid approach in which the Po.et Node behaves like a single application but requires RMQ for modules to communicate with each other is actually hindering  scalability. 
 
-Completing the transtion towards proper microservices will allow improved scaling of the Po.et Node. 
+Completing the transition towards proper microservices will allow improved scaling of the Po.et Node. 
 
 Since it is already split in modules which mostly behave as separate applications, this refactor will be mostly around bootstrapping, requiring little to no code change.
 
@@ -20,7 +20,7 @@ Since it is already split in modules which mostly behave as separate application
 
 A full blown microservice refactor would mean each module becoming its own, independent application, each with its own `package.json`.
 
-In order to avoid the extra maintenance and development cost this would incurr, we are choosing a middle ground, in which all modules still live in the same code base, but live in different, isolated processes at run time.
+In order to avoid the extra maintenance and development cost this would incur, we are choosing a middle ground, in which all modules still live in the same code base, but live in different, isolated processes at run time.
 
 ## Scalability 
 
@@ -30,7 +30,7 @@ Completing the move towards microservices, on the other hand, would allow improv
 
 For example, to improve throughput of the Po.et Node's API, we could have the API in an auto-scaling group behind an ELB, each instance reading from one read-replica of the database. This would allow production to run 10 instances of the API module if desired, all reading from a different database than the one used by the View module, thus not impacting the performance of other modules at all.
 
-We would also be able to have as many API modules we want running in parallel but keep BlockchainReader as only one instance, since it's basically a cron that is sleeping 99% of its life time.
+We would also be able to have as many API modules as we want running in parallel but keep BlockchainReader as only one instance, since it's basically a cron that is sleeping 99% of its life time.
 
 Or distribute upload of files to IPFS between different instances of the StorageWriter, even to different instances of IPFS.
 
@@ -65,7 +65,7 @@ The `command` of the docker-compose service for each module would be almost the 
 
 All docker-compose module services will need to be linked to `rabbit`, but not to other module services.
 
-The `dockerfile` will need to `npm i -g` to make the `poet-node-{module}` commands available..
+The `dockerfile` will need to `npm i -g` to make the `poet-node-{module}` commands available.
 
 ### 4. Helpers
 
