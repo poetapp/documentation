@@ -81,6 +81,8 @@ In this first step we will stop using `/src/index.ts` in production, but keep `/
 
 In the future we will need to re-think how we approach our tests. 
 
+> Note: testing terminology and scope is still a work in progress, and the tests we already have themselves do not follow a  pattern. See [Document Test Type Definitions](https://github.com/poetapp/documentation/issues/26).
+
 ### Unit Tests
 
 These should require no change at all.
@@ -92,6 +94,8 @@ Since each module will actually be a separate application, integration tests wil
 The preferred approach towards this model is to _mock_ all other modules, triggering specific behaviors by feeding the module being tested prepared RabbitMQ messages and listening to the messages it publishes.
 
 One advantage of this approach is better scoped and more isolated integration tests.
+
+This by no means intends to discourage other type of tests or approaches to automated testing.
 
 ### Functional Tests
 
