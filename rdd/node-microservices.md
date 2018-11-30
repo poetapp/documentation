@@ -63,11 +63,15 @@ In this first step we will stop using `/src/index.ts` in production, but keep `/
 
 In the future we will need to re-think how we approach our tests. 
 
+### Unit Tests
+
+These should require no change at all.
+
 ### Integration Tests
 
 Since each module will actually be a separate application, integration tests will be aimed at specific modules and live inside their code base. 
 
-The preffered approach towards this model is to _mock_ all other modules, triggering specific behaviors by feeding the module being tested prepared RabbitMQ messages and listening to the messages it publishes.
+The preferred approach towards this model is to _mock_ all other modules, triggering specific behaviors by feeding the module being tested prepared RabbitMQ messages and listening to the messages it publishes.
 
 One advantage of this approach is better scoped and more isolated integration tests.
 
