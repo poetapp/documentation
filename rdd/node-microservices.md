@@ -29,7 +29,7 @@ In order to avoid the extra maintenance and development cost this would incurr, 
 1. Update docker-compose.yml
 1. Helpers
 
-### 1. add `index.ts` to each module
+### 1. Add `index.ts` to each module
 
 Each module's `index.ts` will be similar to our current `index.ts`, except that it'll only instantiate that particular module instead of all of them.
 
