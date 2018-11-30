@@ -15,16 +15,16 @@ This is achieved by storing all the data necessary to regenerate the hash that w
 
 In practice, the verification algorithm requires: 
 - the hash of the block at which the timestamp was stored,
-- the signed verifiable claim that we want to validate, 
-- the work addressed by the verifiable claim,
-- and the hashes of other necessary files of the same verifiable claim batch.
+- the Signed Verifiable Claim that we want to validate, 
+- the work addressed by the signed Signed Verifiable Claim,
+- and the hashes of other necessary files of the same Verifiable Claim batch.
 
 ## Receipt Verification
 
 The verification algorithm will need to follow these steps:
-- Ensure the Verifiable Claim's id is correct, using Po.et-JS
-- Calculate the hash of the work and ensure it matches the one provided in the Verifiable Claim
-- Create a Merkle Tree with the id of the Verifiable Claim provided, along with the ids of the verifiable claims provided in the receipt
+- Ensure the Signed Verifiable Claim's id is correct, using Po.et-JS
+- Calculate the hash of the work and ensure it matches the one provided in the Signed Verifiable Claim
+- Create a Merkle Tree with the id of the Signed Verifiable Claim provided, along with the ids of the Verifiable Claims provided in the receipt
 - Download the timestamp from the blockchain, given the blockHash provided in the receipt
 - Compare the downloaded timestamp against the Merkle Root
 
