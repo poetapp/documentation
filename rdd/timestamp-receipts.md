@@ -15,7 +15,7 @@ This is achieved by storing all the data necessary to regenerate the hash that w
 
 In practice, the verification algorithm requires: 
 - the hash of the block at which the timestamp was stored,
-- the verifiable claim that we want to validate, 
+- the signed verifiable claim that we want to validate, 
 - the work addressed by the verifiable claim,
 - and the hashes of other necessary files of the same verifiable claim batch.
 
