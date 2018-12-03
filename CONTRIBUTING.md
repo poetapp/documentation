@@ -2,7 +2,6 @@
 
 1. `master` is always a protected branch — no one can commit or push to it. To contribute changes, branch off of master and make a pull request back to it.
 1. Always `git checkout -b` out of `master`.
-1. Always reference the issue number the branch addresses in the branch name (e.g., `feature(#22)` or `some-new-thing-#23`).
 1. Once you're happy with your branch and think it's ready for code review, make a PR.
 1. Make sure the PR title is well written, informative, and as short as possible. Leave out of the title any references to issues — that will go in the description.
 1. Make sure the PR description gives good information on what changes the PR is introducing. This will both serve for historical purposes, where context is mostly lost, and help code reviewers greatly.
