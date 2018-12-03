@@ -40,6 +40,7 @@ Or distribute upload of files to IPFS between different instances of the Storage
 1. Update package.json
 1. Update docker-compose.yml
 1. Helpers
+1. Interfaces & Other Shared Files
 
 ### 1. Add `index.ts` to each module
 
@@ -74,6 +75,16 @@ Everything under `Helpers` will go into its own library, `@po.et/helpers`, for t
 - most (if not all) of the functions there are not specific to the Po.et Node and many have already been copy-pasted to Frost API.
 
 Other helper functions that may exist in other projects but not in the Node could also be migrated to this new package.
+
+### 5. Interfaces & Other Shared Files
+
+Other files that currently live above the modules level and are shared by them will be kept as they are in this first phase to avoid impacting development experience and performance too much.
+
+Some specific cases:
+- `Interfaces.ts` can remain where it is.
+- `Configuration.ts` can be largely moved to `@po.et/helpers`, since it is application agnostic and most of it was already copy-pasted to Frost API.
+- `Extensions/*` can remain where it is for now. In the future we may be able to replace these with [Ramda's fromPairs](https://ramdajs.com/docs/#fromPairs), [Pino JS serializers](https://github.com/pinojs/pino/blob/master/docs/api.md#serializerssymbolforpino-function) and a smarter system to improve promise handling; but all of this is outside the scope of this RDD.
+- Messaging will need to remain where it is for now. We will be able to move part of it to `@po.et/helpers` after we [refactor it](https://github.com/poetapp/node/issues/66).
 
 ## Tests
 
