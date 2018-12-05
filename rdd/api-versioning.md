@@ -5,7 +5,7 @@
 - Version in URL
 - Version in Header
 
-## Opinions in the Wild
+## In the Wild
 
 Interesting read from the Have I Been Pwned author: [Your API versioning is wrong, which is why I decided to do it 3 different wrong ways](https://www.troyhunt.com/your-api-versioning-is-wrong-which-is).
 
@@ -19,6 +19,14 @@ Another article, [Common Misconceptions about API Versioning](https://apigee.com
 
 > HTTP offers a cleaner solution to the problem of offering users multiple formats for the same resource. It’s called content negotiation. You’re probably already familiar with the idea: when making an HTTP request, the client includes a number of headers that describe what format (media type in the jargon) they want the information back in, or what format they are providing data in.
 
+In [API Versioning Has No “Right Way”](https://blog.apisyouwonthate.com/api-versioning-has-no-right-way-f3c75457c0b7) 
+Phil Sturgeon goes over some of the most popular choices and then proposes _API Evolution_:
+
+> API Evolution is the concept of never breaking your contracts until you absolutely absolutely have to, then when you do you manage that change with sensible warnings to clients. It is not about making arbitrary changes and breaking stuff.
+>
+> [...] when backwards compatible issues absolutely could not at all be avoided, we took advantage of the fact that a business name for a concept had changed, and took the chance to make our API match the business name.
+
+
 ## Real Cases
 
 - AWS uses dates for versions, places them in the URL, reserves the right to change the default version freely
@@ -30,5 +38,3 @@ I personally prefer the header choice. I have used version-in-urls in the past a
 
 For default version (no version provided), I'd serve a pinned version and upgrade it on a plan with proper notification time to API users, reserving the right to change the default whenever we wish.
 
-## Reference
-1. https://blog.apisyouwonthate.com/api-versioning-has-no-right-way-f3c75457c0b7
