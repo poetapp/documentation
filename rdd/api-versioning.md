@@ -19,14 +19,16 @@ Another article, [Common Misconceptions about API Versioning](https://apigee.com
 
 > HTTP offers a cleaner solution to the problem of offering users multiple formats for the same resource. It’s called content negotiation. You’re probably already familiar with the idea: when making an HTTP request, the client includes a number of headers that describe what format (media type in the jargon) they want the information back in, or what format they are providing data in.
 
-I personally prefer the header choice. I have used version-in-urls in the past and didn't particularly like it, neither for the clients nor for the code base. 
-
-For default version (no version provided), I'd serve a pinned version and upgrade it on a plan with proper notification time to API users, reserving the right to change the default whenever we wish.
-
 ## Real Cases
 
 - AWS uses dates for versions, places them in the URL, reserves the right to change the default version freely
 - GitHub uses the [`Accept` header](https://developer.github.com/v3/media/#request-specific-version), reserves the right to change the default version freely (contributed by @wzalazar) 
+
+## Conclusion
+
+I personally prefer the header choice. I have used version-in-urls in the past and didn't particularly like it, neither for the clients nor for the code base. 
+
+For default version (no version provided), I'd serve a pinned version and upgrade it on a plan with proper notification time to API users, reserving the right to change the default whenever we wish.
 
 ## Reference
 1. https://blog.apisyouwonthate.com/api-versioning-has-no-right-way-f3c75457c0b7
