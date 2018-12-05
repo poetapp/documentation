@@ -1,9 +1,11 @@
 # API Endpoint Versioning
 
-Some pretty standard approaches:
+## Common Approaches
 
 - Version in URL
 - Version in Header
+
+## Opinions in the Wild
 
 Interesting read from the Have I Been Pwned author: [Your API versioning is wrong, which is why I decided to do it 3 different wrong ways](https://www.troyhunt.com/your-api-versioning-is-wrong-which-is).
 
@@ -21,6 +23,10 @@ I personally prefer the header choice. I have used version-in-urls in the past a
 
 For default version (no version provided), I'd serve a pinned version and upgrade it on a plan with proper notification time to API users, reserving the right to change the default whenever we wish.
 
-Some cases:
+## Real Cases
+
 - AWS uses dates for versions, places them in the URL, reserves the right to change the default version freely
 - GitHub uses the [`Accept` header](https://developer.github.com/v3/media/#request-specific-version), reserves the right to change the default version freely (contributed by @wzalazar) 
+
+## Reference
+1. https://blog.apisyouwonthate.com/api-versioning-has-no-right-way-f3c75457c0b7
