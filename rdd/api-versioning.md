@@ -1,9 +1,12 @@
 # API Endpoint Versioning
 
+We need a mechanism that allows us to make backwards-incompatible changes to public-facing APIs, balancing agility and continuous improvement with the clients' need of a stable contract.
+
 ## Common Approaches
 
 - Version in URL
-- Version in Header
+- Version in Accept Header
+- Version in Custom Header
 
 ## In the Wild
 
@@ -26,15 +29,25 @@ Phil Sturgeon goes over some of the most popular choices and then proposes _API 
 >
 > [...] when backwards compatible issues absolutely could not at all be avoided, we took advantage of the fact that a business name for a concept had changed, and took the chance to make our API match the business name.
 
+This approach is very limited though, and may not be applicable in many situations.
 
 ## Real Cases
 
 - AWS uses dates for versions, places them in the URL, reserves the right to change the default version freely
-- GitHub uses the [`Accept` header](https://developer.github.com/v3/media/#request-specific-version), reserves the right to change the default version freely (contributed by @wzalazar) 
+- [GitHub](https://developer.github.com/v3/media/#request-specific-version) uses `beta` and `v1` through `v4` for versions, places them in the `Accept` header and reserves the right to change the default version freely (contributed by @wzalazar) 
+- [Facebook's marketing API](https://developers.facebook.com/docs/marketing-api/versions/) uses semver-like tags such as `v2.2` and places them in the URL
+
+## Alternatives
+
+In the future we could do more research and put more thought on this topic. Some approaches to keep in mind:
+
+- Supporting an _endpoint feature_ system, rather than global or endpoint versioning.
+- For authenticated requests, storing the version of the API to use in the database for each user, allowing them to change it from an administration panel. 
 
 ## Conclusion
 
-I personally prefer the header choice. I have used version-in-urls in the past and didn't particularly like it, neither for the clients nor for the code base. 
+Following GitHub's approach, placing the version in the `Accept`header is the best option at the moment.
 
-For default version (no version provided), I'd serve a pinned version and upgrade it on a plan with proper notification time to API users, reserving the right to change the default whenever we wish.
+It suits our current needs, requires no changes to the URLs, is already well documented and widely used.
+
 
