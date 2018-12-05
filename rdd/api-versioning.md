@@ -22,6 +22,15 @@ Another article, [Common Misconceptions about API Versioning](https://apigee.com
 
 > HTTP offers a cleaner solution to the problem of offering users multiple formats for the same resource. It’s called content negotiation. You’re probably already familiar with the idea: when making an HTTP request, the client includes a number of headers that describe what format (media type in the jargon) they want the information back in, or what format they are providing data in.
 
+[Using the Accept Header to version your API](http://labs.qandidate.com/blog/2014/10/16/using-the-accept-header-to-version-your-api/) expands a bit more on this particular approach, and explains:
+> ```
+> GET /jobs HTTP/1.1
+> Host: api.example.com
+> Accept: application/vnd.example.api+json;version=2
+> ```
+> 
+> The vnd. part is dictated by [rfc4288-3.2](https://tools.ietf.org/html/rfc4288#section-3.2), and is used to tell standard media types apart from custom ones. A vnd.* media type can be submitted to IANA to be registered as official media type. In theory, you could just use application/json here and add the version parameter, but as [the json standard](https://tools.ietf.org/html/rfc4627#section-6) doesn't allow any parameters, it wouldn't be correct to use that.
+
 In [API Versioning Has No “Right Way”](https://blog.apisyouwonthate.com/api-versioning-has-no-right-way-f3c75457c0b7) 
 Phil Sturgeon goes over some of the most popular choices and then proposes _API Evolution_:
 
@@ -46,8 +55,8 @@ In the future we could do more research and put more thought on this topic. Some
 
 ## Conclusion
 
-Following GitHub's approach, placing the version in the `Accept`header is the best option at the moment.
+Following GitHub's approach, placing the version in the `Accept`header is the best option at the moment. It suits our current needs, requires no changes to the URLs, is already well documented and widely used.
 
-It suits our current needs, requires no changes to the URLs, is already well documented and widely used.
+We will tag the current version as `v1`, and it will be the default initially and for a period of time. Once `v2` has been out for a while, the default will be switched to it, and so forth.
 
-
+The length of that period of time will be decided manually for each particular case, initially, until the business requires a formal definition of it. 
