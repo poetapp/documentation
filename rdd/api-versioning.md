@@ -31,7 +31,7 @@ Phil Sturgeon goes over some of the most popular choices and then proposes _API 
 
 This approach is very limited though, and may not be applicable in many situations.
 
-## Real Cases
+## Well Known Cases
 
 - AWS uses dates for versions, places them in the URL, reserves the right to change the default version freely
 - [GitHub](https://developer.github.com/v3/media/#request-specific-version) uses `beta` and `v1` through `v4` for versions, places them in the `Accept` header and reserves the right to change the default version freely (contributed by @wzalazar) 
