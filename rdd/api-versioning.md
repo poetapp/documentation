@@ -43,7 +43,7 @@ This approach is very limited though, and may not be applicable in many situatio
 ## Well Known Cases
 
 - AWS uses dates for versions, places them in the URL, reserves the right to change the default version freely
-- [GitHub](https://developer.github.com/v3/media/#request-specific-version) uses `beta` and `v1` through `v4` for versions, places them in the `Accept` header and reserves the right to change the default version freely (contributed by @wzalazar) 
+- [GitHub](https://developer.github.com/v3/media/#request-specific-version) uses `beta` and `v1` through `v4` for versions, places them in the `Accept` header and reserves the right to change the default version freely  
 - [Facebook's marketing API](https://developers.facebook.com/docs/marketing-api/versions/) uses semver-like tags such as `v2.2` and places them in the URL
 
 ## Alternatives
