@@ -61,6 +61,6 @@ In the future we could do more research and put more thought on this topic. Some
 
 Following GitHub's approach, placing the version in the `Accept`header is the best option at the moment. It suits our current needs, requires no changes to the URLs, is already well documented and widely used.
 
-We will tag the current version as `v1`, and it will be the default initially and for a period of time. Once `v2` has been out for a while, the default will be switched to it, and so forth.
+We will tag the current version as `v0.1`, and it will be the default initially and for a period of time. Once `v1` has been out for a while, the default will be switched to it, and so forth.
 
 The length of that period of time will be decided manually for each particular case, initially, until the business requires a formal definition of it. 
