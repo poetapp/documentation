@@ -70,11 +70,9 @@ The Frost Client library will need to make an small adjustment to support API ve
 ```ts
 import { Frost } from '@po.et/frost-client'
 
-const config = {
+const frost = new Frost({
   host: 'https://explorer.poetnetwork.net', 
   timeout: 10,
-  version: 'v1, // default to 'v0.1'
-}
-
-const frost = new Frost(config)
+  version: 'v1', // default to 'v0.1'
+})
 ```
