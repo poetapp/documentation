@@ -46,6 +46,10 @@ This approach is very limited though, and may not be applicable in many situatio
 - [GitHub](https://developer.github.com/v3/media/#request-specific-version) uses `beta` and `v1` through `v4` for versions, places them in the `Accept` header and reserves the right to change the default version freely  
 - [Facebook's marketing API](https://developers.facebook.com/docs/marketing-api/versions/) uses semver-like tags such as `v2.2` and places them in the URL
 
+## Team's Experience
+
+Everyone in the team has experience or knows a bit about the version-in-url approach.
+
 ## Alternatives
 
 In the future we could do more research and put more thought on this topic. Some approaches to keep in mind:
