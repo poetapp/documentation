@@ -64,3 +64,17 @@ Following GitHub's approach, placing the version in the `Accept`header is the be
 We will tag the current version as `v0.1`, and it will be the default initially and for a period of time. Once `v1` has been out for a while, the default will be switched to it, and so forth.
 
 The length of that period of time will be decided manually for each particular case, initially, until the business requires a formal definition of it. 
+
+The Frost Client library will need to make an small adjustment to support API versioning:
+
+```ts
+import { Frost } from '@po.et/frost-client'
+
+const config = {
+  host: 'https://explorer.poetnetwork.net', 
+  timeout: 10,
+  version: 'v1, // default to 'v0.1'
+}
+
+const frost = new Frost(config)
+```
