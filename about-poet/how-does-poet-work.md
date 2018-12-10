@@ -39,7 +39,7 @@ When a Po.et Node downloads blocks from the blockchain, it records for each clai
 
 There are several pieces of software developed by Po.et that make up the engine that drives the Po.et Network, enabling the four technologies above to bring the verifiable web to life.
 
-![Po.et Network Overview](poet-network-overview.png)
+![Po.et Network Overview](poet-network-overview.jpg)
 
 #### Node
 
