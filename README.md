@@ -13,9 +13,6 @@ Or learn how to **[get started](use-poet/getting-started.md)** with Po.et in jus
 [Technical Support Chat](https://gitter.im/poetapp/Lobby)  
 Ask questions and get assistance from our community of developers.
 
-[Send Feedback/Bug Report](https://goo.gl/forms/7yLh8PJOx8uykzxz1)  
-Report a bug or send general feedback to our development team.
-
 ## Security
 
-Find out how to [report security issues](SECURITY.md) to Po.et's development team.
+Find out how to [report security issues or bugs](SECURITY.md) to Po.et's development team.
