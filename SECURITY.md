@@ -20,7 +20,7 @@ Other examples of reports not covered under the responsible disclosures policy i
 ## What software is considered to be 'in scope'?
   * https://github.com/poetapp/node
   * https://github.com/poetapp/frost-client
-  * https://github.com/poetapp/poet-api
+  * https://github.com/poetapp/frost-api
   * https://github.com/poetapp/explorer-web
   * https://github.com/poetapp/poet-js
 
