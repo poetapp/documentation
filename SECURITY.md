@@ -81,42 +81,7 @@ QOty8MaqEcthiiYzj9aTHhMr1Sl+0x9WLvHzuongXfpehl195tiNnPEw8iDFd53Q
 ```
 
 ## What about the bug bounty program?
-We'll be kicking off our bounty program to make sure we're rewarding valid research work that adheres to our responsible disclosure policy on April 15, 2019.
-Rewards will be based along the OWASP Risk Rating Methodology which allows us to estimate the associated risk of disclosed vulnerabilities to Po.et. Using this rating system will help to ensure that we're properly prioritizing any modifications that might need to be done and gives researchers a pretty well-known, simple system to reference. The basic way to describe the OWASP ratings is "Risk = Likelihood * Impact".  For more information, visit [https://www.owasp.org/index.php/OWASP_Risk_Rating_Methodology](https://www.owasp.org/index.php/OWASP_Risk_Rating_Methodology)
-
-## What type of compensation is being given for the bounties?
-All bounties will be paid out in POE according to where the fall into our risk rating scale; bounties are listed in USD for sake of clarity here.
-
-* Note: Up to $50
-* Low: Up to $100
-* Medium: Up to $500
-* High: Up to $1,500
-* Critical: Up to $3,000
-
-Every submission will also be evaluated for quality as a factor for compensation. High quality submissions need to include reproduction steps, failing test cases, and well-written fixes. Low quality submissions may not be rewarded at all, especially if they are too vague or don't contain steps for reproduction.
-
-Only one bounty will be awarded per vulnerability. We'll favor the first person to submit a complete report.
-
-This is a private program and all bounties are subject to the discretion of the Po.et Foundation.
-
-## What eligibility requirements are there for collecting on any bounties?
-We require that all researchers:
-* Make every effort to avoid privacy violations, degradation of user experience, disruption to production systems, and destruction of data during security testing
-* Perform research only within the scope set out below
-* Use the identified communication channels to report vulnerability information to us
-* Keep information about any vulnerabilities you've discovered confidential between yourself and Po.et until we've had 90 days to resolve the issue
-* Perform testing only on in-scope systems, and respect systems and activities which are out-of-scope
-* Submissions cannot be submitted through a broker or third-party
-* Must be the first person to submit a complete report
-* Must adhere to the responsible disclosures policy
-
-Also, you must:
-* Not be employed by any officially-related company of the Po.et organizations or Po.et Development Labs
-* Not reside in any country which the United States has issued sanctions against (e.g. Cuba, Iran, North Korea, Sudan, and Syria)
-* Not be in violation of any national, state, or local law or regulation with any activities related (directly or indirectly) to the responsible disclosures policy.
-* Not attempt to extort us or demand ransom.
-
-If you fail to act in good faith of these guidelines, or if we believe you have violated these guidelines, you will become ineligible for any bounties. If you feel like you are potentially breaking the rules, contact us through one of the official security related communication channels and let us work with you to make sure everything that you're doing is acceptable.
+As of October 1st, 2019, we have closed the bug bounty program as we will be transitioning the Po.et protocols to become the Linked Claims protocols. The Po.et team will continue to contribute to the Linked Claims protocols and use it as we develop applications.
 
 ## Acknowledgements
 Some of the language we’ve used for our policies came from [disclose.io](http://disclose.io), a collaborative and vendor-agnostic project to standardize best practices around safe harbor for good-faith security research.  We’ve also used language from [Snyk](https://snyk.io/docs/security/#snyk-s-vulnerability-disclosure-program) in prior disclosure documents.
