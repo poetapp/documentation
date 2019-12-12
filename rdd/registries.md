@@ -1,5 +1,9 @@
 # Registries
 
+Two types of registries:
+- Anchor registry
+- Object registry
+
 Things the node does or should:
 - Allow users to submit a verifiable claim for anchoring.
   - Once anchored, save the anchor receipt automatically in IPFS?
@@ -10,7 +14,7 @@ Things the node does or should:
   - Claims submitted to the node.
   - Claims downloaded from registries the node follows.
 
-Idea: 
+## Implementation
 
 `POST /registries/:registryId/claims` dispatches to the appropriate microservices that know how to deal with the registry. It can be an anchor or an object registry. If the registry is an anchor registry, the submitted claim gets anchored. If it’s an object registry, it gets added to the object registry. 
 
@@ -19,3 +23,5 @@ Idea:
 `GET /claims` returns claims from every registry. `GET /registries/:registryId/claims` is equal to `GET /claims?registryId=:registryId`. `POST /claims` not supported.
 
 `GET /claims` problem: same claim will exist in different registries, of different types. How do we render a claim that has been added to an anchor and to an object registry?
+
+TODO: entries of an anchor registry are different from entries of an object registry.
