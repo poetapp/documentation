@@ -24,4 +24,12 @@ Object registries can be smart contracts, offchain databases and even plain file
 
 Offer write access to object registries through Frost. 
 
+Frost needs to create a private key for each user, or reuse the one that they already have for signing verifiable claims. Creating new keys would require running a migration, so we'll go with the one they already have, at least initially.
 
+We'll need to expose endpoints to allow users to interact with registries.
+
+Possibly:
+- Creating and deploying a new contract, of which the user is the owner.
+- Retrieving the list of contracts the user owns.
+- Adding verifiable claims to the contract.
+- Retrieving the list of items present in a contract.
